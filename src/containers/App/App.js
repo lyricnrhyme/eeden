@@ -4,20 +4,20 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 // containers
 import Account from '../Account/index';
-import Auth from '../Auth';
-import DreamDetail from '../DreamDetail';
-import DreamsListing from '../DreamsListing';
+import Auth from '../Auth/index';
+import DreamDetail from '../DreamDetail/index';
+import DreamsListing from '../DreamsListing/index';
 import Home from '../Home/index';
-import StoreDetail from '../StoreDetail';
-import StoresListing from '../StoresListing';
-import CreateDreamForm from '../CreateDreamForm';
-import CreateStoreForm from '../CreateStoreForm';
-import EditDreamForm from '../EditDreamForm';
-import EditStoreForm from '../EditStoreForm';
+import StoreDetail from '../StoreDetail/index';
+import StoresListing from '../StoresListing/index';
+import CreateDreamForm from '../CreateDreamForm/CreateDreamFormComponent';
+import CreateStoreForm from '../CreateStoreForm/CreateStoreFormComponent';
+import EditDreamForm from '../EditDreamForm/EditDreamFormComponent';
+import EditStoreForm from '../EditStoreForm/EditStoreFormComponent';
 
 // components
-import Header from '../../components/HeaderComponent';
-import Footer from '../../components/FooterComponent';
+import Header from '../Header/HeaderComponent';
+import Footer from '../Footer/FooterComponent';
 
 class App extends Component {
   render() {
@@ -26,7 +26,7 @@ class App extends Component {
         <Header />
           <Router>
               <Switch>
-                <Route path='/' component={Home} />
+                <Route exact path='/' component={Home} />
                 <Route path='/account' component={Account} />
                 <Route path='/login' component={Auth} />
                 <Route path='/dreams/:dreams_id' component={DreamDetail} />
