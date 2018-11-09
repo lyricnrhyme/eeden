@@ -9,9 +9,9 @@ Weʻve built this app using:
 - **Bookshelf.js** as your ORM for the **Postgresql** Datastore.
 - **Docker** for containerization
 
-### Schemas
+## Schemas
 
-## Users
+### Users
 |Property|Type|Options|
 |---|---|---|
 |user_id(Pk)|number|serial, not null, unique|
@@ -22,7 +22,7 @@ Weʻve built this app using:
 |created_at|TS w/ TZ|not null|
 |updated_at|TS w/ TZ|not null|
 
-## Store
+### Store
 |Property|Type|Options|
 |---|---|---|
 |store_id(Pk)|number|serial, not null, unique|
@@ -32,7 +32,7 @@ Weʻve built this app using:
 |created_at|TS w/ TZ|not null|
 |updated_at|TS w/ TZ|not null|
 
-## Dreams
+### Dreams
 |Property|Type|Options|
 |---|---|---|
 |dreams_id(Pk)|number|serial, not null, unique|
@@ -47,7 +47,7 @@ Weʻve built this app using:
 |created_at|TS w/ TZ|not null|
 |updated_at|TS w/ TZ|not null|
 
-## Keywords
+### Keywords
 |Property|Type|Options|
 |---|---|---|
 |keyword_id(Pk)|number|serial, not null, unique|
@@ -55,15 +55,84 @@ Weʻve built this app using:
 |created_at|TS w/ TZ|not null|
 |updated_at|TS w/ TZ|not null|
 
-## Admin
+### Admin
 TBD
 
 ### Association tables
 
-## Purchased
+### Purchased
 |Property|Type|Options|
 |---|---|---|
 |user_id|number|not null|
 |dreams_id|number|not null|
 |created_at|TS w/ TZ|not null|
 |updated_at|TS w/ TZ|not null|
+
+## App Structure
+
+### Front
+- React
+- SASS
+
+### Back
+- Server
+- Routes
+- /DB /Models
+
+### DevOps
+- PG.Json
+- env
+- Docker
+- Readme
+
+## Routes
+/
+- GET 
+
+
+/login
+- GET
+- POST
+
+/register
+- POST
+
+
+/stores
+- GET
+
+/:store_id
+- GET 
+
+/:store_id/:dreams_id
+- GET 
+
+/create_store
+- GET
+- POST
+
+/edit_store/:store_id
+- PUT
+
+
+/dreams
+- GET
+
+/create_dream
+- GET
+- POST
+
+/edit_dream/:dreams_id
+- PUT
+
+
+/cart
+- GET
+- POST
+
+/checkout
+- GET
+
+/confirm
+- GET
+
