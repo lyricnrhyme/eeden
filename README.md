@@ -136,3 +136,52 @@ TBD
 /confirm
 - GET
 
+## Layout
+
+### App (all pages)
+- Header C.
+- Footer C.
+
+### Home (/)
+- FeaturedVideo C.
+- FeaturedStores C.
+- TopDreams C.
+
+### Stores (/stores)
+
+### Store Detail (/stores/:store_id)
+- StoreInfo C.
+- Search C.
+
+### Dreams (/dreams)
+- Search C.
+
+### Dream Product Detail (/dreams/:dreams_id)
+- FeaturedVideo C.
+- DreamInfo C.
+- MoreFromStore C.
+
+### Login (/login)
+- Login C.
+- Register C.
+
+### Account (/account)
+- Toggle C.
+User
+- UserInfo C.
+- OrderHistory C.
+Store
+- StoreInfo C.
+- StoreInventory C.
+
+### Create a store (/create_store)
+- CreateStoreForm C.
+
+### Edit store (/edit_store/:store_id)
+- EditStoreForm C.
+
+### Create a dream (/create_dream)
+- CreateDreamForm C.
+
+### Edit dream (/edit_dream/:dreams_id)
+- EditDreamForm C.
