@@ -1,6 +1,7 @@
 # Eeden
 > A marketplace for dreams
 
+
 ## Tech stack
 Weʻve built this app using:
 - **React** for building the front-end User-Interface (UI)
@@ -8,6 +9,7 @@ Weʻve built this app using:
 - **Express** as the Server
 - **Bookshelf.js** as your ORM for the **Postgresql** Datastore.
 - **Docker** for containerization
+
 
 ## Schemas
 
@@ -68,6 +70,7 @@ TBD
 |created_at|TS w/ TZ|not null|
 |updated_at|TS w/ TZ|not null|
 
+
 ## App Structure
 
 ### Front
@@ -84,6 +87,7 @@ TBD
 - env
 - Docker
 - Readme
+
 
 ## Routes
 /
@@ -136,6 +140,7 @@ TBD
 /confirm
 - GET
 
+
 ## Layout
 
 ### App (all pages)
@@ -148,6 +153,7 @@ TBD
 - TopDreams C.
 
 ### Stores (/stores)
+- Search C.
 
 ### Store Detail (/stores/:store_id)
 - StoreInfo C.
