@@ -26,7 +26,7 @@ class App extends Component {
         <Header />
           <Router>
               <Switch>
-                <Route path='/' component={Home} />
+                <Route exact path='/' component={Home} />
                 <Route path='/account' component={Account} />
                 <Route path='/login' component={Auth} />
                 <Route path='/dreams/:dreams_id' component={DreamDetail} />

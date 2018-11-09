@@ -4,6 +4,7 @@ class Auth extends Component {
   render() {
     return (
       <div className="Auth">
+      authorized?
       </div>
     );
   }
