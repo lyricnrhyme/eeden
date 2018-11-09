@@ -2,4 +2,4 @@ version: '3'
 services:
   eeden:
     build: .
-    image: hkotak93/eeden:local
+    image: rcjmedia/eeden:local

@@ -13,6 +13,10 @@
 
 # misc
 .env
+<<<<<<< HEAD
+=======
+.env.prod
+>>>>>>> server
 .env.example
 .DS_Store
 .env.local
