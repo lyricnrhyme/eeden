@@ -59,14 +59,14 @@ class App extends Component {
     }
 
     function Dream(props) {
-      return <div className="d-flex flex-column">
+      return <div className="d-flex flex-column dream-container" >
         <div className="p-1">Title: {props.t}</div>
         <div className="p-1">{props.d}</div>
         <div className="p-1">${props.p}</div>
         <div className="p-1">Genre: {props.g}</div>
 
         <br />
-      </div>
+      </div >
 
     }
   }
