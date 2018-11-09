@@ -10,7 +10,8 @@ app.get('/api/users', (req, res) => {
       username: 'eeden',
       name: 'Romeo Corpuz',
       password: 'password1',
-      email: 'email@email.com'
+      email: 'email@email.com',
+      hasStore: 1
  })
 });
 
