@@ -1,44 +1,69 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Eeden
+> A marketplace for dreams
 
-## Available Scripts
+## Tech stack
+Weʻve built this app using:
+- **React** for building the front-end User-Interface (UI)
+- HTML and CSS (via [sass](https://sass-lang.com))
+- **Express** as the Server
+- **Bookshelf.js** as your ORM for the **Postgresql** Datastore.
+- **Docker** for containerization
 
-In the project directory, you can run:
+### Schemas
 
-### `npm start`
+## Users
+|Property|Type|Options|
+|---|---|---|
+|user_id(Pk)|number|serial, not null, unique|
+|email|string |not null, unique|
+|password|string|not null|
+|has_store|boolean|not null, default false|
+|store_id (Fk)|number|nullable|
+|created_at|TS w/ TZ|not null|
+|updated_at|TS w/ TZ|not null|
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Store
+|Property|Type|Options|
+|---|---|---|
+|store_id(Pk)|number|serial, not null, unique|
+|title|string |not null, unique|
+|description|string|nullable|
+|dreams_id (Fk)|number|has many, nullable|
+|created_at|TS w/ TZ|not null|
+|updated_at|TS w/ TZ|not null|
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+## Dreams
+|Property|Type|Options|
+|---|---|---|
+|dreams_id(Pk)|number|serial, not null, unique|
+|title|string |not null, unique|
+|description|string|nullable|
+|price|number|not null|
+|genre|string|not null|
+|duration|interval|not null|
+|featured_video|string|not null|
+|dream_images|string|has many, not null|
+|keywords|string|has many, nullable|
+|created_at|TS w/ TZ|not null|
+|updated_at|TS w/ TZ|not null|
 
-### `npm test`
+## Keywords
+|Property|Type|Options|
+|---|---|---|
+|keyword_id(Pk)|number|serial, not null, unique|
+|title|string |not null, unique|
+|created_at|TS w/ TZ|not null|
+|updated_at|TS w/ TZ|not null|
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Admin
+TBD
 
-### `npm run build`
+### Association tables
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Purchased
+|Property|Type|Options|
+|---|---|---|
+|user_id|number|not null|
+|dreams_id|number|not null|
+|created_at|TS w/ TZ|not null|
+|updated_at|TS w/ TZ|not null|
