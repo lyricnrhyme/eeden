@@ -7,11 +7,11 @@ module.exports = {
   development: {
     client: 'pg',
     connection: {
-      host: 'localhost' || process.env.POSTGRES_HOSTNAME,
-      port: 5432 || process.env.POSTGRES_CONTAINER_PORT,
-      database: 'clarity' || process.env.POSTGRES_DB,
-      user: 'eeden' || process.env.POSTGRES_USER,
-      password: 'atlas' || process.env.POSTGRES_PASSWORD
+      host: process.env.POSTGRES_HOSTNAME,
+      port: process.env.POSTGRES_CONTAINER_PORT,
+      database: process.env.POSTGRES_DB,
+      user: process.env.POSTGRES_USER,
+      password: process.env.POSTGRES_PASSWORD
     },
     migrations: {
       directory: __dirname + '/db/migrations'
