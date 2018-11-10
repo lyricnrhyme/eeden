@@ -84,5 +84,6 @@ export const deleteDreamsFromDB = (id) => new Promise((resolve, reject) => {
   }
 })
 
+export default dreams_db;
 
 
