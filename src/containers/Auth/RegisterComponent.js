@@ -20,6 +20,7 @@ class Register extends Component {
     this.setState({
       [name]: value
     })
+    console.log(name, value);
   }
 
   handleSubmit = event => {
@@ -36,8 +37,8 @@ class Register extends Component {
   render() {
     const { email, password, submitted } = this.state;
     return (
-      <div className="Login">
-        <form className='Login' onSubmit={this.handleSubmit}>
+      <div className="Register">
+        <form className='Register' onSubmit={this.handleSubmit}>
           <div className={'form-group' + (submitted && !email ? ' has-error' : '')}>
             <label>Email:</label>
             <input type='text' name='email' value={email} onChange={this.handleChange}/>
