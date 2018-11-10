@@ -13,3 +13,5 @@ export const getUsersFromDB = () => new Promise((resolve, reject) => {
 export const getUserByIdFromDB = (id) => new Promise((resolve, reject) => {
     resolve(users_db.filter(x => x.user_id === id)[0])
 })
+
+export default users_db;
