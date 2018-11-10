@@ -15,6 +15,27 @@ app.get('/api/users', (req, res) => {
  })
 });
 
+app.post('/api/register', (req, res) => {
+    console.log('Sanity Check')
+    res.json({ 
+        username: 'eeden',
+        name: 'Romeo Corpuz',
+        password: 'password1',
+        email: 'email@email.com',
+        hasStore: 1
+   })
+  });
+
+app.put('/api/register', (req, res) => {
+    console.log('Sanity Check')
+    res.json({ 
+        username: 'eeden',
+        name: 'Romeo Corpuz',
+        password: 'password1',
+        email: 'email@email.com',
+        hasStore: 1
+   })
+  });
 
 app.listen(PORT, () => {
   console.log(`Listening on ${PORT}...`)

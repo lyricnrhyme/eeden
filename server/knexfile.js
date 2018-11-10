@@ -1,5 +1,5 @@
 // Update with your config settings.
-require('dotenv').config({path: '../.env'})
+require('dotenv').config({path: '../server/.env'})
 // console.log(process.env)
 
 module.exports = {
@@ -7,11 +7,11 @@ module.exports = {
   development: {
     client: 'pg',
     connection: {
-      host: process.env.POSTGRES_HOSTNAME,
-      port: process.env.POSTGRES_CONTAINER_PORT,
-      database: process.env.POSTGRES_DB,
-      user: process.env.POSTGRES_USER,
-      password: process.env.POSTGRES_PASSWORD
+      host: 'localhost' || process.env.POSTGRES_HOSTNAME,
+      port: 5432 || process.env.POSTGRES_CONTAINER_PORT,
+      database: 'clarity' || process.env.POSTGRES_DB,
+      user: 'eeden' || process.env.POSTGRES_USER,
+      password: 'atlas' || process.env.POSTGRES_PASSWORD
     },
     migrations: {
       directory: __dirname + '/db/migrations'
@@ -40,7 +40,7 @@ module.exports = {
   production: {
     client: 'postgresql',
     connection: {
-      database: 'react_kanban',
+      database: 'clarity',
       user:     'development',
       password: 'development'
     },
