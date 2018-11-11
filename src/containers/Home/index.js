@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import './styles.css';
+import FeaturedHomeVideo from './FeaturedHomeVideoComponent'
 
 class Home extends Component {
   constructor(props) {
@@ -10,8 +12,8 @@ class Home extends Component {
   render() {
     console.log('homepage', this.state.loggedIn);
     return (
-      <div className="Home">
-      hello
+      <div className="home">
+        <FeaturedHomeVideo />
       </div>
     );
   }
