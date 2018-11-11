@@ -35,6 +35,7 @@ router.get('/:id', (req, res) => {
       })
   })
 
+// Create New User
 router.post('/createnew', (req, res) => {
   console.log("\nThis is the req.body: \n", req.body);
   Users
@@ -61,6 +62,33 @@ router.post('/createnew', (req, res) => {
       res.json("RES.JSON ERROR");
     });
   })
+
+// Edit User
+router.put('/edit_user/:id', (req, res) => {
+  const { id } = req.params;
+  const updateUser = {
+    name: req.body.name,
+    address: req.body.address,
+    city: req.body.city,
+    state: req.body.state,
+    zipcode: req.body.zipcode,
+    phone: req.body.mobile,
+    email: req.body.email,
+    password: req.body.password
+  }
+
+  Users
+    .where('id', id)
+    .fetch()
+    .then(userUpdate => {
+      console.log("userUpdate: ", userUpdate);
+      userUpdate.save(updateUser);
+      res.json(userUpdate);
+    })
+    .catch(err => {
+      console.log("err: ", err);
+    })
+})
 
 
 module.exports = router;
