@@ -1,0 +1,48 @@
+.header {
+    z-index: 2;
+    grid-column: 1/7;
+    grid-row: 1/1;
+    color: #116466;
+    background: #fff;
+    height: 65px;
+    vertical-align: middle;
+}
+
+.header h1 {
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+    padding: 5px 15px 0px 10px;
+    color: #d9b08c;
+}
+ 
+.header h3 {
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+    padding: 20px 15px 0px 15px;
+}
+
+.header form {
+    float: right;
+    margin: 0px;
+}
+
+.header button {
+    height: 65px;
+    margin: 0px;
+}
+
+@media (max-width: 463px) {
+    .header h1 {
+        font-size: 1.7em;
+        padding: 15px 5px 0px 5px;
+    }
+    .header h3 {
+        padding: 23px 5px 0px 5px;
+        font-size: 1em;
+    }
+    .header button {
+        padding: 0px 5px 0px 5px;
+    }
+}
