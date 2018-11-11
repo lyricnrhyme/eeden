@@ -1,7 +1,11 @@
 const express = require('express');
 const router = express.Router();
+const bp = require('body-parser');
 
 const Users = require('../../../db/models/Users');
+
+router.use(bp.json());
+router.use(bp.urlencoded({ extended: true }));
 
 router.get('/', (req, res) => {
     Users
@@ -37,20 +41,17 @@ router.post('/createnew', (req, res) => {
     .forge({
       name: req.body.name,
       address: req.body.address,
-      mobile: req.body.mobile,
-      work: req.body.work,
-      home: req.body.home,
+      city: req.body.city,
+      state: req.body.state,
+      zipcode: req.body.zipcode,
+      phone: req.body.mobile,
       email: req.body.email,
-      twitter: req.body.twitter,
-      instagram: req.body.instagram,
-      github: req.body.github,
-      photo: req.body.photo,
-      created_by: req.body.created_by
+      password: req.body.password
     })
     .save()
     .then(() => {
-      return Contacts
-        .fetchAll()
+      return Users
+        .fetchAll({withRelated: ["purchase_id", "store_id"]})
         .then(postedcontact => {
           res.json(postedcontact.serialize());
         })
