@@ -4,6 +4,7 @@ class DreamsListing extends Component {
   render() {
     return (
       <div className="DreamsListing">
+        Dreams Listings
       </div>
     );
   }

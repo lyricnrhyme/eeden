@@ -9,6 +9,7 @@ class Home extends Component {
     }
   }
   render() {
+    console.log('homepage');
     return (
       <div className="Home">
       hello

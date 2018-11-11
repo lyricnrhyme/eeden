@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 // containers
 import Account from '../Account/index';
-import Auth from '../Auth/index';
+import Auth from '../Auth';
 import DreamDetail from '../DreamDetail/index';
 import DreamsListing from '../DreamsListing/index';
 import Home from '../Home/index';
@@ -14,6 +14,8 @@ import CreateDreamForm from '../CreateDreamForm/CreateDreamFormComponent';
 import CreateStoreForm from '../CreateStoreForm/CreateStoreFormComponent';
 import EditDreamForm from '../EditDreamForm/EditDreamFormComponent';
 import EditStoreForm from '../EditStoreForm/EditStoreFormComponent';
+import Login from '../Auth';
+import Register from '../Auth/RegisterComponent';
 
 // components
 import Header from '../Header/HeaderComponent';
@@ -28,7 +30,6 @@ class App extends Component {
               <Switch>
                 <Route exact path='/' component={Home} />
                 <Route path='/account' component={Account} />
-                <Route path='/login' component={Auth} />
                 <Route path='/dreams/:dreams_id' component={DreamDetail} />
                 <Route path='/dreams' component={DreamsListing} />
                 <Route path='/stores/:store_id' component={StoreDetail} />
@@ -37,6 +38,8 @@ class App extends Component {
                 <Route path='/create_store' component={CreateStoreForm} />
                 <Route path='/edit_dream/:dream_id' component={EditDreamForm} />
                 <Route path='/edit_store/:store_id' component={EditStoreForm} />
+                <Route path='/login' component={Login} />
+                <Route path='/register' component={Register} />
               </Switch>
           </Router>
         <Footer />
