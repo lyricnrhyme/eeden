@@ -1,7 +1,7 @@
 exports.up = function(knex, Promise) {
     return knex.schema.table('purchased', function(table) {
         table.integer('user_id')
-        .unsigned()
+        .unsigned();
 
         table
         .foreign('user_id')

@@ -2,7 +2,7 @@ exports.up = function(knex, Promise) {
     return knex.schema.table('dreams', function(table) {
 
         table.integer('keywords_id')
-        .unsigned()
+        .unsigned();
 
         table
         .foreign('keywords_id')
