@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
+// import { connect } from 'react-redux';
 
 class Register extends Component {
   constructor(props) {
@@ -28,7 +28,6 @@ class Register extends Component {
 
     this.setState({ submitted: true });
     const { email, password} = this.state;
-    const { dispatch } = this.props;
     if (email && password) {
       // dispatch('login with correct email and password, action will check if it matches')
     }
