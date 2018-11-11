@@ -4,7 +4,7 @@ const initialState = [];
 const reducer = (state = initialState, action) => {
     switch (action.type) {
         case GET_ALL_USERS:
-            return action.payload
+            return action.task
         default:
             return state
     }

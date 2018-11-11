@@ -24,19 +24,7 @@ class Login extends Component {
     this.setState({
       [name]: value
     })
-    // console.log(this.props.userProps, 'test');
   }
-
-  // handleSubmit = event => {
-  //   event.preventDefault();
-
-  //   this.setState({ submitted: true });
-  //   const { email, password} = this.state;
-  //   const { dispatch } = this.props;
-  //   if (email && password) {
-  //     // dispatch('login with correct email and password, action will check if it matches')
-  //   }
-  // }
 
   handleSubmit = event => {
     event.preventDefault();
@@ -45,7 +33,7 @@ class Login extends Component {
       this.setState({loggedIn: true})
       console.log('user found, loggedIn');
     } else {
-      console.log('username and password do not match');
+      console.log('email and password do not match');
     };
   }
 
@@ -62,9 +50,12 @@ class Login extends Component {
     } else {
       return (
         <div className="Login">
+        <h2>Login</h2>
           <form className='Login'>
-            <input type='text' name='email' placeholder='Enter Email' onChange={this.handleChange}/>
+          <label>Email: </label>
+            <input type='email' name='email' placeholder='Enter Email' onChange={this.handleChange}/>
             <br />
+          <label>Password: </label>
             <input type='password' name='password' placeholder='Enter Password' onChange={this.handleChange}/>
             <br />
             <button type='submit' onClick={this.handleSubmit}>Login</button>

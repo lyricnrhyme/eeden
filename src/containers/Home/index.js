@@ -5,11 +5,10 @@ class Home extends Component {
     super(props)
 
     this.state = {
-      loggedIn: null
     }
   }
   render() {
-    console.log('homepage');
+    console.log('homepage', this.state.loggedIn);
     return (
       <div className="Home">
       hello
