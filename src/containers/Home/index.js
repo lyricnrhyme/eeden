@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
+import './styles.css';
+import FeaturedHomeVideo from './FeaturedHomeVideoComponent'
 
 class Home extends Component {
   render() {
     return (
-      <div className="Home">
-      hello
+      <div className="home">
+        <FeaturedHomeVideo />
       </div>
     );
   }
