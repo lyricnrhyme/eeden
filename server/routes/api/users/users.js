@@ -31,5 +31,35 @@ router.get('/:id', (req, res) => {
       })
   })
 
+router.post('/createnew', (req, res) => {
+  console.log("\nThis is the req.body: \n", req.body);
+  Users
+    .forge({
+      name: req.body.name,
+      address: req.body.address,
+      mobile: req.body.mobile,
+      work: req.body.work,
+      home: req.body.home,
+      email: req.body.email,
+      twitter: req.body.twitter,
+      instagram: req.body.instagram,
+      github: req.body.github,
+      photo: req.body.photo,
+      created_by: req.body.created_by
+    })
+    .save()
+    .then(() => {
+      return Contacts
+        .fetchAll()
+        .then(postedcontact => {
+          res.json(postedcontact.serialize());
+        })
+    })
+    .catch(err => {
+      console.log("err: ", err);
+      res.json("RES.JSON ERROR");
+    });
+  })
+
 
 module.exports = router;
