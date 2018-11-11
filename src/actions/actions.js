@@ -13,8 +13,10 @@ export const getAllDreams = () => {
 }
 
 export const addDream = (dream) => {
+  console.log('ACTION ADD HITTING?')
+  console.log(dream);
   return {
     type: ADD_DREAM,
-    payload: dream.data
+    payload: dream
   }
 }

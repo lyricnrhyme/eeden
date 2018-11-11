@@ -7,7 +7,6 @@ const DreamList = (props) => {
       <div className="p-1">{dreams.description}</div>
       <div className="p-1">${dreams.price}</div>
       <div className="p-1">Genre: {dreams.genre}</div>
-
     </div >
   )
 }

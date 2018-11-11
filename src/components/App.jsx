@@ -5,9 +5,11 @@ import '../App.css';
 import ThemeSwitch from 'react-theme-switch';
 
 import { connect } from 'react-redux';
-import { getAllDreams } from '../actions/actions.js'
+import { getAllDreams, addDream } from '../actions/actions.js'
 
 import DreamList from './DreamList.jsx';
+import DreamForm from './DreamForm.jsx';
+
 
 
 //~~~ MOCK DB DATA CALLS ~~~~//
@@ -39,27 +41,15 @@ class App extends Component {
 
   // Lifecycle method
   componentDidMount() {
-    console.log(this.props);
     console.log('~~~~~~~~~~~~~~~~');
     this.props.dispatch(getAllDreams());
   }
 
-
-
-  // componentDidMount() {
-  //   getDreamsFromDB()
-  //     .then(dreams => {
-  //       // Set state with result
-  //       this.setState({ dreams })
-  //     }, function () {
-  //       console.log('this.state updated: ', this.state);
-  //     })
-  // }
-
-
-
-
-
+  newDream(dream) {
+    console.log('Dream: ', dream);
+    console.log(this.props);
+    this.props.dispatch(addDream(dream))
+  }
 
   render() {
     const { dreamProps } = this.props;
@@ -76,24 +66,14 @@ class App extends Component {
         <ThemeSwitch preserveRasters />
         <h2>Dreams listed</h2>
         <DreamList props={dreamProps} />
+        <br />
+        <div>
+          <DreamForm newDream={this.newDream} />
+        </div>
+        <br />
+        <br />
       </div>
     );
-
-    // function DreamList(props) {
-    //   return props.dreams.map(dream => <Dream key={dream.id} t={dream.title} d={dream.description}
-    //     p={dream.price} g={dream.genre} />)
-    // }
-
-    // function Dream(props) {
-    //   return <div className="d-flex flex-column dream-container" >
-    //     <div className="p-1">Title: {props.t}</div>
-    //     <div className="p-1">{props.d}</div>
-    //     <div className="p-1">${props.p}</div>
-    //     <div className="p-1">Genre: {props.g}</div>
-
-    //   </div >
-
-    // }
   }
 }
 

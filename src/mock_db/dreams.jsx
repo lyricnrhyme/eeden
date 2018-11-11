@@ -54,35 +54,35 @@ let dreams_db = [{
   "keywords": "encompassing"
 }]
 
-let newId = 6;
+// let newId = 6;
 
 
-//~~~~ GET ALL DREAMS ~~~~//
-export const getDreamsFromDB = () => new Promise((resolve, reject) => {
-  resolve(dreams_db.slice())
-})
+// //~~~~ GET ALL DREAMS ~~~~//
+// export const getDreamsFromDB = () => new Promise((resolve, reject) => {
+//   resolve(dreams_db.slice())
+// })
 
-//~~~~ ADD NEW DREAMS ~~~~//
-export const addDreamsFromDB = (dream) => new Promise((resolve, reject) => {
-  dream.dream_id = newId;
-  newId++;
-  dreams_db.push(dream);
-  resolve(dreams_db)
-})
+// //~~~~ ADD NEW DREAMS ~~~~//
+// export const addDreamsFromDB = (dream) => new Promise((resolve, reject) => {
+//   dream.dream_id = newId;
+//   newId++;
+//   dreams_db.push(dream);
+//   resolve(dreams_db)
+// })
 
-//~~~~ DELETE DREAMS ~~~~//
-export const deleteDreamsFromDB = (id) => new Promise((resolve, reject) => {
-  const dreamIndex = dreams_db.findIndex(dream => dream.dream_id === id)
+// //~~~~ DELETE DREAMS ~~~~//
+// export const deleteDreamsFromDB = (id) => new Promise((resolve, reject) => {
+//   const dreamIndex = dreams_db.findIndex(dream => dream.dream_id === id)
 
-  if (dreamIndex === -1) {
-    reject({ status: 500, message: 'Dream doesnt exist!' })
-  } else {
-    dreams_db = dreams_db.filter(dream => {
-      return dream.dream_id !== id;
-    })
-    resolve({ status: 'Delted' })
-  }
-})
+//   if (dreamIndex === -1) {
+//     reject({ status: 500, message: 'Dream doesnt exist!' })
+//   } else {
+//     dreams_db = dreams_db.filter(dream => {
+//       return dream.dream_id !== id;
+//     })
+//     resolve({ status: 'Delted' })
+//   }
+// })
 
 export default dreams_db;
 
