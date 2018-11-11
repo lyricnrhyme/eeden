@@ -79,3 +79,13 @@ video.fillWidth {
     text-align: center;
     width: 200%
 }
+
+@media (max-width: 532px) {
+    .featuredvideo {
+        height: 400px;
+    }
+    video.fillWidth {
+        height: 400px;
+        width: auto;
+    }
+} 
