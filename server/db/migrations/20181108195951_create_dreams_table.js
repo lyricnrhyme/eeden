@@ -5,7 +5,7 @@ exports.up = function(knex, Promise) {
         table.string('description');
         table.integer('price').notNullable();
         table.string('genre').notNullable();
-        table.string('duration');
+        table.string('duration').notNullable();
         table.string('featured_video').notNullable();
         table.string('dream_images').notNullable(); // has many?
 

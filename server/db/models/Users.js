@@ -21,6 +21,8 @@
 const bookshelf = require('./bookshelf');
 require('./Purchased');
 require('./Store');
+require('./Keywords');
+require('./Dreams');
 
 class Users extends bookshelf.Model{
   get tableName(){
@@ -34,10 +36,15 @@ class Users extends bookshelf.Model{
   purchase_id(){
     return this.hasMany('Purchased', 'id')
     }
-    
   store_id(){
     return this.hasMany('Store', 'id')
-    }   
+    }
+  dream_id(){
+    return this.hasMany('Dreams', 'id')
+    }
+  keyword_id(){
+    return this.hasMany('Keywords', 'keyword_id')
+    }       
 }
 
 module.exports = bookshelf.model('Users', Users)

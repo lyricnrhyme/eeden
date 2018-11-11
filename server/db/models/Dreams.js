@@ -20,6 +20,7 @@
 const bookshelf = require('./bookshelf');
 require('./Users');
 require('./Keywords');
+require('./Purchased');
 
 class Dreams extends bookshelf.Model {
   get tableName() {
@@ -28,11 +29,14 @@ class Dreams extends bookshelf.Model {
   get hasTimestamps() {
     return true;
   }
-  keywords() {
+  keyword_id() {
     return this.belongsTo('Keywords', 'keyword_id')
   }
   created_by() {
     return this.belongsTo('Users', 'id')
+  }
+  purchase_id() {
+    return this.hasMany('Purchased', 'id')
   }
 }
 
