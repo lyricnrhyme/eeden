@@ -53,8 +53,8 @@ router.post('/createnew', (req, res) => {
     .then(() => {
       return Users
         .fetchAll({withRelated: ["purchase_id", "store_id"]})
-        .then(postedcontact => {
-          res.json(postedcontact.serialize());
+        .then(createdUser => {
+          res.json(createdUser.serialize());
         })
     })
     .catch(err => {
