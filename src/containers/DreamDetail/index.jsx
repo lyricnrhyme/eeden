@@ -5,6 +5,7 @@ class DreamDetail extends Component {
   render() {
     return (
       <div className="DreamDetail">
+        <h3>Dream details will go here</h3>
       </div>
     );
   }

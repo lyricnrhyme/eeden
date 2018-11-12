@@ -3,7 +3,7 @@ import { DreamList } from '../../components/DreamComponent'
 
 //~~~ Redux ~~~//
 import { connect } from 'react-redux';
-import { getAllDreams } from '../../actions/actions.js'
+import { getAllDreams, getDream } from '../../actions/actions.js'
 
 
 class DreamsListing extends Component {
@@ -20,8 +20,16 @@ class DreamsListing extends Component {
 
   // Lifecycle method
   componentDidMount() {
-    console.log('~~~~~~~~~~~~~~~~');
+    console.log('COMPONENT MOUNTED :)');
     this.props.dispatch(getAllDreams());
+  }
+
+  getDreamById(dreams) {
+    console.log('FIRED')
+    console.log("Dream Data OnClick: ", dreams)
+    console.log("Dream ID: ", dreams.id)
+
+    this.dreamProps.dispatch(getDream(dreams))
   }
 
 
@@ -31,17 +39,16 @@ class DreamsListing extends Component {
     console.log('redux dreamProps: ', { dreamProps });
 
     return (
-      <div className="DreamsListing"><DreamList props={dreamProps} /></div>
+      <div className="DreamsListing"><DreamList dreamProps={dreamProps} getDream={this.getDreamById} /></div>
     );
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     dreamProps: state
-
   }
-
 }
+
 
 export default connect(mapStateToProps)(DreamsListing);
