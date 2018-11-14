@@ -29,7 +29,7 @@ class DreamsListing extends Component {
     console.log("Dream Data OnClick: ", dreams)
     console.log("Dream ID: ", dreams.id)
 
-    this.dreamProps.dispatch(getDream(dreams))
+    this.props.dispatch(getDream(dreams))
   }
 
 
