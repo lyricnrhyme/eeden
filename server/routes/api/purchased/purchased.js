@@ -5,7 +5,8 @@ const Purchased = require('../../../db/models/Purchased');
 
 router.get('/', (req, res) => {
     Purchased
-    .fetchAll({withRelated: ["user_id", "dream_id"]})
+    .fetchAll()
+    // .fetchAll({withRelated: ["user_id", "dream_id"]})
     .then(purchaseList => {
     res.json(purchaseList.serialize())
     console.log('\nServer: List Of Purchases: \n', purchaseList)
@@ -22,7 +23,8 @@ router.get('/:id', (req, res) => {
   
     Purchased
       .where("id", id)
-      .fetch({withRelated: ["user_id", "dream_id"]})
+      .fetchAll()
+      // .fetch({withRelated: ["user_id", "dream_id"]})
       .then(purchaseId => {
         console.log("\nServer: Display By Purchase ID\n", purchaseId);
         res.json(purchaseId);

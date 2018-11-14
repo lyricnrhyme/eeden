@@ -9,7 +9,8 @@ router.use(bp.urlencoded({ extended: true }));
 
 router.get('/', (req, res) => {
     Users
-    .fetchAll({withRelated: ["purchase_id", "store_id", "dream_id", "keyword_id"]})
+    .fetchAll()
+    // .fetchAll({withRelated: ["purchase_id", "store_id", "dream_id", "keyword_id"]})
     .then(userList => {
     res.json(userList.serialize())
     console.log('\nServer: List Of Users: \n', userList)
@@ -26,7 +27,8 @@ router.get('/:id', (req, res) => {
   
     Users
       .where("id", id)
-      .fetch({withRelated: ["purchase_id", "store_id", "dream_id", "keyword_id"]})
+      .fetch()
+      // .fetch({withRelated: ["purchase_id", "store_id", "dream_id", "keyword_id"]})
       .then(userId => {
         console.log("\nServer: Display By User ID\n", userId);
         res.json(userId);
@@ -54,7 +56,8 @@ router.post('/createnew', (req, res) => {
     .save()
     .then(() => {
       return Users
-        .fetchAll({withRelated: ["purchase_id", "store_id", "dream_id", "keyword_id"]})
+      .fetchAll()
+        // .fetchAll({withRelated: ["purchase_id", "store_id", "dream_id", "keyword_id"]})
         .then(createdUser => {
           res.json(createdUser.serialize());
         })
@@ -96,6 +99,5 @@ router.put('/edit_user/:id', (req, res) => {
       res.json('err')
     })
 })
-
 
 module.exports = router;

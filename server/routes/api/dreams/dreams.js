@@ -5,7 +5,8 @@ const Dreams = require('../../../db/models/Dreams');
 
 router.get('/', (req, res) => {
     Dreams
-    .fetchAll({withRelated: ["keyword_id", "created_by", "purchase_id"]})
+    .fetchAll()
+    // .fetchAll({withRelated: ["keyword_id", "created_by", "purchase_id"]})
     .then(dreamsList => {
     res.json(dreamsList.serialize())
     console.log('\nServer: List Of Dreams: \n', dreamsList)
@@ -22,7 +23,8 @@ router.get('/:id', (req, res) => {
   
     Dreams
       .where("id", id)
-      .fetch({withRelated: ["keyword_id", "created_by", "purchase_id"]})
+      .fetchAll()
+      // .fetch({withRelated: ["keyword_id", "created_by", "purchase_id"]})
       .then(dreamId => {
         console.log("\nServer: Display By Dream ID\n", dreamId);
         res.json(dreamId);
