@@ -5,13 +5,11 @@ import { GET_ALL_DREAMS, ADD_DREAM, GET_DREAM_BY_ID } from '../actions/actions.j
 import { GET_ALL_STORES } from '../actions/actions.js'
 
 
-
-
 const reducers = (state = {
     props: [],
     detailedProps: {}
-},
-    action) => {
+}, action) => {
+
     switch (action.type) {
 
         case GET_ALL_USERS:

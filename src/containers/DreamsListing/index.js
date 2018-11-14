@@ -18,12 +18,6 @@ class DreamsListing extends Component {
   constructor(props) {
     // Pass props to parent class
     super(props)
-
-    // Set initial state
-    //   this.state = {
-    //     dreams: []
-
-    //   }
   }
 
   // Lifecycle method
@@ -34,23 +28,20 @@ class DreamsListing extends Component {
   }
 
   getDreamById = (id) => {
-    // console.log('FIRED')
     // console.log("Dream Data OnClick: ", id)
-    // console.log("Dream ID: ", dreams.id)
-    console.log(this.props);
-
-    this.props.dispatch(
-      getDream(id)
-    )
+    console.log('DREAM LISTING BY ID PROPS: ', this.props);
+    this.props.dispatch(getDream(id))
   }
+
+  //~~~ BASEEM WHY DOESNT THIS WORK ~~~//
+  // getDreamById(id) {
+  //   this.props.dispatch(getDream(id))
+  // }
 
 
   render() {
     const { dreamProps } = this.props;
-    console.log('this.props', this.props);
     console.log('redux dreamProps: ', { dreamProps });
-    console.log("HELLO: ", dreamProps);
-
 
     return (
       <div className="DreamsListing" >

@@ -12,7 +12,6 @@ const mapStateToProps = (state) => {
   }
 }
 
-
 class StoresListing extends Component {
 
   constructor(props) {
@@ -31,7 +30,6 @@ class StoresListing extends Component {
     console.log('COMPONENT MOUNTED :)');
 
     this.props.dispatch(getAllStores());
-
   }
 
 

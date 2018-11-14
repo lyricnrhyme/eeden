@@ -2,7 +2,7 @@ import React from 'react';
 import "./styles.css"
 
 export const DreamList = (props) => {
-  console.log('PROPS: ', props);
+  // console.log('PROPS: ', props);
 
   return props.dreamProps.map(dreams =>
 
