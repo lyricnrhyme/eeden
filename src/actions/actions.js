@@ -44,13 +44,13 @@ export const getAllDreams = () => {
 }
 
 //~~~ REQUEST TO GET A DREAM BY ITS ID ~~~//
-export const getDream = (dreams) => {
-    console.log('ACTION GET BY ID FIRING', dreams)
+export const getDream = (id) => {
+    console.log('ACTION GET BY ID FIRING', id)
 
     return dispatch => {
 
-        // axios.get('http://34.219.218.138:8080/api/dreams/' + dreams.id)
-        axios.get(`http://34.219.218.138:8080/api/dreams/${dreams.id}`)
+        // axios.get('http://34.219.218.138:8080/api/dreams/' + id)
+        axios.get(`http://34.219.218.138:8080/api/dreams/${id}`)
             .then(response => {
                 console.log('DREAM BY ID DATA: ', response.data)
                 dispatch({ type: GET_DREAM_BY_ID, payload: response.data })

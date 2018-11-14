@@ -10,7 +10,7 @@ import { getAllDreams, getDream } from '../../actions/actions.js'
 
 const mapStateToProps = (state) => {
   return {
-    dreamProps: state
+    dreamProps: state.props
   }
 }
 
@@ -20,26 +20,28 @@ class DreamsListing extends Component {
     super(props)
 
     // Set initial state
-    this.state = {
-      dreams: []
+    //   this.state = {
+    //     dreams: []
 
-    }
+    //   }
   }
 
   // Lifecycle method
   componentDidMount() {
     console.log('COMPONENT MOUNTED :)');
-
     this.props.dispatch(getAllDreams());
 
   }
 
-  getDreamById(dreams) {
-    console.log('FIRED')
-    console.log("Dream Data OnClick: ", dreams)
+  getDreamById = (id) => {
+    // console.log('FIRED')
+    // console.log("Dream Data OnClick: ", id)
     // console.log("Dream ID: ", dreams.id)
+    console.log(this.props);
 
-    // this.props.dispatch(getDream(dreams))
+    this.props.dispatch(
+      getDream(id)
+    )
   }
 
 
@@ -47,6 +49,7 @@ class DreamsListing extends Component {
     const { dreamProps } = this.props;
     console.log('this.props', this.props);
     console.log('redux dreamProps: ', { dreamProps });
+    console.log("HELLO: ", dreamProps);
 
 
     return (

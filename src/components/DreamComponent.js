@@ -2,7 +2,7 @@ import React from 'react';
 import "./styles.css"
 
 export const DreamList = (props) => {
-  // console.log('PROPS: ', props);
+  console.log('PROPS: ', props);
 
   return props.dreamProps.map(dreams =>
 
@@ -12,7 +12,7 @@ export const DreamList = (props) => {
       <div className="p-1">${dreams.price}</div>
       <div href="/dreams/:dreams_id" >
         <img className="dream-images" src={dreams.dream_images} alt="No Images"
-          onClick={() => props.getDream(dreams)} />
+          onClick={() => props.getDream(dreams.id)} />
       </div>
 
     </div >
