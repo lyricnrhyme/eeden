@@ -15,10 +15,10 @@ const mapStateToProps = (state) => {
 }
 
 class DreamsListing extends Component {
-  constructor(props) {
-    // Pass props to parent class
-    super(props)
-  }
+  // constructor(props) {
+  // Pass props to parent class
+  //   super(props)
+  // }
 
   // Lifecycle method
   componentDidMount() {

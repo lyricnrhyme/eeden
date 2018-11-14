@@ -6,7 +6,7 @@ export const DreamList = (props) => {
 
   return props.dreamProps.map(dreams =>
 
-    <div key={dreams.id} className="d-flex flex-column dream-container" >
+    <div key={dreams.id} className="dream-container" >
       <div className="p-1">DREAM ID: {dreams.id}</div>
       <div className="p-1">Title: {dreams.title}</div>
       <div className="p-1">${dreams.price}</div>

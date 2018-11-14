@@ -29,7 +29,7 @@ export const getAllUsers = () => {
 //~~~~~~~~~~ DREAM ACTIONS ~~~~~~~~~~//
 //~~~ REQUEST TO GET ALL DREAMS ~~~//
 export const getAllDreams = () => {
-    console.log('ACTION GET HITTING')
+    // console.log('ACTION GET HITTING')
 
     return dispatch => {
         axios.get('http://34.219.218.138:8080/api/dreams')
@@ -45,10 +45,9 @@ export const getAllDreams = () => {
 
 //~~~ REQUEST TO GET A DREAM BY ITS ID ~~~//
 export const getDream = (id) => {
-    console.log('ACTION GET BY ID FIRING', id)
+    // console.log('ACTION GET BY ID FIRING', id)
 
     return dispatch => {
-
         // axios.get('http://34.219.218.138:8080/api/dreams/' + id)
         axios.get(`http://34.219.218.138:8080/api/dreams/${id}`)
             .then(response => {

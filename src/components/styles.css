@@ -5,6 +5,12 @@
   cursor: pointer;
 }
 
+/**** STORE COMPONENT STYLES ****/
+.store-container {
+  border: solid 1px black;
+  padding: 10px;
+  margin: 5px;
+}
 
 /**** SEARCH COMPONENT STYLES ****/
 .input{
