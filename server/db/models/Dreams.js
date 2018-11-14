@@ -1,15 +1,15 @@
 const bookshelf = require('./bookshelf');
-const Keywords = require('./Keywords.js');
-const Users = require('./Users.js');
+const Store = require('./Store.js');
+// const Users = require('./Users.js');
 
 const Dreams = bookshelf.Model.extend({
     tableName: 'dreams',
-    keywords_id: function () {
-        return this.belongsTo(Keywords, "keyword_id");
+    store_id: function () {
+        return this.belongsTo(Store, "id");
       },
-    created_by: function () {
-        return this.belongsTo(Users, "id");
-      },
+    // created_by: function () {
+    //     return this.belongsTo(Users, "id");
+    //   },
     idAttribute: 'id',
     hasTimestamps: true
 });

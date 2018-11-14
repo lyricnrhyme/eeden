@@ -100,4 +100,20 @@ router.put('/edit_user/:id', (req, res) => {
     })
 })
 
+// Delete User
+router.put('/delete_user', (req, res) => {
+
+  const id = req.body.id
+
+  Users
+    .where({ id })
+    .destroy()
+    .then(userDetails => {
+      res.json(userDetails.serialize())
+    })
+    .catch(err => {
+      console.log('err: ', err)
+    })
+})
+
 module.exports = router;
