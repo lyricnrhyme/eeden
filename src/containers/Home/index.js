@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import './styles.css';
-import FeaturedHomeVideo from './FeaturedHomeVideoComponent'
+import FeaturedHomeVideo from './FeaturedHomeVideoComponent';
+import FeaturedStores from './FeaturedStoresComponent';
+import TopDreams from './TopDreamsComponent';
+
 
 class Home extends Component {
   constructor(props) {
@@ -9,11 +12,14 @@ class Home extends Component {
     this.state = {
     }
   }
+
   render() {
     console.log('homepage', this.state.loggedIn);
     return (
       <div className="home">
         <FeaturedHomeVideo />
+        <FeaturedStores />
+        <TopDreams />
       </div>
     );
   }

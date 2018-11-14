@@ -1,0 +1,16 @@
+.footer {
+  grid-column: 1/7;
+  grid-row: 3/3;
+  background: grey;
+}
+
+.footer p {
+  display: inline-block;
+  margin: 15px;
+  color: white;
+  
+}
+
+.right {
+  float: right;
+}
