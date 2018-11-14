@@ -9,7 +9,7 @@ import DreamDetail from '../DreamDetail/index.jsx';
 import DreamsListing from '../DreamsListing/index';
 import Home from '../Home/index';
 import StoreDetail from '../StoreDetail/index';
-import StoresListing from '../StoresListing/index';
+import StoresListing from '../StoresListing/storeListing.jsx';
 import CreateDreamForm from '../CreateDreamForm/CreateDreamFormComponent';
 import CreateStoreForm from '../CreateStoreForm/CreateStoreFormComponent';
 import EditDreamForm from '../EditDreamForm/EditDreamFormComponent';
