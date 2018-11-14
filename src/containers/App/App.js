@@ -5,11 +5,11 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 // containers
 import Account from '../Account/index';
 // import Auth from '../Auth';
-import DreamDetail from '../DreamDetail/index';
+import DreamDetail from '../DreamDetail/index.jsx';
 import DreamsListing from '../DreamsListing/index';
 import Home from '../Home/index';
 import StoreDetail from '../StoreDetail/index';
-import StoresListing from '../StoresListing/index';
+import StoresListing from '../StoresListing/storeListing.jsx';
 import CreateDreamForm from '../CreateDreamForm/CreateDreamFormComponent';
 import CreateStoreForm from '../CreateStoreForm/CreateStoreFormComponent';
 import EditDreamForm from '../EditDreamForm/EditDreamFormComponent';

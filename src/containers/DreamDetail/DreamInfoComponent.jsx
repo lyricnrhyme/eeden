@@ -6,6 +6,7 @@ class DreamInfo extends Component {
   render() {
     return (
       <div className="DreamInfo">
+
       </div>
     );
   }
