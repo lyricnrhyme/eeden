@@ -1,44 +1,193 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Eeden
+> A marketplace for dreams
 
-## Available Scripts
 
-In the project directory, you can run:
+## Tech stack
+Weʻve built this app using:
+- **React** for building the front-end User-Interface (UI)
+- HTML and CSS (via [sass](https://sass-lang.com))
+- **Express** as the Server
+- **Bookshelf.js** as your ORM for the **Postgresql** Datastore.
+- **Docker** for containerization
 
-### `npm start`
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Schemas
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+### Users
+|Property|Type|Options|
+|---|---|---|
+|user_id(Pk)|number|serial, not null, unique|
+|email|string |not null, unique|
+|password|string|not null|
+|has_store|boolean|not null, default false|
+|store_id (Fk)|number|nullable|
+|created_at|TS w/ TZ|not null|
+|updated_at|TS w/ TZ|not null|
 
-### `npm test`
+### Store
+|Property|Type|Options|
+|---|---|---|
+|store_id(Pk)|number|serial, not null, unique|
+|title|string |not null, unique|
+|description|string|nullable|
+|dreams_id (Fk)|number|has many, nullable|
+|created_at|TS w/ TZ|not null|
+|updated_at|TS w/ TZ|not null|
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Dreams
+|Property|Type|Options|
+|---|---|---|
+|dreams_id(Pk)|number|serial, not null, unique|
+|title|string |not null, unique|
+|description|string|nullable|
+|price|number|not null|
+|genre|string|not null|
+|duration|interval|not null|
+|featured_video|string|not null|
+|dream_images|string|has many, not null|
+|keywords|string|has many, nullable|
+|created_at|TS w/ TZ|not null|
+|updated_at|TS w/ TZ|not null|
 
-### `npm run build`
+### Keywords
+|Property|Type|Options|
+|---|---|---|
+|keyword_id(Pk)|number|serial, not null, unique|
+|title|string |not null, unique|
+|created_at|TS w/ TZ|not null|
+|updated_at|TS w/ TZ|not null|
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Admin
+TBD
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+### Association tables
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Purchased
+|Property|Type|Options|
+|---|---|---|
+|user_id|number|not null|
+|dreams_id|number|not null|
+|created_at|TS w/ TZ|not null|
+|updated_at|TS w/ TZ|not null|
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## App Structure
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Front
+- React
+- SASS
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### Back
+- Server
+- Routes
+- /DB /Models
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### DevOps
+- PG.Json
+- env
+- Docker
+- Readme
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Routes
+/
+- GET 
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+
+/login
+- GET
+- POST
+
+/register
+- POST
+
+
+/stores
+- GET
+
+/:store_id
+- GET 
+
+/:store_id/:dreams_id
+- GET 
+
+/create_store
+- GET
+- POST
+
+/edit_store/:store_id
+- PUT
+
+
+/dreams
+- GET
+
+/create_dream
+- GET
+- POST
+
+/edit_dream/:dreams_id
+- PUT
+
+
+/cart
+- GET
+- POST
+
+/checkout
+- GET
+
+/confirm
+- GET
+
+
+## Layout
+
+### App (all pages)
+- Header C.
+- Footer C.
+
+### Home (/)
+- FeaturedVideo C.
+- FeaturedStores C.
+- TopDreams C.
+
+### Stores (/stores)
+- Search C.
+
+### Store Detail (/stores/:store_id)
+- StoreInfo C.
+- Search C.
+
+### Dreams (/dreams)
+- Search C.
+
+### Dream Product Detail (/dreams/:dreams_id)
+- FeaturedVideo C.
+- DreamInfo C.
+- MoreFromStore C.
+
+### Login (/login)
+- Login C.
+- Register C.
+
+### Account (/account)
+- Toggle C.
+User
+- UserInfo C.
+- OrderHistory C.
+Store
+- StoreInfo C.
+- StoreInventory C.
+
+### Create a store (/create_store)
+- CreateStoreForm C.
+
+### Edit store (/edit_store/:store_id)
+- EditStoreForm C.
+
+### Create a dream (/create_dream)
+- CreateDreamForm C.
+
+### Edit dream (/edit_dream/:dreams_id)
+- EditDreamForm C.
