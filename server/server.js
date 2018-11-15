@@ -12,7 +12,7 @@ app.use('/api', routes);
 app.set('trust proxy', 1)
 app.use(session({
   secret: 'dreamy cat',
-  resave: false,
+  resave: true,
   saveUninitialized: true,
   cookie: { secure: true }
 }))
@@ -20,14 +20,13 @@ app.use(session({
 app.get('/', (req, res) => {
   if (req.session.views) {
     req.session.views++;
-    res.setHeader('Content-Type', 'text/html');
-    res.write('<p>views: ' + req.session.views + '</p>');
-    res.end();
+    console.log(req.session);
   } else {
     req.session.views = 1;
-    res.end('welcome to the session demo. refresh!')
+    console.log(req.session);
   }
   // res.send('<p>Sanity Check</p>')
+  res.end()
 })
 
 app.listen(PORT, () => {
