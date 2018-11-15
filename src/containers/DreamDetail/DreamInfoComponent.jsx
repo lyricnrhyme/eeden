@@ -8,7 +8,7 @@ class DreamInfo extends Component {
     return (
       <div className="dreaminfo">
         <div className="product-images">
-
+        <img src={dream.dream_images} alt="No Images" />
         </div>
         <div className="product-info">
           <h2>{dream.title}</h2>

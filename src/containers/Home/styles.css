@@ -14,11 +14,12 @@
     width: 100vw;
     position: relative;
 }
-    #video-container {
+    /* #video-container {
         position: absolute;
-    }
+    } */
 
     #video-container {
+        position: absolute;
         top:0%;
         left:0%;
         height:100%;

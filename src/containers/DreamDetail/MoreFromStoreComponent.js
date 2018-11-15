@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import './styles.css';
 
 class MoreFromStore extends Component {
   render() {
+    const store = this.props.info
+    console.log("store", store);
     return (
-      <div className="MoreFromStore">
+      <div className="morefromstore">
+        <h2>More from</h2>
       </div>
     );
   }

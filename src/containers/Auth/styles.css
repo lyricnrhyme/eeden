@@ -1,0 +1,40 @@
+.auth {
+    grid-column: 1/7;
+    grid-row: 2/2;
+    padding: 30px;
+    background-image: url("/media/bg.png");
+    background-position: center;
+
+}
+
+.login {
+    width: 80vw;
+    height: auto;
+    max-width: 500px;
+    margin: 0 auto;
+    /* box-shadow: 0px 0px 8px 10px black; */
+}
+
+.login h2 {
+    padding: 15px;
+    width: 100%;
+    text-align: center;
+    background: #ffcb9a;
+}
+
+.login form {
+    border : 1px solid #ffcb9a;
+    padding: 15px;
+    background: white;
+}
+input {
+    width: 100%;
+    margin: 5px 0px 15px 0px;
+    border: 1px solid black;
+    padding: 10px;
+}
+
+button {
+    width: 100%;
+    margin: 0px 0px 15px 0px;
+}
