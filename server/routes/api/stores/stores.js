@@ -10,7 +10,7 @@ router.use(bp.urlencoded({ extended: true }));
 
 router.get('/', (req, res) => {
     Store
-    .fetchAll({withRelated: ["created_by"]})
+    .fetch({withRelated: ["created_by"]})
     .then(storeList => {
     res.json(storeList.serialize())
     console.log('\nServer: List Of Stores: \n', storeList)
@@ -27,7 +27,7 @@ router.get('/:id', (req, res) => {
   
     Store
       .where("id", id)
-      .fetchAll({withRelated: ["created_by"]})
+      .fetch({withRelated: ["created_by"]})
       .then(storeId => {
         console.log("\nServer: Display Store By ID\n", storeId);
         res.json(storeId);
@@ -69,7 +69,7 @@ router.post('/create_store', (req, res) => {
     .save()
     .then(() => {
       return Store
-      .fetchAll({withRelated: ["created_by"]})
+      .fetch({withRelated: ["created_by"]})
         .then(createdStore => {
           res.json(createdStore.serialize());
         })

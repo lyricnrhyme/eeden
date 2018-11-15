@@ -1,8 +1,12 @@
 const bookshelf = require('./bookshelf');
+const Dreams = require('./Dreams.js');
 
 const Keywords = bookshelf.Model.extend({
     tableName: 'keywords',
-    idAttribute: 'keyword_id',
+    dream_id: function () {
+        return this.belongsTo(Dreams, "id");
+      },
+    idAttribute: 'id',
     hasTimestamps: true
 });
 

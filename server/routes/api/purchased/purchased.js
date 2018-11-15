@@ -61,21 +61,21 @@ router.post('/new_purchase', (req, res) => {
   })
 
 
-// Edit Store
-router.put('/edit_store/:id', (req, res) => {
+// Edit Purchased
+router.put('/edit_purchase/:id', (req, res) => {
   const { id } = req.params;
-  const updateStore = {
-    title: req.body.title,
-    description: req.body.description
+  const updatePurchase = {
+    user_id: req.body.user_id,
+    dream_id: req.body.dream_id
   }
 
-  Store
+  Purchased
     .where('id', id)
     .fetch()
-    .then(storeUpdate => {
-      console.log("storeUpdate: ", storeUpdate);
-      storeUpdate.save(updateStore);
-      res.json(storeUpdate);
+    .then(purchaseUpdate => {
+      console.log("purchaseUpdate: ", purchaseUpdate);
+      purchaseUpdate.save(updatePurchase);
+      res.json(purchaseUpdate);
       return null; 
       // returning null to resolve warning "Warning: a promise was created in a handler but was not returned from it" 
       // source: https://github.com/sequelize/sequelize/issues/4883,
@@ -88,19 +88,20 @@ router.put('/edit_store/:id', (req, res) => {
 })  
 
 // Delete Store
-router.put('/delete_store', (req, res) => {
+router.put('/delete_purchase', (req, res) => {
 
   const id = req.body.id
 
-  Store
+  Purchased
     .where({ id })
     .destroy()
-    .then(storeDetails => {
-      res.json(storeDetails.serialize())
+    .then(purchaseDetails => {
+      res.json(purchaseDetails.serialize())
     })
     .catch(err => {
       console.log('err: ', err)
+      res.json('err')
     })
-})  
+})
 
 module.exports = router;

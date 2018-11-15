@@ -1,7 +1,11 @@
 const express = require('express');
 const router = express.Router();
+const bp = require('body-parser');
 
 const Dreams = require('../../../db/models/Dreams');
+
+router.use(bp.json());
+router.use(bp.urlencoded({ extended: true }));
 
 router.get('/', (req, res) => {
     Dreams
@@ -22,7 +26,8 @@ router.get('/:id', (req, res) => {
   
     Dreams
       .where("id", id)
-      .fetchAll({withRelated: ["store_id"]})
+      //.fetchAll()
+      .fetch({withRelated: ["store_id"]})
       .then(dreamId => {
         console.log("\nServer: Display By Dream ID\n", dreamId);
         res.json(dreamId);

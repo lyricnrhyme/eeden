@@ -4,12 +4,15 @@ const Dreams = require('./Dreams.js');
 
 const Store = bookshelf.Model.extend({
     tableName: 'store',
+    // created_by: function () {
+    //     return this.belongsTo(Users);
+    //   },
     created_by: function () {
-        return this.belongsTo(Users, "id");
-      },
-    dream_by: function () {
-        return this.belongsTo(Dreams, "id");
-      },
+      return this.belongsTo(Users, "created_by");
+    },
+    // dream_by: function () {
+    //     return this.belongsTo(Dreams, "id");
+    //   },
     idAttribute: 'id',
     hasTimestamps: true
 });
