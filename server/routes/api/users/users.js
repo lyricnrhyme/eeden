@@ -10,7 +10,6 @@ router.use(bp.urlencoded({ extended: true }));
 router.get('/', (req, res) => {
     Users
     .fetchAll()
-    // .fetchAll({withRelated: ["purchase_id", "store_id", "dream_id", "keyword_id"]})
     .then(userList => {
     res.json(userList.serialize())
     console.log('\nServer: List Of Users: \n', userList)
@@ -28,7 +27,6 @@ router.get('/:id', (req, res) => {
     Users
       .where("id", id)
       .fetch()
-      // .fetch({withRelated: ["purchase_id", "store_id", "dream_id", "keyword_id"]})
       .then(userId => {
         console.log("\nServer: Display By User ID\n", userId);
         res.json(userId);
@@ -45,11 +43,6 @@ router.post('/createnew', (req, res) => {
   Users
     .forge({
       name: req.body.name,
-      address: req.body.address,
-      city: req.body.city,
-      state: req.body.state,
-      zipcode: req.body.zipcode,
-      phone: req.body.mobile,
       email: req.body.email,
       password: req.body.password
     })
@@ -57,7 +50,6 @@ router.post('/createnew', (req, res) => {
     .then(() => {
       return Users
       .fetchAll()
-        // .fetchAll({withRelated: ["purchase_id", "store_id", "dream_id", "keyword_id"]})
         .then(createdUser => {
           res.json(createdUser.serialize());
         })
@@ -73,11 +65,6 @@ router.put('/edit_user/:id', (req, res) => {
   const { id } = req.params;
   const updateUser = {
     name: req.body.name,
-    address: req.body.address,
-    city: req.body.city,
-    state: req.body.state,
-    zipcode: req.body.zipcode,
-    phone: req.body.mobile,
     email: req.body.email,
     password: req.body.password
   }

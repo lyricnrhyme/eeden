@@ -10,7 +10,7 @@ router.use(bp.urlencoded({ extended: true }));
 
 router.get('/', (req, res) => {
     Store
-    .fetch({withRelated: ["created_by"]})
+    .fetchAll({withRelated: ["created_by"]})
     .then(storeList => {
     res.json(storeList.serialize())
     console.log('\nServer: List Of Stores: \n', storeList)
@@ -38,23 +38,22 @@ router.get('/:id', (req, res) => {
       })
   })
 
-router.get('/:id/:dream_id', (req, res) => {
+// router.get('/:id/:dream_id', (req, res) => {
 
-    const { dream_id } = req.params;
+//     const { dream_id } = req.params;
   
-    Store
-      .where("dream_id", dream_id)
-      .fetchAll({withRelated: ["created_by", "dream_id"]})
-      // .fetch({withRelated: ["created_by", "dream_id", "keyword_id"]})
-      .then(storeDreamId => {
-        console.log("\nServer: Display By Store ID And Dream ID\n", storeDreamId);
-        res.json(storeDreamId);
-      })
-      .catch(err => {
-        console.log('err: ', err);
-        res.json('err')
-      })
-  })
+//     Store
+//       .where("dream_id", dream_id)
+//       .fetchAll({withRelated: ["created_by", "dream_id"]})
+//       .then(storeDreamId => {
+//         console.log("\nServer: Display By Store ID And Dream ID\n", storeDreamId);
+//         res.json(storeDreamId);
+//       })
+//       .catch(err => {
+//         console.log('err: ', err);
+//         res.json('err')
+//       })
+//   })
 
 
 // Create New Store
@@ -69,7 +68,7 @@ router.post('/create_store', (req, res) => {
     .save()
     .then(() => {
       return Store
-      .fetch({withRelated: ["created_by"]})
+      .fetchAll({withRelated: ["created_by"]})
         .then(createdStore => {
           res.json(createdStore.serialize());
         })
@@ -91,7 +90,7 @@ router.put('/edit_store/:id', (req, res) => {
 
   Store
     .where('id', id)
-    .fetch()
+    .fetch({withRelated: ["created_by"]})
     .then(storeUpdate => {
       console.log("storeUpdate: ", storeUpdate);
       storeUpdate.save(updateStore);
