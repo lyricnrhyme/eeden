@@ -14,7 +14,7 @@ class Home extends Component {
   }
 
   render() {
-    console.log('homepage', this.state.loggedIn);
+    // console.log('homepage', this.state.loggedIn);
     return (
       <div className="home">
         <FeaturedHomeVideo />
