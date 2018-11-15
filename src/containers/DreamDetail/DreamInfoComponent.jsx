@@ -3,7 +3,7 @@ import './styles.css';
 
 class DreamInfo extends Component {
   render() {
-    const dream = this.props.info
+    const dream = this.props.dreamProps
     console.log("dreaminfo", dream)
     return (
       <div className="dreaminfo">
