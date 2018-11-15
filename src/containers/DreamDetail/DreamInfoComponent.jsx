@@ -4,7 +4,7 @@ import './styles.css';
 class DreamInfo extends Component {
   render() {
     const dream = this.props.info
-    // console.log("dreaminfo", dream)
+    console.log("dreaminfo", dream)
     return (
       <div className="dreaminfo">
         <div className="product-images">

@@ -5,7 +5,7 @@ import { DreamList } from '../../components/DreamComponent'
 
 //~~~ Redux ~~~//
 import { connect } from 'react-redux';
-import { getAllDreams, getDream } from '../../actions/actions.js'
+import { getAllDreams } from '../../actions/actions.js'
 
 
 const mapStateToProps = (state) => {
@@ -23,16 +23,12 @@ class DreamsListing extends Component {
 
   }
 
-  getDreamById = (id) => {
-    // console.log("Dream Data OnClick: ", id)
-    console.log('DREAM LISTING BY ID PROPS: ', this.props);
-    this.props.dispatch(getDream(id))
-  }
-
-  //~~~ BASEEM WHY DOESNT THIS WORK ~~~//
-  // getDreamById(id) {
+  // getDreamById = (id) => {
+  //   // console.log("Dream Data OnClick: ", id)
+  //   console.log('DREAM LISTING BY ID PROPS: ', this.props);
   //   this.props.dispatch(getDream(id))
   // }
+
 
 
   render() {
@@ -41,7 +37,9 @@ class DreamsListing extends Component {
 
     return (
       <div className="dreamslisting" >
-        <DreamList dreamProps={dreamProps} getDream={this.getDreamById} />
+        <DreamList dreamProps={dreamProps} />
+
+        {/* <DreamList dreamProps={dreamProps} getDream={this.getDreamById} /> */}
       </div >
     );
   }

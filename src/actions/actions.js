@@ -7,7 +7,8 @@ export const ADD_DREAM = 'ADD_DREAM';
 export const GET_DREAM_BY_ID = 'GET_DREAM_BY_ID';
 
 export const GET_ALL_STORES = 'GET_ALL_STORES';
-
+export const GET_STORE_BY_ID = 'GET_STORE_BY_ID';
+export const ADD_STORE = 'ADD_STORE';
 
 
 
@@ -51,7 +52,7 @@ export const getDream = (id) => {
         // axios.get('http://34.219.218.138:8080/api/dreams/' + id)
         axios.get(`http://34.219.218.138:8080/api/dreams/${id}`)
             .then(response => {
-                console.log('ACTION DREAM BY ID DATA: ', response.data)
+                // console.log('ACTION DREAM BY ID DATA: ', response.data)
                 dispatch({ type: GET_DREAM_BY_ID, payload: response.data })
             })
             .catch(err => {
@@ -60,10 +61,9 @@ export const getDream = (id) => {
     }
 }
 
-
 //~~~ REQUEST TO POST A DREAM ~~~//
 export const addDream = () => {
-    console.log('ACTION ADD HITTING')
+    // console.log('ACTION ADD HITTING')
 
     return dispatch => {
         axios.post('post url goes here')
@@ -77,20 +77,54 @@ export const addDream = () => {
 }
 
 
-//~~~~~~~~~~ DREAM ACTIONS ~~~~~~~~~~//
+
+//~~~~~~~~~~ STORE ACTIONS ~~~~~~~~~~//
 //~~~ REQUEST TO GET ALL STORES ~~~//
 export const getAllStores = () => {
-    console.log('ACTION GET STORES HITTING');
+    // console.log('ACTION GET STORES HITTING');
 
     return dispatch => {
         axios.get('http://34.219.218.138:8080/api/stores')
             .then(response => {
                 dispatch({ type: GET_ALL_STORES, payload: response.data })
-                console.log('actions.js dispatch payload: ', response.data)
+                // console.log('actions.js dispatch payload: ', response.data)
             })
             .catch(err => {
                 console.log('ERROR IN ACTION GET ALL STORES');
             })
     }
 }
+
+//~~~ REQUEST TO GET A STORE BY ITS ID ~~~//
+export const getStore = (id) => {
+    // console.log('ACTION GET BY ID FIRING', id)
+
+    return dispatch => {
+        axios.get(`http://34.219.218.138:8080/api/stores/${id}`)
+            .then(response => {
+                // console.log('ACTION STORE DATA: ', response.data)
+                dispatch({ type: GET_STORE_BY_ID, payload: response.data })
+            })
+            .catch(err => {
+                console.log('ERROR IN GETTING INDIVIDUAL STORE');
+            })
+    }
+}
+
+//~~~ REQUEST TO ADD A NEW STORE ~~~//
+export const addStore = (store) => {
+    console.log('ACTION ADD STORE FIRED');
+    console.log("ACTION STORE PARAM: ", store)
+    return dispatch => {
+        axios.post("http://34.219.218.138:8080/api/stores/create_store", store)
+            .then(response => {
+                console.log('ADD STORE RESPONSE: ', response.data)
+                dispatch({ type: ADD_STORE, payload: response.data })
+            })
+            .catch(err => {
+                console.log("ERROR IN ACTION ADD STORE")
+            })
+    }
+}
+
 

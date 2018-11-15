@@ -5,18 +5,15 @@ import './styles.css';
 
 //~~~ Redux ~~~//
 import { connect } from 'react-redux';
-// import { getAllDreams } from '../../actions/actions.js';
 import { getDream } from '../../actions/actions.js';
 
 const mapStateToProps = state => {
-  console.log("state", state)
+  // console.log("state", state)
   return {
     dreamProps: state.detailedProps
-    // dreamProps: state.props
   }
 
 }
-
 class DreamDetail extends Component {
   constructor(props) {
     super(props)
@@ -26,13 +23,12 @@ class DreamDetail extends Component {
   }
 
 
-
   // Lifecycle method
   componentDidMount() {
-    // this.props.dispatch(getAllDreams())
     let dreamId = this.props.match.params.dreams_id;
     this.props.dispatch(getDream(dreamId));
   }
+
   render() {
     const { dreamProps } = this.props;
     return (
