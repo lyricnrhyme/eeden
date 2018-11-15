@@ -5,7 +5,7 @@ import './styles.css';
 
 //~~~ Redux ~~~//
 import { connect } from 'react-redux';
-import { getAllDreams, getDream } from '../../actions/actions.js';
+import { getDream } from '../../actions/actions.js';
 
 const mapStateToProps = state => {
   return {
@@ -15,6 +15,14 @@ const mapStateToProps = state => {
 }
 
 class DreamDetail extends Component {
+
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      dreams: []
+    }
+  }
 
 
 
