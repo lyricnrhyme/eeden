@@ -5,26 +5,36 @@ import './styles.css';
 
 //~~~ Redux ~~~//
 import { connect } from 'react-redux';
+// import { getAllDreams } from '../../actions/actions.js';
 import { getDream } from '../../actions/actions.js';
 
 const mapStateToProps = state => {
+  console.log("state", state)
   return {
-    dreamProps: state.props
+    dreamProps: state.detailedProps
+    // dreamProps: state.props
   }
 
 }
 
 class DreamDetail extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      dreams: []
+    }
+  }
+
+
 
   // Lifecycle method
   componentDidMount() {
+    // this.props.dispatch(getAllDreams())
     let dreamId = this.props.match.params.dreams_id;
     this.props.dispatch(getDream(dreamId));
   }
   render() {
-    // console.log('render', this.props.dreamProps)
     const { dreamProps } = this.props;
-    // console.log("dreamprops", dreamProps)
     return (
       <div className="dreamdetail">
         <FeaturedProductVideo video={dreamProps.featured_video} />
