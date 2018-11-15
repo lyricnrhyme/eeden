@@ -32,6 +32,8 @@ class Login extends Component {
     if (user.length === 1) {
       this.setState({loggedIn: true})
       console.log('user found, loggedIn');
+      localStorage.setItem('loggedIn', true);
+      localStorage.setItem('user_id', user[0].id)
     } else {
       console.log('email and password do not match');
     };
