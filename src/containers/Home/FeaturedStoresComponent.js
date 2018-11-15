@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import './styles.css';
 
 class FeaturedStores extends Component {
   render() {
     return (
-      <div className="FeaturedStores">
+      <div className="featuredstores">
+        <h2>Featured Stores</h2>
+
       </div>
     );
   }

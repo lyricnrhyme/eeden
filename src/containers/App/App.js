@@ -9,7 +9,7 @@ import DreamDetail from '../DreamDetail/index.jsx';
 import DreamsListing from '../DreamsListing/index';
 import Home from '../Home/index';
 import StoreDetail from '../StoreDetail/index';
-import StoresListing from '../StoresListing/storeListing.jsx';
+import StoresListing from '../StoresListing/storeListing';
 import CreateDreamForm from '../CreateDreamForm/CreateDreamFormComponent';
 import CreateStoreForm from '../CreateStoreForm/CreateStoreFormComponent';
 import EditDreamForm from '../EditDreamForm/EditDreamFormComponent';
@@ -26,7 +26,7 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
-        <Router>
+        <Router className="maincontent">
           <Switch>
             <Route exact path='/' component={Home} />
             <Route path='/account' component={Account} />
@@ -42,6 +42,7 @@ class App extends Component {
             <Route path='/register' component={Register} />
           </Switch>
         </Router>
+        <div className="background"></div>
         <Footer />
       </div>
     );

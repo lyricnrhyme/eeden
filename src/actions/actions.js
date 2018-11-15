@@ -29,7 +29,7 @@ export const getAllUsers = () => {
 //~~~~~~~~~~ DREAM ACTIONS ~~~~~~~~~~//
 //~~~ REQUEST TO GET ALL DREAMS ~~~//
 export const getAllDreams = () => {
-    console.log('ACTION GET HITTING')
+    // console.log('ACTION GET HITTING')
 
     return dispatch => {
         axios.get('http://34.219.218.138:8080/api/dreams')
@@ -45,14 +45,13 @@ export const getAllDreams = () => {
 
 //~~~ REQUEST TO GET A DREAM BY ITS ID ~~~//
 export const getDream = (id) => {
-    console.log('ACTION GET BY ID FIRING', id)
+    // console.log('ACTION GET BY ID FIRING', id)
 
     return dispatch => {
-
         // axios.get('http://34.219.218.138:8080/api/dreams/' + id)
         axios.get(`http://34.219.218.138:8080/api/dreams/${id}`)
             .then(response => {
-                console.log('DREAM BY ID DATA: ', response.data)
+                console.log('ACTION DREAM BY ID DATA: ', response.data)
                 dispatch({ type: GET_DREAM_BY_ID, payload: response.data })
             })
             .catch(err => {
@@ -78,7 +77,6 @@ export const addDream = () => {
 }
 
 
-
 //~~~~~~~~~~ DREAM ACTIONS ~~~~~~~~~~//
 //~~~ REQUEST TO GET ALL STORES ~~~//
 export const getAllStores = () => {
@@ -96,18 +94,3 @@ export const getAllStores = () => {
     }
 }
 
-
-// xport const getAllDreams = () => {
-//     console.log('ACTION GET HITTING')
-
-//     return dispatch => {
-//         axios.get('http://34.219.218.138:8080/api/dreams')
-//             .then(response => {
-//                 dispatch({ type: GET_ALL_DREAMS, payload: response.data })
-//                 // console.log('actions.js dispatch payload: ', response.data);
-//             })
-//             .catch(err => {
-//                 dispatch({ type: 'DISPLAY_ERROR_NOTIFICATION' })
-//             })
-//     }
-// }
