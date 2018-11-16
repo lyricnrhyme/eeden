@@ -1,6 +1,8 @@
 import axios from 'axios';
 
 export const GET_ALL_USERS = 'GET_ALL_USERS';
+export const ADD_USER = 'ADD_USER';
+export const GET_USER_BY_ID = 'GET_USER_BY_ID';
 
 export const GET_ALL_DREAMS = 'GET_ALL_DREAMS';
 export const ADD_DREAM = 'ADD_DREAM';
@@ -25,6 +27,37 @@ export const getAllUsers = () => {
     }
 }
 
+//~~~ REQUEST TO GET A USER BY ITS ID ~~~//
+export const getUser = (id) => {
+    // console.log('ACTION GET BY ID FIRING', id)
+
+    return dispatch => {
+        // axios.get('http://34.219.218.138:8080/api/dreams/' + id)
+        axios.get(`http://34.219.218.138:8080/api/users/${id}`)
+            .then(response => {
+                console.log('ACTION USER BY ID DATA: ', response.data)
+                dispatch({ type: GET_USER_BY_ID, payload: response.data })
+            })
+            .catch(err => {
+                console.log('ERROR IN GETTING INDIVIDUAL USER')
+            })
+    }
+}
+
+//~~~ REQUEST TO POST A USER ~~~//
+export const addUser = () => {
+    console.log('ACTION ADD HITTING')
+
+    return dispatch => {
+        axios.post('http://34.219.218.138:8080/api/users/createnew')
+            .then(response => {
+                dispatch({ type: ADD_USER, payload: response.data })
+            })
+            .catch(err => {
+                console.log('ERROR in ACTION ADD USER')
+            })
+    }
+}
 
 //~~~~~~~~~~ DREAM ACTIONS ~~~~~~~~~~//
 //~~~ REQUEST TO GET ALL DREAMS ~~~//
@@ -77,7 +110,7 @@ export const addDream = () => {
 }
 
 
-//~~~~~~~~~~ DREAM ACTIONS ~~~~~~~~~~//
+//~~~~~~~~~~ STORE ACTIONS ~~~~~~~~~~//
 //~~~ REQUEST TO GET ALL STORES ~~~//
 export const getAllStores = () => {
     console.log('ACTION GET STORES HITTING');

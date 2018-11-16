@@ -1,4 +1,4 @@
-import { GET_ALL_USERS } from '../actions/actions';
+import { GET_ALL_USERS, ADD_USER, GET_USER_BY_ID } from '../actions/actions';
 
 import { GET_ALL_DREAMS, ADD_DREAM, GET_DREAM_BY_ID } from '../actions/actions.js';
 
@@ -14,6 +14,12 @@ const reducers = (state = {
 
         case GET_ALL_USERS:
             return action.task
+
+        case ADD_USER:
+            return [...state, action.payload]
+
+        case GET_USER_BY_ID:
+            return { ...state, detailedProps: action.payload }
 
         case GET_ALL_DREAMS:
             return { ...state, props: action.payload }

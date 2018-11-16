@@ -12,11 +12,6 @@ class Register extends Component {
       email: '',
       password: '',
       name: '',
-      address: '',
-      city: '',
-      state: '',
-      zipcode: '',
-      phone: '',
       registered: false
     }
   }
@@ -67,21 +62,6 @@ class Register extends Component {
             <br />
           <label>Name: </label>
             <input type='text' name='name' placeholder='Enter Name' onChange={this.handleChange}/>
-            <br />
-          <label>Address: </label>
-            <input type='address' name='address' placeholder='Enter Address' onChange={this.handleChange}/>
-            <br />
-          <label>City: </label>
-            <input type='address' name='city' placeholder='Enter City' onChange={this.handleChange}/>
-            <br />
-          <label>State: </label>
-            <input type='address' name='state' placeholder='Enter State' onChange={this.handleChange}/>
-            <br />
-          <label>Zipcode: </label>
-            <input type='address' name='zipcode' placeholder='Enter Zipcode' onChange={this.handleChange}/>
-            <br />
-          <label>Phone Number: </label>
-            <input type='tel' name='phone' placeholder='Enter Phone Number' onChange={this.handleChange}/>
             <br />
             <button>Register</button>
             <Link to='/login'>Cancel</Link>
