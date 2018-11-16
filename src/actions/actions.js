@@ -15,7 +15,7 @@ export const ADD_STORE = 'ADD_STORE';
 //~~~~~~~~~~ USER ACTIONS ~~~~~~~~~~//
 export const getAllUsers = () => {
     return dispatch => {
-        axios.get('http://34.219.218.138:8080/api/users')
+        axios.get('http://54.184.208.39:8080/api/users')
             .then(items => {
                 // console.log('hello?', items);
                 dispatch({
@@ -33,7 +33,8 @@ export const getAllDreams = () => {
     // console.log('ACTION GET HITTING')
 
     return dispatch => {
-        axios.get('http://34.219.218.138:8080/api/dreams')
+        axios.get('http://54.184.208.39:8080/api/dreams')
+
             .then(response => {
                 dispatch({ type: GET_ALL_DREAMS, payload: response.data })
                 // console.log('actions.js dispatch payload: ', response.data);
@@ -50,7 +51,7 @@ export const getDream = (id) => {
 
     return dispatch => {
         // axios.get('http://34.219.218.138:8080/api/dreams/' + id)
-        axios.get(`http://34.219.218.138:8080/api/dreams/${id}`)
+        axios.get(`http://54.184.208.39:8080/api/users/${id}`)
             .then(response => {
                 // console.log('ACTION DREAM BY ID DATA: ', response.data)
                 dispatch({ type: GET_DREAM_BY_ID, payload: response.data })
@@ -67,7 +68,7 @@ export const addDream = (dream) => {
     console.log('ACTION DREAM PARAM: ', dream);
 
     return dispatch => {
-        axios.post('post url goes here', dream)
+        axios.post('http://54.184.208.39:8080/api/dreams/new_dream', dream)
             .then(response => {
                 console.log('IS THIS ANYTHNG? ', dream);
                 console.log('ADD DREAM RESPONSE: ', response.data);
@@ -86,7 +87,7 @@ export const getAllStores = () => {
     // console.log('ACTION GET STORES HITTING');
 
     return dispatch => {
-        axios.get('http://34.219.218.138:8080/api/stores')
+        axios.get('http://54.184.208.39:8080/api/stores')
             .then(response => {
                 dispatch({ type: GET_ALL_STORES, payload: response.data })
                 // console.log('actions.js dispatch payload: ', response.data)
@@ -102,7 +103,7 @@ export const getStore = (id) => {
     // console.log('ACTION GET BY ID FIRING', id)
 
     return dispatch => {
-        axios.get(`http://34.219.218.138:8080/api/stores/${id}`)
+        axios.get(`http://54.184.208.39:8080/api/stores/${id}`)
             .then(response => {
                 // console.log('ACTION STORE DATA: ', response.data)
                 dispatch({ type: GET_STORE_BY_ID, payload: response.data })
@@ -118,7 +119,7 @@ export const addStore = (store) => {
     console.log('ACTION ADD STORE FIRED');
     console.log("ACTION STORE PARAM: ", store)
     return dispatch => {
-        axios.post("http://34.219.218.138:8080/api/stores/create_store", store)
+        axios.post("http://54.184.208.39:8080/api/stores/create_store", store)
             .then(response => {
                 console.log('ADD STORE RESPONSE: ', response.data)
                 dispatch({ type: ADD_STORE, payload: response.data })
