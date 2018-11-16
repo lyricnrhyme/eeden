@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import "./styles.css"
 
 import { StoreList } from '../../components/StoreComponent.jsx';
 
@@ -34,7 +35,7 @@ class StoresListing extends Component {
     console.log('redux storeProps: ', { storeProps });
 
     return (
-      <div className="StoresListing" >
+      <div className="storeslisting" >
         <StoreList storeProps={storeProps} />
       </div >
     );
