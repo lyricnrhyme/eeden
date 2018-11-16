@@ -11,7 +11,7 @@ import { getDream } from '../../actions/actions.js';
 
 
 const mapStateToProps = state => {
-  console.log("state", state)
+  // console.log("state", state)
   return {
     dreamProps: state.detailedProps
     // dreamProps: state.props
@@ -37,7 +37,7 @@ class DreamDetail extends Component {
   }
   render() {
     const { dreamProps } = this.props;
-    console.log("Dream info", dreamProps)
+    // console.log("Dream info", dreamProps)
     return (
       <div className="dreamdetail">
         <FeaturedProductVideo video={dreamProps.featured_video} />

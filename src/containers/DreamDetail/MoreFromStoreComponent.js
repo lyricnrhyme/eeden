@@ -7,7 +7,7 @@ class MoreFromStore extends Component {
     console.log("store", store);
     return (
       <div className="morefromstore">
-        <h2>More from</h2>
+        <h2>More fro</h2>
       </div>
     );
   }
