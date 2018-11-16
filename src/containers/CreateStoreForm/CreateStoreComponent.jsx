@@ -2,11 +2,6 @@ import React, { Component } from 'react';
 import { addStore } from '../../actions/actions';
 import { connect } from 'react-redux';
 
-const mapStateToProps = state => {
-  return {
-    storeProps: state.props
-  }
-}
 
 class CreateStore extends Component {
   constructor(props) {
@@ -31,15 +26,31 @@ class CreateStore extends Component {
   }
 
   render() {
-    console.log('ola')
     return (
+
       <div className="CreateStoreForm">
         <h1>Create Store</h1>
-        <StoreForm addStore={this.addStore} />
 
+        <form onSubmit={this.handleSubmit}>
+
+          <label>Title:
+              <input onChange={this.handleChange} name="title" type="text" />
+          </label>
+          <br />
+          <label>Description:
+              <input onChange={this.handleChange} name="description" type="text" />
+          </label>
+          <br />
+          <label>Created By (temp):
+              <input onChange={this.handleChange} name="created_by" type="number" />
+          </label>
+          <br />
+
+          <input type="submit" value="Submit" />
+        </form>
       </div>
     );
   }
 }
 
-export default connect(mapStateToProps)(CreateStore);
+export default connect()(CreateStore);

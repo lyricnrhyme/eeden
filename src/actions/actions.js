@@ -62,12 +62,15 @@ export const getDream = (id) => {
 }
 
 //~~~ REQUEST TO POST A DREAM ~~~//
-export const addDream = () => {
-    // console.log('ACTION ADD HITTING')
+export const addDream = (dream) => {
+    console.log('ACTION ADD DREAM HITTING')
+    console.log('ACTION DREAM PARAM: ', dream);
 
     return dispatch => {
-        axios.post('post url goes here')
+        axios.post('post url goes here', dream)
             .then(response => {
+                console.log('IS THIS ANYTHNG? ', dream);
+                console.log('ADD DREAM RESPONSE: ', response.data);
                 dispatch({ ADD_DREAM, payload: response.data })
             })
             .catch(err => {
@@ -75,7 +78,6 @@ export const addDream = () => {
             })
     }
 }
-
 
 
 //~~~~~~~~~~ STORE ACTIONS ~~~~~~~~~~//
