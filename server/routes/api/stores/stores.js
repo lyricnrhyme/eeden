@@ -58,7 +58,7 @@ router.post('/create_store', (req, res) => {
         .catch(err => {
           console.log("err: ", err);
           res.json("err", err);
-        });
+        })
     })
     .catch(err => {
       console.log("err: ", err);
