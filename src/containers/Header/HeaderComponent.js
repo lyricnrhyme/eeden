@@ -10,7 +10,7 @@ class Header extends Component {
           <a href="/"><h1>Eeden</h1></a>
           <a className="drk" href="/stores"><h3>Stores</h3></a>
           <a className="drk" href="/dreams"><h3>Dreams</h3></a>
-          <a className="drk" href="/users/:id"><h3>My Profile</h3></a>
+          <a className="drk" href={"/users/" + localStorage.getItem('user_id')}><h3>My Profile</h3></a>
           <form method="get" action="/logout">
             <button type="submit">Logout</button>
           </form>

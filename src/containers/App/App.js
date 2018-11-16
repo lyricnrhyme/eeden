@@ -23,29 +23,55 @@ import Footer from '../Footer/FooterComponent';
 
 class App extends Component {
   render() {
-    return (
-      <div className="App">
-        <Header />
-        <Router className="maincontent">
-          <Switch>
-            <Route exact path='/' component={Home} />
-            <Route path='/account' component={Account} />
-            <Route path='/dreams/:dreams_id' component={DreamDetail} />
-            <Route path='/dreams' component={DreamsListing} />
-            <Route path='/stores/:store_id' component={StoreDetail} />
-            <Route path='/stores' component={StoresListing} />
-            <Route path='/create_dream' component={CreateDreamForm} />
-            <Route path='/create_store' component={CreateStoreForm} />
-            <Route path='/edit_dream/:dream_id' component={EditDreamForm} />
-            <Route path='/edit_store/:store_id' component={EditStoreForm} />
-            <Route path='/login' component={Login} />
-            <Route path='/register' component={Register} />
-          </Switch>
-        </Router>
-        <div className="background"></div>
-        <Footer />
-      </div>
-    );
+    if (localStorage.getItem('loggedIn') === 'true') {
+      return (
+        <div className="App">
+          <Header />
+          <Router className="maincontent">
+            <Switch>
+              <Route exact path='/' component={Home} />
+              <Route path='/users/:user_id' component={Account} />
+              <Route path='/dreams/:dreams_id' component={DreamDetail} />
+              <Route path='/dreams' component={DreamsListing} />
+              <Route path='/stores/:store_id' component={StoreDetail} />
+              <Route path='/stores' component={StoresListing} />
+              <Route path='/create_dream' component={CreateDreamForm} />
+              <Route path='/create_store' component={CreateStoreForm} />
+              <Route path='/edit_dream/:dream_id' component={EditDreamForm} />
+              <Route path='/edit_store/:store_id' component={EditStoreForm} />
+              <Route path='/login' component={Login} />
+              <Route path='/register' component={Register} />
+            </Switch>
+          </Router>
+          <div className="background"></div>
+          <Footer />
+        </div>
+      );
+    } else {
+      return (
+        <div className="App">
+          <Header />
+          <Router className="maincontent">
+            <Switch>
+              <Route exact path='/' component={Home} />
+              <Route path='/account' component={Login} />
+              <Route path='/dreams/:dreams_id' component={DreamDetail} />
+              <Route path='/dreams' component={DreamsListing} />
+              <Route path='/stores/:store_id' component={StoreDetail} />
+              <Route path='/stores' component={StoresListing} />
+              <Route path='/create_dream' component={Login} />
+              <Route path='/create_store' component={Login} />
+              <Route path='/edit_dream/:dream_id' component={Login} />
+              <Route path='/edit_store/:store_id' component={Login} />
+              <Route path='/login' component={Login} />
+              <Route path='/register' component={Register} />
+            </Switch>
+          </Router>
+          <div className="background"></div>
+          <Footer />
+        </div>
+      );
+    }
   }
 }
 
