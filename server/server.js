@@ -9,7 +9,7 @@ app.use(cors())
 app.use('/api', routes);
 
 app.get('/', (req, res) => {
-  res.send('<p>Sanity Check</p>')
+  res.send('<p>Test EC2 Change</p>')
 })
 
 app.listen(PORT, () => {
