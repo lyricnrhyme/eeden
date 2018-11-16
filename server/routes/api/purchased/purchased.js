@@ -52,6 +52,10 @@ router.post('/new_purchase', (req, res) => {
         .then(newPurchase => {
           res.json(newPurchase.serialize());
         })
+        .catch(err => {
+          console.log("err: ", err);
+          res.json("err", err);
+        });
     })
     .catch(err => {
       console.log("err: ", err);

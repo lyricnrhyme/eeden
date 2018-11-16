@@ -53,6 +53,10 @@ router.post('/createnew', (req, res) => {
         .then(createdUser => {
           res.json(createdUser.serialize());
         })
+        .catch(err => {
+          console.log("err: ", err);
+          res.json("err", err);
+        });
     })
     .catch(err => {
       console.log("err: ", err);
@@ -88,7 +92,7 @@ router.put('/edit_user/:id', (req, res) => {
 })
 
 // Delete User
-router.put('/admin/delete_user', (req, res) => {
+router.put('/delete_user', (req, res) => {
 
   const id = req.body.id
 

@@ -55,6 +55,10 @@ router.post('/create_store', (req, res) => {
         .then(createdStore => {
           res.json(createdStore.serialize());
         })
+        .catch(err => {
+          console.log("err: ", err);
+          res.json("err", err);
+        });
     })
     .catch(err => {
       console.log("err: ", err);
