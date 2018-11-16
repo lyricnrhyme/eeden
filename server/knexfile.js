@@ -1,4 +1,5 @@
 // Update with your config settings.
+const path = require('path');
 require('dotenv').config({path: '../.env'})
 // console.log(process.env)
 
@@ -40,7 +41,7 @@ module.exports = {
   production: {
     client: 'postgresql',
     connection: {
-      database: 'react_kanban',
+      database: 'clarity',
       user:     'development',
       password: 'development'
     },

@@ -13,6 +13,8 @@ COPY package.json .
 # Install node module dependencies
 RUN npm install
 
+EXPOSE 3000
+
 # Add the rest of the project files(most builds will start from here based on cache)
 COPY . .
 
