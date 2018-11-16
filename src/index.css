@@ -96,12 +96,16 @@ button.drk {
     border: 2px solid #ffcb9a;
   }
 
+i {
+  margin: 0px 5px 0px 0px
+}
+
 .txt-grey {
   color: #2c3531;
 }
 
 .txt-drk-blue {
-  color: #2d7778;
+  color: #116466;
 }
 
 .txt-blue {
@@ -118,4 +122,9 @@ button.drk {
 
 .txt-tan {
   color: #ffcb9a;
+}
+
+.txt-sml {
+  font-size: .8em;
+  text-transform: uppercase;
 }
