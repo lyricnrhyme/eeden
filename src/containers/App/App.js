@@ -11,7 +11,7 @@ import Home from '../Home/index';
 import StoreDetail from '../StoreDetail/storeDetail.jsx';
 import StoresListing from '../StoresListing/storeListing';
 import CreateDreamForm from '../CreateDreamForm/CreateDreamFormComponent';
-import CreateStoreForm from '../CreateStoreForm/CreateStoreFormComponent';
+import CreateStoreForm from '../CreateStoreForm/CreateStoreComponent.jsx';
 import EditDreamForm from '../EditDreamForm/EditDreamFormComponent';
 import EditStoreForm from '../EditStoreForm/EditStoreFormComponent';
 import Login from '../Auth';
@@ -35,7 +35,7 @@ class App extends Component {
             <Route path='/stores/:store_id' component={StoreDetail} />
             <Route path='/stores' component={StoresListing} />
             <Route path='/create_dream' component={CreateDreamForm} />
-            <Route path='/create_store' component={CreateStoreForm} />
+            <Route path='/createstore' component={CreateStoreForm} />
             <Route path='/edit_dream/:dream_id' component={EditDreamForm} />
             <Route path='/edit_store/:store_id' component={EditStoreForm} />
             <Route path='/login' component={Login} />
