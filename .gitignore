@@ -18,11 +18,10 @@
 .env.prod
 >>>>>>> server
 .env.example
-server/db/seeds/01_users.js
-server/db/seeds/02_store.js
-server/db/seeds/03_dreams.js
-server/db/seeds/04_keywords.js
-server/db/seeds/05_purchased.js
+# server/db/seeds/01_users.js
+# server/db/seeds/02_store.js
+# server/db/seeds/03_dreams.js
+# server/db/seeds/04_purchased.js
 .DS_Store
 .env.local
 .env.development.local
