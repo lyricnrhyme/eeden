@@ -25,7 +25,8 @@ const reducers = (state = {
             return { ...state, detailedProps: action.payload }
 
         case ADD_DREAM:
-            return [...state, action.payload]
+            state.props = [...state.props, ...action.payload]
+            return { ...state, props: state.props }
 
         //~~~ Store Cases ~~~//
         case GET_ALL_STORES:
@@ -37,7 +38,6 @@ const reducers = (state = {
         case ADD_STORE:
             state.props = [...state.props, ...action.payload]
             return { ...state, props: state.props }
-
 
         default:
             return state
