@@ -12,25 +12,20 @@ const mapStateToProps = (state) => {
   }
 }
 
+
 class StoresListing extends Component {
-
-  constructor(props) {
-    // Pass props to parent class
-    super(props)
-
-    // Set initial state
-    this.state = {
-      stores: []
-    }
-  }
 
 
   // Lifecycle method
   componentDidMount() {
     console.log('COMPONENT MOUNTED :)');
-
     this.props.dispatch(getAllStores());
   }
+
+  // getStoreById = (id) => {
+  //   console.log('STORE LISTING BY ID PROPS: ', id);
+  //   this.props.dispatch(getStore(id))
+  // }
 
 
 
@@ -38,13 +33,13 @@ class StoresListing extends Component {
     const { storeProps } = this.props;
     console.log('redux storeProps: ', { storeProps });
 
-
     return (
-      <div className="StoresListing">
+      <div className="StoresListing" >
         <StoreList storeProps={storeProps} />
-      </div>
+      </div >
     );
   }
 }
+
 
 export default connect(mapStateToProps)(StoresListing);
