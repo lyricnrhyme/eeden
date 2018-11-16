@@ -7,7 +7,7 @@ const Store = require('../../../db/models/Store');
 router.use(bp.json());
 router.use(bp.urlencoded({ extended: true }));
 
-
+// GET all Stores
 router.get('/', (req, res) => {
     Store
     .fetchAll({withRelated: ["created_by"]})
@@ -17,10 +17,11 @@ router.get('/', (req, res) => {
     })
     .catch(err => {
     console.log('err: ', err)
-    res.json('err')
+    res.json('err', err)
     })
 })
 
+// GET Stores by id
 router.get('/:id', (req, res) => {
 
     const { id } = req.params;
@@ -34,27 +35,9 @@ router.get('/:id', (req, res) => {
       })
       .catch(err => {
         console.log('err: ', err);
-        res.json('err')
+        res.json('err', err)
       })
   })
-
-// router.get('/:id/:dream_id', (req, res) => {
-
-//     const { dream_id } = req.params;
-  
-//     Store
-//       .where("dream_id", dream_id)
-//       .fetchAll({withRelated: ["created_by", "dream_id"]})
-//       .then(storeDreamId => {
-//         console.log("\nServer: Display By Store ID And Dream ID\n", storeDreamId);
-//         res.json(storeDreamId);
-//       })
-//       .catch(err => {
-//         console.log('err: ', err);
-//         res.json('err')
-//       })
-//   })
-
 
 // Create New Store
 router.post('/create_store', (req, res) => {
@@ -79,7 +62,6 @@ router.post('/create_store', (req, res) => {
     });
   })
 
-
 // Edit Store
 router.put('/edit_store/:id', (req, res) => {
   const { id } = req.params;
@@ -102,7 +84,7 @@ router.put('/edit_store/:id', (req, res) => {
     })
     .catch(err => {
       console.log("err: ", err);
-      res.json('err')
+      res.json('err', err)
     })
 })  
 
@@ -119,6 +101,7 @@ router.put('/delete_store', (req, res) => {
     })
     .catch(err => {
       console.log('err: ', err)
+      res.json('err', err)
     })
 })
 

@@ -10,7 +10,6 @@ router.use(bp.urlencoded({ extended: true }));
 router.get('/', (req, res) => {
     Purchased
     .fetchAll({withRelated: ["user_id", "dream_id"]})
-    // .fetchAll({withRelated: ["user_id", "dream_id"]})
     .then(purchaseList => {
     res.json(purchaseList.serialize())
     console.log('\nServer: List Of Purchases: \n', purchaseList)
@@ -60,7 +59,6 @@ router.post('/new_purchase', (req, res) => {
     });
   })
 
-
 // Edit Purchased
 router.put('/edit_purchase/:id', (req, res) => {
   const { id } = req.params;
@@ -87,7 +85,7 @@ router.put('/edit_purchase/:id', (req, res) => {
     })
 })  
 
-// Delete Store
+// Delete Purchased
 router.put('/delete_purchase', (req, res) => {
 
   const id = req.body.id
