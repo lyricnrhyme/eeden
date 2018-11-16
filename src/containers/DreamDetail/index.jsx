@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import FeaturedProductVideo from './FeaturedProductVideoComponent.js';
 import DreamInfo from './DreamInfoComponent';
+import MoreFromStore from './MoreFromStoreComponent.js'
 import './styles.css';
 
 //~~~ Redux ~~~//
 import { connect } from 'react-redux';
 import { getDream } from '../../actions/actions.js';
+
 
 const mapStateToProps = state => {
   // console.log("state", state)
@@ -31,10 +33,12 @@ class DreamDetail extends Component {
 
   render() {
     const { dreamProps } = this.props;
+    // console.log("Dream info", dreamProps)
     return (
       <div className="dreamdetail">
         <FeaturedProductVideo video={dreamProps.featured_video} />
         <DreamInfo info={dreamProps} />
+        <MoreFromStore info={dreamProps.created_by} />
       </div>
     );
   }

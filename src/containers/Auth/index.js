@@ -3,6 +3,8 @@ import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getAllUsers } from '../../actions/actions';
 
+import './styles.css';
+
 class Login extends Component {
   constructor(props) {
     super(props)
@@ -49,18 +51,28 @@ class Login extends Component {
       );
     } else {
       return (
-        <div className="Login">
-        <h2>Login</h2>
-          <form className='Login'>
-          <label>Email: </label>
-            <input type='email' name='email' placeholder='Enter Email' onChange={this.handleChange}/>
-            <br />
-          <label>Password: </label>
-            <input type='password' name='password' placeholder='Enter Password' onChange={this.handleChange}/>
-            <br />
-            <button type='submit' onClick={this.handleSubmit}>Login</button>
-            <Link to='/register'>Register</Link>
-          </form>
+        <div className="auth">
+          <div className="login">
+            <h2>Login</h2>
+            <form className='login-form'>
+            <label>Email:
+              <input type='email' name='email' placeholder='Enter Email' onChange={this.handleChange}/>
+            </label>
+              <br />
+            <label>Password:
+              <input type='password' name='password' placeholder='Enter Password' onChange={this.handleChange}/>
+            </label>
+              <br />
+              <button type='submit' onClick={this.handleSubmit}>Login</button>
+              <div>
+              <p>
+                Don't have an account? 
+              </p>
+              <Link className="form-link" to='/register'>
+                Register here</Link>
+              </div>
+            </form>
+          </div>
         </div>
       );
     }
