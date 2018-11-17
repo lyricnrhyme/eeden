@@ -26,7 +26,7 @@ router.get('/:id', (req, res) => {
   
     Dreams
       .where("id", id)
-      .fetch({withRelated: ["store_id", "user_id"]})
+      .fetchAll({withRelated: ["store_id", "user_id"]})
       .then(dreamId => {
         console.log("\nServer: Display By Dream ID\n", dreamId);
         res.json(dreamId);
@@ -55,9 +55,13 @@ router.post('/new_dream', (req, res) => {
     .save()
     .then(() => {
       return Dreams
-      .fetchAll({withRelated: ["user_id", "dream_id"]})
+      .fetchAll({withRelated: ["user_id", "store_id"]})
         .then(newdream => {
           res.json(newdream.serialize());
+        })
+        .catch(err => {
+          console.log("err: ", err);
+          res.json("err", err);
         })
     })
     .catch(err => {
@@ -82,7 +86,7 @@ router.put('/edit_dream/:id', (req, res) => {
 
   Dreams
     .where('id', id)
-    .fetchAll({withRelated: ["user_id", "dream_id"]})
+    .fetchAll({withRelated: ["user_id", "store_id"]})
     .then(dreamUpdate => {
       console.log("dreamUpdate: ", dreamUpdate);
       dreamUpdate.save(updatedream);
@@ -99,7 +103,7 @@ router.put('/edit_dream/:id', (req, res) => {
 })  
 
 // Delete Dream
-router.put('/delete_dream', (req, res) => {
+router.delete('/delete_dream', (req, res) => {
 
   const id = req.body.id
 

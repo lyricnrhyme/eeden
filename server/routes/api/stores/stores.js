@@ -55,6 +55,10 @@ router.post('/create_store', (req, res) => {
         .then(createdStore => {
           res.json(createdStore.serialize());
         })
+        .catch(err => {
+          console.log("err: ", err);
+          res.json("err", err);
+        })
     })
     .catch(err => {
       console.log("err: ", err);
@@ -89,7 +93,7 @@ router.put('/edit_store/:id', (req, res) => {
 })  
 
 // Delete Store
-router.put('/delete_store', (req, res) => {
+router.delete('/delete_store', (req, res) => {
 
   const id = req.body.id
 

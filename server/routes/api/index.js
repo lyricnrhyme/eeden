@@ -10,5 +10,4 @@ router.use('/dreams', dreams);
 router.use('/purchased', purchased);
 router.use('/stores', store);
 
-
 module.exports = router;

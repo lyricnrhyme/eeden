@@ -5,7 +5,7 @@ const Users = require('./Users.js');
 const Dreams = bookshelf.Model.extend({
     tableName: 'dreams',
     store_id: function () {
-        return this.belongsTo(Store);
+        return this.belongsTo(Store, "store_id");
       },
     user_id: function () {
         return this.belongsTo(Users, "user_id");

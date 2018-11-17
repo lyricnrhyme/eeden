@@ -18,15 +18,7 @@ app.use(session({
 }))
 
 app.get('/', (req, res) => {
-  if (req.session.views) {
-    req.session.views++;
-    console.log(req.session);
-  } else {
-    req.session.views = 1;
-    console.log(req.session);
-  }
-  // res.send('<p>Sanity Check</p>')
-  res.end()
+  res.send('<p>Test EC2 Change</p>')
 })
 
 app.listen(PORT, () => {
