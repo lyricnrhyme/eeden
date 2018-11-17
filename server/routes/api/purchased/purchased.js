@@ -10,7 +10,6 @@ router.use(bp.urlencoded({ extended: true }));
 router.get('/', (req, res) => {
     Purchased
     .fetchAll({withRelated: ["user_id", "dream_id"]})
-    // .fetchAll({withRelated: ["user_id", "dream_id"]})
     .then(purchaseList => {
     res.json(purchaseList.serialize())
     console.log('\nServer: List Of Purchases: \n', purchaseList)
@@ -53,6 +52,10 @@ router.post('/new_purchase', (req, res) => {
         .then(newPurchase => {
           res.json(newPurchase.serialize());
         })
+        .catch(err => {
+          console.log("err: ", err);
+          res.json("err", err);
+        })
     })
     .catch(err => {
       console.log("err: ", err);
@@ -60,22 +63,21 @@ router.post('/new_purchase', (req, res) => {
     });
   })
 
-
-// Edit Store
-router.put('/edit_store/:id', (req, res) => {
+// Edit Purchased
+router.put('/edit_purchase/:id', (req, res) => {
   const { id } = req.params;
-  const updateStore = {
-    title: req.body.title,
-    description: req.body.description
+  const updatePurchase = {
+    user_id: req.body.user_id,
+    dream_id: req.body.dream_id
   }
 
-  Store
+  Purchased
     .where('id', id)
     .fetch()
-    .then(storeUpdate => {
-      console.log("storeUpdate: ", storeUpdate);
-      storeUpdate.save(updateStore);
-      res.json(storeUpdate);
+    .then(purchaseUpdate => {
+      console.log("purchaseUpdate: ", purchaseUpdate);
+      purchaseUpdate.save(updatePurchase);
+      res.json(purchaseUpdate);
       return null; 
       // returning null to resolve warning "Warning: a promise was created in a handler but was not returned from it" 
       // source: https://github.com/sequelize/sequelize/issues/4883,
@@ -87,20 +89,21 @@ router.put('/edit_store/:id', (req, res) => {
     })
 })  
 
-// Delete Store
-router.put('/delete_store', (req, res) => {
+// Delete Purchased
+router.delete('/delete_purchase', (req, res) => {
 
   const id = req.body.id
 
-  Store
+  Purchased
     .where({ id })
     .destroy()
-    .then(storeDetails => {
-      res.json(storeDetails.serialize())
+    .then(purchaseDetails => {
+      res.json(purchaseDetails.serialize())
     })
     .catch(err => {
       console.log('err: ', err)
+      res.json('err')
     })
-})  
+})
 
 module.exports = router;

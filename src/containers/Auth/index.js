@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { getAllUsers } from '../../actions/actions';
+import { getAllUsers, getAllStores } from '../../actions/actions';
 
 import './styles.css';
 
@@ -29,19 +29,19 @@ class Login extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
+    this.setState({loggedIn: true})
     const user = this.props.userProps.filter(x => x.email === this.state.email && x.password === this.state.password)
     if (user.length === 1) {
-      this.setState({loggedIn: true})
-      console.log('user found, loggedIn');
       localStorage.setItem('loggedIn', true);
       localStorage.setItem('user_id', user[0].id)
+      console.log('hitting?')
     } else {
       console.log('email and password do not match');
     };
   }
 
   render() {
-    if (this.state.loggedIn) {
+    if (this.loggedIn) {
       return (
         <Redirect to={{
           pathname: '/'
