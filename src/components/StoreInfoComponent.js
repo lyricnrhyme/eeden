@@ -4,15 +4,14 @@ import "./styles.css"
 
 export const StoreInfo = (props) => {
     console.log('STORE COMPONENT PROS: ', props);
-
-  return props.storeProps.map(stores => 
-    <div className="storeinfo">
-      Test store info
-    </div>  
     
-  )
+
+  return <div>{props.storeProps.title}</div>
 }
 
-StoreInfo.defaultProps = {
-  storeProps: []
-}
+// StoreInfo.defaultProps = {
+//   storeProps: {
+//     id: null,
+//     title: 'Initial TEs Title',
+//   }
+// }

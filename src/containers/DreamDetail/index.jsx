@@ -10,7 +10,7 @@ import { getDream } from '../../actions/actions.js';
 
 
 const mapStateToProps = state => {
-  // console.log("state", state)
+  console.log("redu store state in dream detail", state)
   return {
     dreamProps: state.detailedProps
   }
@@ -32,16 +32,29 @@ class DreamDetail extends Component {
   }
 
   render() {
+    // console.log('PROPS IN RENDER DREAMDTEAIL', this.props)
     const { dreamProps } = this.props;
-    // console.log("Dream info", dreamProps)
+    const { featured_video, created_by } = dreamProps
+    // const dream = dreamProps[0];
+    // const { featured_video, created_by } = dreamProps
+
+    console.log("Dream info", dreamProps)
     return (
       <div className="dreamdetail">
-        <FeaturedProductVideo video={dreamProps.featured_video} />
+        <FeaturedProductVideo video={featured_video} />
         <DreamInfo info={dreamProps} />
-        <MoreFromStore info={dreamProps.created_by} />
+        <MoreFromStore info={created_by} />
       </div>
-    );
+    )
   }
 }
 
 export default connect(mapStateToProps)(DreamDetail);
+
+DreamDetail.defaultProps = {
+  dreamProps: {
+    id: null,
+    title: 'Test',
+    featured_video: 'fack'
+  }
+}

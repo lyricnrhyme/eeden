@@ -39,7 +39,7 @@ class StoreDetail extends Component {
     return (
       <div className="StoreDetail">
         <div className="store-banner">
-          <StoreInfo  />
+          <StoreInfo storeProps={storeProps} />
         </div>
         <div className="store-inventory">
         </div>

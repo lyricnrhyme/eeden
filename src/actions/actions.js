@@ -86,7 +86,7 @@ export const getDream = (id) => {
         axios.get(`http://54.200.102.24:8080/api/dreams/${id}`)
             .then(response => {
                 // console.log('ACTION DREAM BY ID DATA: ', response.data)
-                dispatch({ type: GET_DREAM_BY_ID, payload: response.data })
+                dispatch({ type: GET_DREAM_BY_ID, payload: response.data[0] })
             })
             .catch(err => {
                 console.log('ERROR IN GETTING INDIVIDUAL DREAM')

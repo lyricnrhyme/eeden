@@ -9,7 +9,7 @@ import { getAllStores } from '../../actions/actions.js'
 
 const mapStateToProps = (state) => {
   return {
-    storeProps: state.props
+    storeProps: state.allprops
   }
 }
 
