@@ -9,7 +9,7 @@ const saltedRounds = 12;
 passport.serializeUser((users, done) => {
   return done(null, {
     id: users.id,
-    username: users.username.toLowerCase()
+    email: users.email.toLowerCase()
   });
 });
 
@@ -22,7 +22,7 @@ passport.deserializeUser((users, done) => {
         users = users.toJSON();
         return done(null, {
           id: users.userid,
-          username: users.username.toLowerCase()
+          email: users.email.toLowerCase()
         });
       }
     })
@@ -32,18 +32,18 @@ passport.deserializeUser((users, done) => {
     });
 });
 
-passport.use(new LocalStrategy(function (username, password, done) {
-  return new Users({ username: username }).fetch()
+passport.use(new LocalStrategy(function (email, password, done) {
+  return new Users({ email: email }).fetch()
     .then(users => {
       if (users === null) {
-        return done(null, false, { message: 'bad username or password' });
+        return done(null, false, { message: 'bad email or password' });
       } else {
         users = users.toJSON();
         bcrypt.compare(password, users.password)
           .then(samePassword => {
             if (samePassword) { return done(null, users); }
             else {
-              return done(null, false, { message: 'bad username or password' });
+              return done(null, false, { message: 'bad email or password' });
             }
           })
       }
@@ -61,7 +61,6 @@ router.route('/register')
   .get((req, res) => {
     res.render('../views/authpages/register', {
       message: req.flash('registerError'),
-      username: req.flash('username'),
       name: req.flash('name'),
       email: req.flash('email')
     });
@@ -70,13 +69,9 @@ router.route('/register')
   .post((req, res) => {
     let {
       username,
-      firstname,
-      lastname,
       email
     } = req.body;
-    req.flash('username', username);
-    req.flash('firstname', firstname);
-    req.flash('lastname', lastname);
+    req.flash('name', name);
     req.flash('email', email);
     if (username.length < 1) {
       req.flash('registerError', 'username required for registration')
@@ -94,10 +89,8 @@ router.route('/register')
       bcrypt.hash(req.body.password, salt, (err, hashedPassword) => {
         if (err) { return res.status(500); }
         return new User({
-          username: req.body.username.toLowerCase(),
+          name: req.body.name.toLowerCase(),
           password: hashedPassword,
-          firstname: firstname,
-          lastname: lastname,
           email: email
         })
           .save()
@@ -138,7 +131,7 @@ router.post('/login', (req, res, next) => {
 
 
 router.get('/login', (req, res) => {
-  return res.render('../views/authpages/login', {
+  return res.render('../src/containers/auth/index.js', {
     message: req.flash('error')
   });
 });
