@@ -32,6 +32,14 @@ app.use(passport.session());
 app.use('/', auth)
 app.use('/api', routes);
 
+app.set('trust proxy', 1)
+app.use(session({
+  secret: 'dreamy cat',
+  resave: true,
+  saveUninitialized: true,
+  cookie: { secure: true }
+}))
+
 app.get('/', (req, res) => {
   res.send('<p>Test EC2 Change</p>')
 })

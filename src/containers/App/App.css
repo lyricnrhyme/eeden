@@ -1,0 +1,20 @@
+.App {
+  margin: 0 0;
+  padding: 0;
+  min-height: 100vh;
+  width: 100vw;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: auto 1fr auto;
+  z-index: 1;
+}
+
+.background {
+  height: 65px; 
+  background: #2d7778;
+  margin: 0 auto;
+  width: 100%;
+  grid-column: 1/7;
+  grid-row: 1/1;
+
+}

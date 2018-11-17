@@ -1,14 +1,130 @@
-body {
-  margin: 0;
-  padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url(https://fonts.googleapis.com/css?family=Megrim|Raleway);
+
+
+* {
+  margin: 0 0;
+  padding: 0 0;
+  font-family: 'Raleway', sans-serif;
+  box-sizing: border-box;
+  text-decoration: none;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+bod
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+  
+textarea, select, input, button { 
+  outline: none; 
+}
+
+h1 {
+  font-family: 'Megrim', cursive;
+  text-transform: uppercase;
+  font-size: 3em;
+}
+
+h2 {
+  font-family: 'Megrim', cursive;
+  font-size: 2em
+}
+
+h3 {
+  font-family: 'Raleway', sans-serif;
+  text-transform: uppercase;
+  font-size: 1.2em;
+}
+
+a:link, a:visited {
+  text-decoration: none;
+  color: #116466;
+}
+
+  a:hover {
+    color: #2d7778;
+  }
+
+  a:active {
+    color: #2c3531
+  }
+
+a.drk:link, a.drk:visited {
+  color: #fff;
+}
+
+  a.drk:hover {
+    color: #ffcb9a;
+  }
+
+  a.drk:active {
+    color: #fff;
+  }
+
+button {
+  height: 44px;
+  font-size: 1em;
+  text-transform: uppercase;
+  padding: 0px 15px 0px 15px;
+  margin: 15px;
+  border: 3px solid #116466;
+  color: #fff;
+  background: #116466;
+}
+
+  button:hover {
+    background: #2d7778;
+  }
+
+  button:active {
+    background: #2d7778;
+    border: 3px solid #2d7778;
+  }
+
+button.drk {
+  border: 2px solid #d9b08c;
+  color: #2c3531;
+  background: #d9b08c;
+}
+
+  button.drk:hover {
+    background: #ffcb9a;
+  }
+
+  button.drk:active {
+    background: #ffcb9a;
+    border: 2px solid #ffcb9a;
+  }
+
+i {
+  margin: 0px 5px 0px 0px
+}
+
+.txt-grey {
+  color: #2c3531;
+}
+
+.txt-drk-blue {
+  color: #116466;
+}
+
+.txt-blue {
+  color: #116466;
+}
+
+.txt-lgt-blue { 
+  color: #d1e8e2;
+}
+
+.txt-drk-tan {
+  color: #d9b08c
+}
+
+.txt-tan {
+  color: #ffcb9a;
+}
+
+.txt-sml {
+  font-size: .8em;
+  text-transform: uppercase;
 }
