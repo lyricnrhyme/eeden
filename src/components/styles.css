@@ -21,10 +21,32 @@
 
 /**** STORE COMPONENT STYLES ****/
 .store-container {
-  border: solid 1px black;
-  padding: 10px;
+  border-bottom: solid 1px #ffcb9a;
+  padding: 10px 0px 10px 0px;
   margin: 5px;
+  display: grid;
+  grid-template-columns: 1fr 5fr 7fr;
 }
+
+.store-container span {
+  padding: 5px;
+  margin: 10px;
+}
+
+/* .store-icon {
+  grid-column: 1/1;
+  background: aqua;
+}
+
+.store-title {
+  grid-column: 2/3;
+  background: green;
+}
+
+.store-description {
+  grid-column: 3/7;
+  background: aqua;
+} */
 
 
 /**** SEARCH COMPONENT STYLES ****/
