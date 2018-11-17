@@ -1,0 +1,52 @@
+/**** DREAM COMPONENT STYLES ****/
+.dream-list {
+  max-width: 100%;
+  grid-column: 1fr;
+  margin: 15px 0px 15px 0px;
+  
+}
+
+.img-wrapper {
+  height:20vw;
+  overflow: hidden;
+}
+
+.dream-images {
+  width: 100%;
+  height: auto;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/**** STORE COMPONENT STYLES ****/
+.store-container {
+  border-bottom: solid 1px #ffcb9a;
+  padding: 10px 0px 10px 0px;
+  margin: 5px;
+  display: grid;
+  grid-template-columns: 1fr 5fr 7fr;
+}
+
+.store-container span {
+  padding: 5px;
+  margin: 10px;
+}
+
+/* .store-icon {
+  grid-column: 1/1;
+  background: aqua;
+}
+
+.store-title {
+  grid-column: 2/3;
+  background: green;
+}
+
+.store-description {
+  grid-column: 3/7;
+  background: aqua;
+} */
+
+
+/**** SEARCH COMPONENT STYLES ****/

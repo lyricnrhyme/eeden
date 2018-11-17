@@ -1,0 +1,8 @@
+.dreamslisting {
+  grid-column: 1/7;
+  grid-row: 2/2;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-column-gap: 15px;
+  margin: 15px 30px 15px 30px;
+}
