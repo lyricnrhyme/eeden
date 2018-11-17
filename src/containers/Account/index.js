@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Toggle from './ToggleComponent';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import { getUser } from '../../actions/actions';
 import { connect } from 'react-redux';
 

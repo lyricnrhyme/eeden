@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
-import StoreInfo from "./StoreInfoComponent";
 import './styles.css';
 
+import { StoreInfo } from '../../components/StoreInfoComponent'
 
 //~~~ Redux ~~~//
 import { connect } from 'react-redux';
 import { getStore } from '../../actions/actions'
 
 const mapStateToProps = state => {
+  console.log("state", state)
   return {
     storeProps: state.detailedProps
   }
@@ -25,7 +26,6 @@ class StoreDetail extends Component {
   // Lifecycle method
   componentDidMount() {
     let storeId = this.props.match.params.store_id;
-    // console.log(this.props)
     this.props.dispatch(getStore(storeId));
   }
 
@@ -35,9 +35,14 @@ class StoreDetail extends Component {
 
   render() {
     const { storeProps } = this.props;
+    console.log("storedetail- storeProps", storeProps)
     return (
       <div className="StoreDetail">
-        <StoreInfo storeProps={storeProps} />
+        <div className="store-banner">
+          <StoreInfo  />
+        </div>
+        <div className="store-inventory">
+        </div>
       </div>
     );
   }
