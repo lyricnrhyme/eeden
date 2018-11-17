@@ -93,7 +93,7 @@ router.put('/edit_store/:id', (req, res) => {
 })  
 
 // Delete Store
-router.put('/delete_store', (req, res) => {
+router.delete('/delete_store', (req, res) => {
 
   const id = req.body.id
 

@@ -90,7 +90,7 @@ router.put('/edit_purchase/:id', (req, res) => {
 })  
 
 // Delete Purchased
-router.put('/delete_purchase', (req, res) => {
+router.delete('/delete_purchase', (req, res) => {
 
   const id = req.body.id
 

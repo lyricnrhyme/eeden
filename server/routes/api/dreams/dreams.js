@@ -103,7 +103,7 @@ router.put('/edit_dream/:id', (req, res) => {
 })  
 
 // Delete Dream
-router.put('/delete_dream', (req, res) => {
+router.delete('/delete_dream', (req, res) => {
 
   const id = req.body.id
 
