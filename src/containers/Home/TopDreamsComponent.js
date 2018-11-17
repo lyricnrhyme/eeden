@@ -12,7 +12,7 @@ import { getAllDreams } from '../../actions/actions.js'
 
 const mapStateToProps = (state) => {
   return {
-    dreamProps: state.props
+    dreamProps: state.allprops
   }
 }
 

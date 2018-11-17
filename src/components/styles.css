@@ -33,20 +33,11 @@
   margin: 10px;
 }
 
-/* .store-icon {
-  grid-column: 1/1;
-  background: aqua;
+/**** STORE INFO COMPONENT STYLES ****/
+.storeinfo {
+  max-width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr)
 }
-
-.store-title {
-  grid-column: 2/3;
-  background: green;
-}
-
-.store-description {
-  grid-column: 3/7;
-  background: aqua;
-} */
-
 
 /**** SEARCH COMPONENT STYLES ****/

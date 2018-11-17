@@ -1,14 +1,17 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import "./styles.css"
 
-class StoreInfo extends Component {
-  render() {
-    return (
-      <div className="StoreInfo">
-      </div>
-    );
-  }
+
+export const StoreInfo = (props) => {
+    console.log('STORE COMPONENT PROS: ', props);
+    
+
+  return <div>{props.storeProps.title}</div>
 }
 
-export default StoreInfo;
+// StoreInfo.defaultProps = {
+//   storeProps: {
+//     id: null,
+//     title: 'Initial TEs Title',
+//   }
+// }
