@@ -27,27 +27,28 @@ class CreateStore extends Component {
 
   render() {
     return (
+      <div className="form-container">
+        <div className="form">
+          <h2>Create Store</h2>
 
-      <div className="CreateStoreForm">
-        <h1>Create Store</h1>
+          <form onSubmit={this.handleSubmit}>
 
-        <form onSubmit={this.handleSubmit}>
+            <label>Title:
+                <input onChange={this.handleChange} name="title" type="text" />
+            </label>
+            <br />
+            <label>Description:
+                <input onChange={this.handleChange} name="description" type="text" />
+            </label>
+            <br />
+            <label>Created By (temp):
+                <input onChange={this.handleChange} name="created_by" type="number" />
+            </label>
+            <br />
 
-          <label>Title:
-              <input onChange={this.handleChange} name="title" type="text" />
-          </label>
-          <br />
-          <label>Description:
-              <input onChange={this.handleChange} name="description" type="text" />
-          </label>
-          <br />
-          <label>Created By (temp):
-              <input onChange={this.handleChange} name="created_by" type="number" />
-          </label>
-          <br />
-
-          <input type="submit" value="Submit" />
-        </form>
+            <button type="submit" value="Submit">Submit</button>
+          </form>
+        </div>
       </div>
     );
   }
