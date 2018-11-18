@@ -49,8 +49,8 @@ class Login extends Component {
       );
     } else {
       return (
-        <div className="auth">
-          <div className="login">
+        <div className="form-container">
+          <div className="form">
             <h2>Login</h2>
             <form className='login-form'>
             <label>Email:
