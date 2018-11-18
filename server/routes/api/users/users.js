@@ -1,8 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const bp = require('body-parser');
-
 const Users = require('../../../db/models/Users');
+const bcrypt = require('bcrypt')
+
 
 router.use(bp.json());
 router.use(bp.urlencoded({ extended: true }));
@@ -40,6 +41,9 @@ router.get('/:id', (req, res) => {
 // Create New User
 router.post('/createnew', (req, res) => {
   console.log("\nThis is the req.body: \n", req.body);
+  const {password} = req.body;
+  bcrypt.hash(password, 10)
+
   Users
     .forge({
       name: req.body.name,
