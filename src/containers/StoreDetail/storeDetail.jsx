@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './styles.css';
 
 import { StoreInfo } from '../../components/StoreInfoComponent';
-import StoreInventory from './StoreInventoryComponent';
+import { DreamList } from '../../components/DreamComponent'
 
 //~~~ Redux ~~~//
 import { connect } from 'react-redux';
@@ -34,17 +34,16 @@ class StoreDetail extends Component {
 
 
   render() {
-    // console.log("Data", this.props)
     const { storeProps, dreams } = this.props;
     return (
       <div className="storedetail">
         <div className="store-banner">
-          <div className="vertcenter">
+          <div className="vertcenter txt-drk-blue">
             <StoreInfo storeProps={storeProps} />
           </div>
         </div>
         <div className="store-inventory">
-          <StoreInventory dreams={dreams} />
+          <DreamList dreamProps={dreams} />
         </div>
       </div>
     );
