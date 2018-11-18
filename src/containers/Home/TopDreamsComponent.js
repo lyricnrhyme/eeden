@@ -19,7 +19,7 @@ const mapStateToProps = (state) => {
 class TopDreams extends Component {
 
   componentDidMount() {
-    console.log('COMPONENT MOUNTED :)');
+    // console.log('COMPONENT MOUNTED :)');
     this.props.dispatch(getAllDreams());
   }
 
