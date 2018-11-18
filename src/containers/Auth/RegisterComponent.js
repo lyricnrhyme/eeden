@@ -51,21 +51,23 @@ class Register extends Component {
       )
     } else {
       return (
-        <div className="Register">
-        <h2>Register</h2>
-          <form className='Register' onSubmit={this.handleSubmit}>
-          <label>Email: </label>
-            <input type='email' name='email' placeholder='Enter Email' onChange={this.handleChange} required/>
-            <br />
-          <label>Password: </label>
-            <input type='password' name='password' placeholder='Enter Password' onChange={this.handleChange} required/>
-            <br />
-          <label>Name: </label>
-            <input type='text' name='name' placeholder='Enter Name' onChange={this.handleChange}/>
-            <br />
-            <button>Register</button>
-            <Link to='/login'>Cancel</Link>
-          </form>
+        <div className="auth">
+          <div className="login">
+          <h2>Register</h2>
+            <form className='Register' onSubmit={this.handleSubmit}>
+            <label>Email: </label>
+              <input type='email' name='email' placeholder='Enter Email' onChange={this.handleChange} required/>
+              <br />
+            <label>Password: </label>
+              <input type='password' name='password' placeholder='Enter Password' onChange={this.handleChange} required/>
+              <br />
+            <label>Name: </label>
+              <input type='text' name='name' placeholder='Enter Name' onChange={this.handleChange}/>
+              <br />
+              <button>Register</button>
+              <Link to='/login'>Cancel</Link>
+            </form>
+          </div>
         </div>
       );
     }

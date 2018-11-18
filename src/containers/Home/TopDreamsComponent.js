@@ -12,14 +12,14 @@ import { getAllDreams } from '../../actions/actions.js'
 
 const mapStateToProps = (state) => {
   return {
-    dreamProps: state.props
+    dreamProps: state.allprops
   }
 }
 
 class TopDreams extends Component {
 
   componentDidMount() {
-    console.log('COMPONENT MOUNTED :)');
+    // console.log('COMPONENT MOUNTED :)');
     this.props.dispatch(getAllDreams());
   }
 
