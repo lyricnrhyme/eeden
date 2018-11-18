@@ -14,8 +14,8 @@ router.use(bp.urlencoded({ extended: true }));
 passport.serializeUser( (users, done) => {
   console.log('\n00 - Serializing users\n', users)
   done(null, {
-    email: users.email,
     name: users.name,
+    email: users.email,
     zomg: 'randomData'
   })
 })
@@ -113,19 +113,20 @@ router.get('/',isAuthenticated, (req, res) => {
   console.log('THIS IS THE NAME OF USER', req.session.passport.users.name)
   console.log('THIS IS THE EMAIL', req.session.passport.users.email)
   
-  res.render('./users', {
+  res.render('/api/users', {
     email: req.session.passport.email,
     name: req.session.passport.users.name
 
   })
 })
 
+//authenticates user for every route past login
 function isAuthenticated(req, res, next) {
   if (req.isAuthenticated()) {
-    next()
+next();
   } else {
-    res.redirect('/')
+    res.redirect('/');
   }
-}
+};
 
 module.exports = router
