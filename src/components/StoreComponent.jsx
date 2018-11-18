@@ -4,13 +4,13 @@ import "./styles.css"
 
 
 export const StoreList = (props) => {
-  console.log('STORE COMPONENT PROS: ', props);
+  // console.log('STORE COMPONENT PROS: ', props);
 
   return props.storeProps.map(stores =>
 
     <Link key={stores.id} to={"/stores/" + stores.id}>
       <div className="store-container">
-        <span className="store-icon txt-tan"><i class="fas fa-store"></i></span>
+        <span className="store-icon txt-tan"><i className="fas fa-store"></i></span>
         <span className="store-title"><h3>{stores.title}</h3></span>
         <span className="store-description txt-grey">{stores.description}</span>
       </div>
