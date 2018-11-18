@@ -31,14 +31,6 @@ app.use('/api', routes);
 
 app.set('trust proxy', 1);
 
-// app.get('/', (req, res) => {
-//   res.send('<p>Test EC2 Change</p>')
-// })
-
-app.get('*', (req, res) => {
-  res.status(404).render('invalid');
-});
-
 app.listen(PORT, () => {
   console.log(`Listening on ${PORT}...`)
 });
