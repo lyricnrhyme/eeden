@@ -44,7 +44,7 @@ class Login extends Component {
   render() {
     if (this.state.loggedIn) {
       return (
-        <Redirect to={{pathname: '/users'}} />
+        <Redirect to={{pathname: `/users/${localStorage.getItem('user_id')}/userInfo`}} />
       );
     } else {
       return (

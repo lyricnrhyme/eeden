@@ -111,7 +111,7 @@ export const getDreamByStore = (id) => {
             .then(response => {
                 const dreams = response.data.filter( dream => {
                     // console.log('inception', dream)
-                   return id == dream.store_id.id
+                   return id.toString() === (dream.store_id.id).toString()
                 })
                 // console.log('ACTION DREAM BY ID DATA: ', dreams)
                 dispatch({ type: GET_DREAM_BY_STORE_ID, payload: dreams })
@@ -122,7 +122,7 @@ export const getDreamByStore = (id) => {
     }
 }
 
-//~~~ REQUEST TO GET A DREAM BY STORE ID ~~~//
+//~~~ REQUEST TO GET A DREAM BY USER ID ~~~//
 export const getDreamsByUser = (id) => {
     console.log('ACTION GET DREAM BY USER ID FIRING', id)
 
@@ -131,8 +131,8 @@ export const getDreamsByUser = (id) => {
 
             .then(response => {
                 const dreams = response.data.filter( dream => {
-                    // console.log('inception', dream)
-                   return id == dream.user_id.id
+                    // console.log('insheeption', dream)
+                   return id.toString() === (dream.user_id.id).toString()
                 })
                 // console.log('ACTION DREAM BY ID DATA: ', dreams)
                 dispatch({ type: GET_DREAM_BY_USER_ID, payload: dreams })
@@ -222,7 +222,7 @@ export const getStoreByUser = (id) => {
             .then(response => {
                 const stores = response.data.filter( store => {
                     // console.log('inception', dream)
-                   return id == store.created_by.id
+                   return id.toString() === (store.created_by.id).toString()
                 })
                 // console.log('ACTION DREAM BY ID DATA: ', stores[0])
                 dispatch({ type: GET_STORE_BY_USER_ID, payload: stores })
@@ -277,4 +277,8 @@ export const addPurchase = () => {
                 console.log('ERROR in ACTION ADD PURCHASE')
             })
     }
+}
+
+export const logout = () => {
+    localStorage.clear();
 }

@@ -3,11 +3,15 @@ import { getUser, getStoreByUser, getDreamsByUser } from '../../actions/actions'
 import { connect } from 'react-redux';
 import { Link } from "react-router-dom";
 
+import OrderHistory from './OrderHistoryComponent';
+
 class Account extends Component {
   constructor(props) {
     super(props)
     this.state = {
-
+      dreamProps: [],
+      userProps: [],
+      storeProps: []
     }
   }
 
@@ -18,6 +22,18 @@ class Account extends Component {
     this.props.dispatch(getStoreByUser(user))
     this.props.dispatch(getDreamsByUser(user))
   }
+
+  static getDerivedStateFromProps(nextProps, prevState){
+    if(nextProps.dreamProps !== prevState.dreamProps){
+      return { 
+        dreamProps: nextProps.dreamProps,
+        userProps: nextProps.userProps, 
+        storeProps: nextProps.storeProps 
+      };
+   }
+   else return null;
+ }
+
 
   render() {
     console.log("Props:", this.props)
@@ -37,6 +53,7 @@ class Account extends Component {
             </Link>
           </div>
         </div>
+        <OrderHistory />
       </div>
     );
   }

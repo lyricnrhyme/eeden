@@ -39,6 +39,7 @@ const reducers = (state = {
             return {...state, currentStoreDreams: action.payload}
 
         case GET_DREAM_BY_USER_ID:
+            console.log('hi', action.payload);
             return {...state, currentStoreDreams: action.payload}
 
         case ADD_DREAM:

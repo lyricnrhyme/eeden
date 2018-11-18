@@ -11,6 +11,8 @@ class AuthDreamInventory extends Component {
 
     }
   }
+
+  
   render() {
     console.log(this.props, 'wya');
     if (this.props.dreamProps !== undefined) {

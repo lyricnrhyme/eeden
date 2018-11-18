@@ -1,7 +1,15 @@
 import React, { Component } from 'react';
 import './styles.css';
 
+import { logout } from '../../actions/actions';
+
 class Header extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+
+    }
+  }
   render() {
     if (localStorage.getItem('loggedIn') === 'true') {
       return (
@@ -11,7 +19,7 @@ class Header extends Component {
           <a className="drk" href="/dreams"><h3>Dreams</h3></a>
           <a className="drk" href={`/users/${localStorage.getItem('user_id')}/userInfo`}><h3>My Profile</h3></a>
           <form method="get" action="/">
-            <button type="submit">Logout</button>
+            <button type="submit" onClick={logout}>Logout</button>
           </form>
         </div>
   
