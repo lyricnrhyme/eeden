@@ -72,8 +72,8 @@ router.post('/register', (req, res) => {
           name: req.body.name,
           email: req.body.email,
           password: hashedPassword
-        }) // Need to reference db columns here
-              .save()
+        })
+          .save()
     })
     .then( result => {
       if (result) {
