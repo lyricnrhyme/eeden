@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import Toggle from './ToggleComponent';
-import { Link } from 'react-router-dom';
 import { getUser } from '../../actions/actions';
 import { connect } from 'react-redux';
+import { Link } from "react-router-dom";
 
 class Account extends Component {
   constructor(props) {
@@ -17,18 +16,17 @@ class Account extends Component {
   }
 
   render() {
-    console.log('hi?', this.props.userProps.detailedProps);
     return (
       <div className="Account">
         <div className='userStore'>
           <div className='user'>
-            User Details
+            <Link to={`/users/${localStorage.getItem('user_id')}/userInfo`}>User Details {localStorage.getItem('user_id')}</Link>
           </div>
           <div className='store'>
-            Store Details
+            <Link to={`/users/${localStorage.getItem('user_id')}/storeInfo`}>Store Details
+            </Link>
           </div>
         </div>
-        <Toggle />
       </div>
     );
   }

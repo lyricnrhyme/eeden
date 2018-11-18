@@ -20,6 +20,7 @@ import Register from '../Auth/RegisterComponent';
 // components
 import Header from '../Header/HeaderComponent';
 import Footer from '../Footer/FooterComponent';
+import StoreInventory from '../Account/StoreInventoryComponent';
 
 class App extends Component {
   render() {
@@ -30,7 +31,8 @@ class App extends Component {
           <Router className="maincontent">
             <Switch>
               <Route exact path='/' component={Home} />
-              <Route path='/users/:user_id' component={Account} />
+              <Route path='/users/:user_id/userInfo' component={Account} />
+              <Route path='/users/:user_id/storeInfo' component={StoreInventory} />
               <Route path='/dreams/:dreams_id' component={DreamDetail} />
               <Route path='/dreams' component={DreamsListing} />
               <Route path='/stores/:store_id' component={StoreDetail} />

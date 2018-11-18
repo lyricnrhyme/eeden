@@ -29,11 +29,12 @@ class Login extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    this.setState({loggedIn: true})
     const user = this.props.userProps.filter(x => x.email === this.state.email && x.password === this.state.password)
     if (user.length === 1) {
+      this.setState({loggedIn: true})
       localStorage.setItem('loggedIn', true);
       localStorage.setItem('user_id', user[0].id)
+      localStorage.setItem('has_store', user[0].has_store)
       console.log('hitting?')
     } else {
       console.log('email and password do not match');
@@ -41,11 +42,9 @@ class Login extends Component {
   }
 
   render() {
-    if (this.loggedIn) {
+    if (this.state.loggedIn) {
       return (
-        <Redirect to={{
-          pathname: '/'
-        }} />
+        <Redirect to={{pathname: '/users'}} />
       );
     } else {
       return (
