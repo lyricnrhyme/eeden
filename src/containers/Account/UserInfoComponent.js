@@ -5,6 +5,7 @@ class UserInfo extends Component {
     return (
       <div className="UserInfo">
         User Info
+        {localStorage.getItem('user_id')}
       </div>
     );
   }

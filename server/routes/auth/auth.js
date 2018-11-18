@@ -144,6 +144,7 @@ router.get('/login', (req, res) => {
 });
 
 router.get('/logout', (req, res) => {
+  localStorage.clear();
   req.logout();
   res.render('./authpages/logout')
 });

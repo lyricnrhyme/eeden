@@ -8,9 +8,15 @@ export const GET_ALL_DREAMS = 'GET_ALL_DREAMS';
 export const ADD_DREAM = 'ADD_DREAM';
 export const GET_DREAM_BY_ID = 'GET_DREAM_BY_ID';
 export const GET_DREAM_BY_STORE_ID = 'GET_DREAM_BY_STORE_ID';
+export const GET_DREAM_BY_USER_ID = 'GET_DREAM_BY_USER_ID';
 export const GET_ALL_STORES = 'GET_ALL_STORES';
 export const GET_STORE_BY_ID = 'GET_STORE_BY_ID';
+export const GET_STORE_BY_USER_ID = 'GET_STORE_BY_USER_ID';
 export const ADD_STORE = 'ADD_STORE';
+
+export const GET_ALL_PURCHASES = 'GET_ALL_PURCHASES';
+export const GET_PURCHASE_BY_ID = 'GET_PURCHASE_BY_ID';
+export const ADD_PURCHASE = 'ADD_PURCHASE';
 
 
 
@@ -36,7 +42,7 @@ export const getUser = (id) => {
         // axios.get('http://34.219.218.138:8080/api/dreams/' + id)
         axios.get(`http://54.200.102.24:8080/api/users/${id}`)
             .then(response => {
-                console.log('ACTION USER BY ID DATA: ', response.data)
+                // console.log('ACTION USER BY ID DATA: ', response.data)
                 dispatch({ type: GET_USER_BY_ID, payload: response.data })
             })
             .catch(err => {
@@ -105,10 +111,31 @@ export const getDreamByStore = (id) => {
             .then(response => {
                 const dreams = response.data.filter( dream => {
                     // console.log('inception', dream)
-                   return id == dream.store_id.id
+                   return id.toString() === (dream.store_id.id).toString()
                 })
                 // console.log('ACTION DREAM BY ID DATA: ', dreams)
                 dispatch({ type: GET_DREAM_BY_STORE_ID, payload: dreams })
+            })
+            .catch(err => {
+                console.log('ERROR IN GETTING INDIVIDUAL DREAM')
+            })
+    }
+}
+
+//~~~ REQUEST TO GET A DREAM BY USER ID ~~~//
+export const getDreamsByUser = (id) => {
+    console.log('ACTION GET DREAM BY USER ID FIRING', id)
+
+    return dispatch => {
+        axios.get(`http://54.200.102.24:8080/api/dreams/`)
+
+            .then(response => {
+                const dreams = response.data.filter( dream => {
+                    // console.log('insheeption', dream)
+                   return id.toString() === (dream.user_id.id).toString()
+                })
+                // console.log('ACTION DREAM BY ID DATA: ', dreams)
+                dispatch({ type: GET_DREAM_BY_USER_ID, payload: dreams })
             })
             .catch(err => {
                 console.log('ERROR IN GETTING INDIVIDUAL DREAM')
@@ -184,4 +211,74 @@ export const addStore = (store) => {
     }
 }
 
+//~~~ REQUEST TO GET A STORE BY USER ID ~~~//
+export const getStoreByUser = (id) => {
+    // console.log('ACTION GET BY ID FIRING', id)
 
+    return dispatch => {
+        // axios.get('http://34.219.218.138:8080/api/dreams/' + id)
+        axios.get(`http://54.200.102.24:8080/api/stores/`)
+
+            .then(response => {
+                const stores = response.data.filter( store => {
+                    // console.log('inception', dream)
+                   return id.toString() === (store.created_by.id).toString()
+                })
+                // console.log('ACTION DREAM BY ID DATA: ', stores[0])
+                dispatch({ type: GET_STORE_BY_USER_ID, payload: stores })
+            })
+            .catch(err => {
+                console.log('ERROR IN GETTING INDIVIDUAL STORE')
+            })
+    }
+}
+
+
+//~~~~~~~~~~ PURCHASE ACTIONS ~~~~~~~~~~//
+export const getAllPurchases = () => {
+    return dispatch => {
+        axios.get('http://54.200.102.24:8080/api/purchased')
+            .then(items => {
+                // console.log('hello?', items);
+                dispatch({
+                    type: GET_ALL_PURCHASES,
+                    task: items.data
+                })
+            })
+    }
+}
+
+//~~~ REQUEST TO GET A PURCHASE BY ITS ID ~~~//
+export const getPurchase = (id) => {
+    // console.log('ACTION GET BY ID FIRING', id)
+
+    return dispatch => {
+        axios.get(`http://54.200.102.24:8080/api/purchased/${id}`)
+            .then(response => {
+                console.log('ACTION PURCHASE BY ID DATA: ', response.data)
+                dispatch({ type: GET_PURCHASE_BY_ID, payload: response.data })
+            })
+            .catch(err => {
+                console.log('ERROR IN GETTING INDIVIDUAL PURCHASE')
+            })
+    }
+}
+
+//~~~ REQUEST TO POST A PURCHASE ~~~//
+export const addPurchase = () => {
+    console.log('ACTION ADD HITTING')
+
+    return dispatch => {
+        axios.post('http://54.200.102.24:8080/api/purchased/new_purchase')
+            .then(response => {
+                dispatch({ type: ADD_PURCHASE, payload: response.data })
+            })
+            .catch(err => {
+                console.log('ERROR in ACTION ADD PURCHASE')
+            })
+    }
+}
+
+export const logout = () => {
+    localStorage.clear();
+}

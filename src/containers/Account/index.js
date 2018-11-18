@@ -1,43 +1,71 @@
 import React, { Component } from 'react';
-import Toggle from './ToggleComponent';
-// import { Link } from 'react-router-dom';
-import { getUser } from '../../actions/actions';
+import { getUser, getStoreByUser, getDreamsByUser } from '../../actions/actions';
 import { connect } from 'react-redux';
+import { Link } from "react-router-dom";
+
+import OrderHistory from './OrderHistoryComponent';
 
 class Account extends Component {
   constructor(props) {
     super(props)
     this.state = {
-
+      dreamProps: [],
+      userProps: [],
+      storeProps: []
     }
   }
 
   componentDidMount() {
-    this.props.dispatch(getUser(localStorage.getItem('user_id')))
+    // console.log('CM fired', this)
+    let user = this.props.match.params.user_id;
+    this.props.dispatch(getUser(user))
+    this.props.dispatch(getStoreByUser(user))
+    this.props.dispatch(getDreamsByUser(user))
   }
 
+  static getDerivedStateFromProps(nextProps, prevState){
+    if(nextProps.dreamProps !== prevState.dreamProps){
+      return { 
+        dreamProps: nextProps.dreamProps,
+        userProps: nextProps.userProps, 
+        storeProps: nextProps.storeProps 
+      };
+   }
+   else return null;
+ }
+
+
   render() {
-    console.log('hi?', this.props.userProps.detailedProps);
+    console.log("Props:", this.props)
+    
+    const { dreamProps, userProps, storeProps } = this.props;
+    console.log("Dreams: ", dreamProps);
+    console.log("User: ", userProps);
+    console.log("Store: ", storeProps)
     return (
       <div className="Account">
         <div className='userStore'>
           <div className='user'>
-            User Details
+            <Link to={`/users/${localStorage.getItem('user_id')}/userInfo`}>User Details {localStorage.getItem('user_id')}</Link>
           </div>
           <div className='store'>
-            Store Details
+            <Link to={`/users/${localStorage.getItem('user_id')}/storeInfo`}>Store Details
+            </Link>
           </div>
         </div>
-        <Toggle />
+        <OrderHistory />
       </div>
     );
   }
 }
 
 function mapStateToProps(state) {
+  // console.log('state', state)
   return {
-    userProps: state
+    userProps: state.currentUser,
+    storeProps: state.currentStore,
+    dreamProps: state.currentStoreDreams
   };
 }
 
-export default connect (mapStateToProps)(Account);
+export default connect(mapStateToProps)(Account);

@@ -32,9 +32,10 @@ class Login extends Component {
     const user = this.props.userProps.filter(x => x.email === this.state.email && x.password === this.state.password)
     if (user.length === 1) {
       this.setState({loggedIn: true})
-      console.log('user found, loggedIn');
       localStorage.setItem('loggedIn', true);
       localStorage.setItem('user_id', user[0].id)
+      localStorage.setItem('has_store', user[0].has_store)
+      console.log('hitting?')
     } else {
       console.log('email and password do not match');
     };
@@ -43,9 +44,7 @@ class Login extends Component {
   render() {
     if (this.state.loggedIn) {
       return (
-        <Redirect to={{
-          pathname: '/'
-        }} />
+        <Redirect to={{pathname: `/users/${localStorage.getItem('user_id')}/userInfo`}} />
       );
     } else {
       return (
