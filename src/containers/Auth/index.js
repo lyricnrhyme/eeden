@@ -44,7 +44,7 @@ class Login extends Component {
     if (this.state.loggedIn) {
       return (
         <Redirect to={{
-          pathname: '/'
+          pathname: '/users'
         }} />
       );
     } else {

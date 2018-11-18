@@ -9,22 +9,24 @@ const passport = require('passport');
 const routes = require('./routes/api/index');
 const auth = require('./routes/auth/auth');
 const methodOverride = require('method-override');
-const { methodSwitch } = require('./helpers/serverHelper');
+// const { methodSwitch } = require('./helpers/serverHelper');
 
 app.use(cors())
 
 app.use(session({
-  store: new Redis(),
-  secret: 'lollerkates',
+  store: new Redis({url: 'redis://redis-session-store:6379', logErrors: true}),
+  secret: 'felixTheBat',
   resave: false,
   saveUninitialized: true
 }));
 
 app.use(flash());
 
-app.use(methodOverride((req, res) => {
-  return methodSwitch(req, res );
-}));
+app.use(methodOverride('_method'));
+
+// app.use(methodOverride((req, res) => {
+//   return methodSwitch(req, res );
+// }));
 
 app.use(passport.initialize());
 app.use(passport.session());
@@ -33,20 +35,14 @@ app.use('/', auth)
 app.use('/api', routes);
 
 app.set('trust proxy', 1)
-app.use(session({
-  secret: 'dreamy cat',
-  resave: true,
-  saveUninitialized: true,
-  cookie: { secure: true }
-}))
 
-app.get('/', (req, res) => {
-  res.send('<p>Test EC2 Change</p>')
-})
+// app.get('/', (req, res) => {
+//   res.send('<p>Test EC2 Change</p>')
+// })
 
-app.get('*', (req, res) => {
-  res.status(404).render('invalid');
-});
+// app.get('*', (req, res) => {
+//   res.status(404).render('invalid');
+// });
 
 app.listen(PORT, () => {
   console.log(`Listening on ${PORT}...`)

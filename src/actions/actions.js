@@ -17,7 +17,7 @@ export const ADD_STORE = 'ADD_STORE';
 //~~~~~~~~~~ USER ACTIONS ~~~~~~~~~~//
 export const getAllUsers = () => {
     return dispatch => {
-        axios.get('http://54.184.208.39:8080/api/users')
+        axios.get('http://54.200.102.24:8080/api/users')
             .then(items => {
                 // console.log('hello?', items);
                 dispatch({

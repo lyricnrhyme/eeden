@@ -1,144 +1,131 @@
-const express = require('express')
+const User = require('../../db/models/Users');
+const express = require('express');
 const router = express.Router();
 const passport = require('passport');
 const LocalStrategy = require('passport-local');
-const User = require('../../db/models/Users');
 const bcrypt = require('bcrypt');
-const saltedRounds = 12;
+const bp = require('body-parser');
 
-passport.serializeUser((users, done) => {
-  return done(null, {
-    id: users.id,
-    email: users.email.toLowerCase()
-  });
-});
+router.use(bp.json());
+router.use(bp.urlencoded({ extended: true }));
 
-passport.deserializeUser((users, done) => {
-  new Users({ id: users.id }).fetch()
-    .then(user => {
-      if (!user) {
-        return done(null, false);
-      } else {
-        users = users.toJSON();
-        return done(null, {
-          id: users.userid,
-          email: users.email.toLowerCase()
-        });
-      }
-    })
-    .catch(err => {
-      console.log('err', err);
-      return done(err);
-    });
-});
-
-passport.use(new LocalStrategy(function (email, password, done) {
-  return new Users({ email: email }).fetch()
-    .then(users => {
-      if (users === null) {
-        return done(null, false, { message: 'bad email or password' });
-      } else {
-        users = users.toJSON();
-        bcrypt.compare(password, users.password)
-          .then(samePassword => {
-            if (samePassword) { return done(null, users); }
-            else {
-              return done(null, false, { message: 'bad email or password' });
-            }
-          })
-      }
-    })
-    .catch(err => {
-      return done(err);
-    });
-}));
-
-router.get('/', (req, res) => {
-  res.redirect('/');
-});
-
-router.route('/register')
-  .get((req, res) => {
-    res.render('../views/authpages/register', {
-      message: req.flash('registerError'),
-      name: req.flash('name'),
-      email: req.flash('email')
-    });
+// upon successful login, get user from database, save
+// user data into session, which is in Redis.
+passport.serializeUser( (users, done) => {
+  console.log('\n00 - Serializing users\n', users)
+  done(null, {
+    email: users.email,
+    name: users.name,
+    zomg: 'randomData'
   })
+})
 
-  .post((req, res) => {
-    let {
-      username,
-      email
-    } = req.body;
-    req.flash('name', name);
-    req.flash('email', email);
-    if (username.length < 1) {
-      req.flash('registerError', 'username required for registration')
-      return res.redirect('/register');
-    } else if (req.body.password.length < 1) {
-      req.flash('registerError', 'password required for registration');
-      return res.redirect('/register');
-    } else if (req.body.name.length < 1) {
-      req.flash('registrationError', 'name required for registration');
-    } else if (req.body.email.length < 1) {
-      req.flash('registrationError', 'email required for registration')
-    }
-    bcrypt.genSalt(saltedRounds, (err, salt) => {
-      if (err) { return res.status(500); }
-      bcrypt.hash(req.body.password, salt, (err, hashedPassword) => {
-        if (err) { return res.status(500); }
-        return new User({
-          name: req.body.name.toLowerCase(),
-          password: hashedPassword,
-          email: email
-        })
-          .save()
-          .then((result) => {
-            req.flash('msg1', 'successfully registered, please login');
-            res.redirect('/login');
-          })
-          .catch(err => {
-            console.log(err);
-            req.flash('msg2', 'username already exists');
-            return res.render('../views/authpages/register', {
-              message: req.flash('msg2')
-            });
-          });
-      })
+
+// upon successful authorized request, we will take some information
+// from the session, for example userId, to retrieve
+// the user record from db, and put it into req.user
+passport.deserializeUser( (users, done) => {
+  console.log('\n01 - Deserializing User\n', users)
+  User
+    .where({email: users.email})
+    .fetch()
+    .then( users => {
+      users = users.toJSON();
+      done(null, users)
     })
-  });
+    .catch( err => {
+      console.log('err', err)
+    })
+})
 
-router.post('/login', (req, res, next) => {
-  req.body.username = req.body.username.toLowerCase();
-  passport.authenticate('local', (err, user, info) => {
-    if (err) {
-      req.flash('error', `wrong username or password`);
-      return res.redirect('/login')
-    } else if (!user) {
-      req.flash('error', `wrong username or password`);
-      return res.redirect('/login')
-    } else if (req.body.username < 1 || req.body.password.length < 1) {
-      req.flash('error', `wrong username or password`);
-      return res.redirect('/login')
-    }
-    req.login(user, (err) => {
-      if (err) { return next(err); }
-      return res.redirect('/register');
-    });
-  })(req, res, next);
-});
+passport.use(new LocalStrategy({usernameField : 'email'}, (email, password, done) => {
+  console.log('\n02 - local is being called\n', email)
+  User
+    .where({email})
+    .fetch()
+    .then( users => {
+      console.log('\nusers in local strategy\n', users)
+      users = users.toJSON();
+      bcrypt.compare(password, users.password)
+        .then( res => {
+          if (res) {
+            done(null, users)
+          } else {
+            done(null, false)
+          }
+        })
+    })
+    .catch( err => {
+      done(null, false)
+    })
+}))
 
+router.post('/register', (req, res) => {
+  console.log('\nthis is the req.body\n', req.body)
+  const {name, email, password} = req.body;
+  bcrypt.hash(password, 10)
+    .then( hashedPassword => {
+      console.log('\nafter hash received\n', hashedPassword)
+      console.log('\nemail\n', email)
+      return User
+        .forge({
+          name: req.body.name,
+          email: req.body.email,
+          password: hashedPassword
+        }) // Need to reference db columns here
+              .save()
+    })
+    .then( result => {
+      if (result) {
+        console.log('New User Created\n', result)
+        res.send('New User Created')
+      } else {
+        res.send('Error Making User!!!')
+      }
+    })
+    .catch( err=> {
+      console.log('error', err)
+      res.send(err)
+    })
+})
 
-router.get('/login', (req, res) => {
-  return res.render('../src/containers/auth/index.js', {
-    message: req.flash('error')
-  });
-});
+router.post('/login', passport.authenticate('local', {
+  successRedirect: './',
+  failureRedirect: './login',
+  failureFlash: true })
+)
 
-router.get('/logout', (req, res) => {
-  req.logout();
-  res.render('./authpages/logout')
-});
+router.post('/logout', (req, res) => {
+  req.logout()
+  console.log('User logged out');
+  res.redirect('/')
 
-module.exports = router;
+  // res.send('loggedout')
+})
+
+router.get('/',isAuthenticated, (req, res) => {
+  console.log('User Is Authenticated!!!')
+  console.log('THIS IS THE REQ.SESSION!!!!!!!', req.session)
+  // email: users.email,
+  // name: users.name
+  
+  console.log('THIS IS ALL THE USERS', req.users)
+  console.log('THIS IS THE NAME OF USER', req.session.passport.users.name)
+  console.log('THIS IS THE EMAIL', req.session.passport.users.email)
+  
+  res.render('./users', {
+    email: req.session.passport.email,
+    name: req.session.passport.users.name
+
+  })
+})
+
+function isAuthenticated(req, res, next) {
+  if (req.isAuthenticated()) {
+    next()
+  } else {
+    res.redirect('/')
+  }
+}
+
+module.exports = router
