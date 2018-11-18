@@ -31,8 +31,9 @@ class CreateDream extends Component {
 
   render() {
     return (
-      <div className="CreateDreamForm">
-        <h1>Create Dream</h1>
+      <div className="form-container">
+      <div className="form">
+        <h2>Create Dream</h2>
 
         <form onSubmit={this.handleSubmit}>
 
@@ -68,10 +69,9 @@ class CreateDream extends Component {
                 <input onChange={this.handleChange} name="store_id" type="number" />
           </label>
           <br />
-
-
-          <input type="submit" value="Submit" />
+          <button type="submit" value="Submit">Submit</button>
         </form>
+      </div>
 
 
 

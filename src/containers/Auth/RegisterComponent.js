@@ -51,8 +51,8 @@ class Register extends Component {
       )
     } else {
       return (
-        <div className="auth">
-          <div className="login">
+        <div className="form-container">
+          <div className="form">
           <h2>Register</h2>
             <form className='Register' onSubmit={this.handleSubmit}>
             <label>Email: </label>
