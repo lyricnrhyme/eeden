@@ -3,8 +3,8 @@ import './styles.css';
 
 class MoreFromStore extends Component {
   render() {
-    const store = this.props.info
-    console.log("store", store);
+    // const store = this.props.info
+    console.log("store", this);
     return (
       <div className="morefromstore">
         <h2>More fro</h2>

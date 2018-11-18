@@ -22,16 +22,17 @@ class TopDreams extends Component {
     // console.log('COMPONENT MOUNTED :)');
     this.props.dispatch(getAllDreams());
   }
-
-
   render() {
+    // console.log(this.props.dreamProps)
     const { dreamProps } = this.props;
+    const topdreams = this.props.dreamProps.slice(0, 6)
+    // console.log(topdreams)
 
 
     return (
       <div className="topdreams">
         <h2>Recommended Dreams</h2>
-        <DreamList dreamProps={dreamProps} />
+        <DreamList dreamProps={topdreams} />
       </div>
     );
   }
