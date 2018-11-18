@@ -8,6 +8,7 @@ export const GET_ALL_DREAMS = 'GET_ALL_DREAMS';
 export const ADD_DREAM = 'ADD_DREAM';
 export const GET_DREAM_BY_ID = 'GET_DREAM_BY_ID';
 export const GET_DREAM_BY_STORE_ID = 'GET_DREAM_BY_STORE_ID';
+export const GET_DREAM_BY_USER_ID = 'GET_DREAM_BY_USER_ID';
 export const GET_ALL_STORES = 'GET_ALL_STORES';
 export const GET_STORE_BY_ID = 'GET_STORE_BY_ID';
 export const GET_STORE_BY_USER_ID = 'GET_STORE_BY_USER_ID';
@@ -41,7 +42,7 @@ export const getUser = (id) => {
         // axios.get('http://34.219.218.138:8080/api/dreams/' + id)
         axios.get(`http://54.200.102.24:8080/api/users/${id}`)
             .then(response => {
-                console.log('ACTION USER BY ID DATA: ', response.data)
+                // console.log('ACTION USER BY ID DATA: ', response.data)
                 dispatch({ type: GET_USER_BY_ID, payload: response.data })
             })
             .catch(err => {
@@ -121,6 +122,27 @@ export const getDreamByStore = (id) => {
     }
 }
 
+//~~~ REQUEST TO GET A DREAM BY STORE ID ~~~//
+export const getDreamsByUser = (id) => {
+    console.log('ACTION GET DREAM BY USER ID FIRING', id)
+
+    return dispatch => {
+        axios.get(`http://54.200.102.24:8080/api/dreams/`)
+
+            .then(response => {
+                const dreams = response.data.filter( dream => {
+                    // console.log('inception', dream)
+                   return id == dream.user_id.id
+                })
+                // console.log('ACTION DREAM BY ID DATA: ', dreams)
+                dispatch({ type: GET_DREAM_BY_USER_ID, payload: dreams })
+            })
+            .catch(err => {
+                console.log('ERROR IN GETTING INDIVIDUAL DREAM')
+            })
+    }
+}
+
 //~~~ REQUEST TO POST A DREAM ~~~//
 export const addDream = (dream) => {
     console.log('ACTION ADD DREAM HITTING')
@@ -191,7 +213,7 @@ export const addStore = (store) => {
 
 //~~~ REQUEST TO GET A STORE BY USER ID ~~~//
 export const getStoreByUser = (id) => {
-    console.log('ACTION GET BY ID FIRING', id)
+    // console.log('ACTION GET BY ID FIRING', id)
 
     return dispatch => {
         // axios.get('http://34.219.218.138:8080/api/dreams/' + id)
@@ -202,7 +224,7 @@ export const getStoreByUser = (id) => {
                     // console.log('inception', dream)
                    return id == store.created_by.id
                 })
-                // console.log('ACTION DREAM BY ID DATA: ', dreams)
+                // console.log('ACTION DREAM BY ID DATA: ', stores[0])
                 dispatch({ type: GET_STORE_BY_USER_ID, payload: stores })
             })
             .catch(err => {
