@@ -12,8 +12,8 @@ import StoreDetail from '../StoreDetail/storeDetail.jsx';
 import StoresListing from '../StoresListing/storeListing';
 import CreateDreamForm from '../CreateDreamForm/CreateDreamComponent.jsx';
 import CreateStoreForm from '../CreateStoreForm/CreateStoreComponent.jsx';
-import EditDreamForm from '../EditDreamForm/EditDreamFormComponent';
-import EditStoreForm from '../EditStoreForm/EditStoreFormComponent';
+import EditDreamForm from '../EditDreamForm/EditDreamComponent.jsx';
+import EditStoreForm from '../EditStoreForm/EditStoreComponent.jsx';
 import Login from '../Auth';
 import Register from '../Auth/RegisterComponent';
 

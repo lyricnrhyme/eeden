@@ -5,7 +5,7 @@ import { DreamList } from '../../components/DreamComponent'
 
 //~~~ Redux ~~~//
 import { connect } from 'react-redux';
-import { getAllDreams } from '../../actions/actions.js'
+import { getAllDreams, deleteDream } from '../../actions/actions.js'
 
 
 const mapStateToProps = (state) => {
@@ -29,6 +29,12 @@ class DreamsListing extends Component {
   //   this.props.dispatch(getDream(id))
   // }
 
+  deleteFromDB = (id) => {
+    console.log("DELETE: ", id);
+    this.props.dispatch(deleteDream(id))
+    window.alert("are you sure?");
+  }
+
 
 
   render() {
@@ -37,7 +43,7 @@ class DreamsListing extends Component {
 
     return (
       <div className="dreamslisting" >
-        <DreamList dreamProps={dreamProps} />
+        <DreamList dreamProps={dreamProps} deleteDream={this.deleteFromDB} />
 
         {/* <DreamList dreamProps={dreamProps} getDream={this.getDreamById} /> */}
       </div >

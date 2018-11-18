@@ -7,10 +7,14 @@ export const GET_USER_BY_ID = 'GET_USER_BY_ID';
 export const GET_ALL_DREAMS = 'GET_ALL_DREAMS';
 export const ADD_DREAM = 'ADD_DREAM';
 export const GET_DREAM_BY_ID = 'GET_DREAM_BY_ID';
+export const EDIT_DREAM = 'EDIT_DREAM';
+export const DELETE_DREAM = 'DELETE_DREAM';
+
 
 export const GET_ALL_STORES = 'GET_ALL_STORES';
 export const GET_STORE_BY_ID = 'GET_STORE_BY_ID';
 export const ADD_STORE = 'ADD_STORE';
+export const EDIT_STORE = 'EDIT_STORE';
 
 
 
@@ -36,7 +40,7 @@ export const getUser = (id) => {
         // axios.get('http://34.219.218.138:8080/api/dreams/' + id)
         axios.get(`http://54.200.102.24:8080/api/users/${id}`)
             .then(response => {
-                console.log('ACTION USER BY ID DATA: ', response.data)
+                // console.log('ACTION USER BY ID DATA: ', response.data)
                 dispatch({ type: GET_USER_BY_ID, payload: response.data })
             })
             .catch(err => {
@@ -94,20 +98,54 @@ export const getDream = (id) => {
     }
 }
 
-//~~~ REQUEST TO POST A DREAM ~~~//
-export const addDream = (dream) => {
-    console.log('ACTION ADD DREAM HITTING')
-    console.log('ACTION DREAM PARAM: ', dream);
+//~~~ REQUEST TO EDIT A DREAM ~~~//
+export const editDream = (id, data) => {
+    console.log('ACTION EDIT DREAM FIRED ;)')
+    console.log("object:", data);
 
     return dispatch => {
-        axios.post('http://54.200.102.24:8080/api/dreams/new_dream')
+        axios.put(`http://54.200.102.24:8080/api/dreams/edit_dream/${id}`, data)
             .then(response => {
-                console.log('IS THIS ANYTHNG? ', dream);
-                console.log('ADD DREAM RESPONSE: ', response.data);
-                dispatch({ ADD_DREAM, payload: response.data })
+                console.log('ACTION EDIT DATA: ', response.data)
+                dispatch({ type: EDIT_DREAM, payload: response.data })
             })
             .catch(err => {
-                console.log('ERROR in ACTION ADD DREAM')
+                console.log('ERROR IN EDIT DREAM', err);
+            })
+    }
+}
+
+//~~~ REQUEST TO POST A DREAM ~~~//
+export const addDream = (dream) => {
+    // console.log('ACTION ADD DREAM HITTING')
+    // console.log('ACTION DREAM PARAM: ', dream);
+
+    return dispatch => {
+        axios.post('http://54.200.102.24:8080/api/dreams/new_dream', dream)
+            .then(response => {
+                // console.log('ADD DREAM RESPONSE: ', response.data);
+                dispatch({ type: ADD_DREAM, payload: response.data })
+            })
+            .catch(err => {
+                console.log('ERROR in ACTION ADD DREAM ', err)
+            })
+    }
+}
+
+//~~~ REQUEST TO DELETE A DREAM ~~~//
+export const deleteDream = (id) => {
+    console.log('ACTION DELETE DREAM HIT');
+    console.log("DATA: ", id);
+
+    return dispatch => {
+        console.log("HITTING???");
+        axios.delete('http://54.200.102.24:8080/api/dreams/delete_dream', { data: { id } })
+            .then(response => {
+                console.log("response: ", response.data);
+                dispatch({ type: DELETE_DREAM, payload: id })
+            })
+            .catch(err => {
+                console.log('ERROR IN DELETE ', err)
             })
     }
 }
@@ -146,14 +184,30 @@ export const getStore = (id) => {
     }
 }
 
+//~~~ REQUEST TO EDIT A STORE ~~~//
+export const editStore = (id, data) => {
+    console.log('ACTION EDIT STORE FIRED ;)')
+
+    return dispatch => {
+        axios.put(`http://54.200.102.24:8080/api/stores/edit_store/${id}`, data)
+            .then(response => {
+                console.log('ACTION EDIT DATA: ', response.data)
+                dispatch({ type: EDIT_STORE, payload: response.data })
+            })
+            .catch(err => {
+                console.log('ERROR IN EDIT STORE', err);
+            })
+    }
+}
+
 //~~~ REQUEST TO ADD A NEW STORE ~~~//
 export const addStore = (store) => {
-    console.log('ACTION ADD STORE FIRED');
-    console.log("ACTION STORE PARAM: ", store)
+    // console.log('ACTION ADD STORE FIRED');
+    // console.log("ACTION STORE PARAM: ", store)
     return dispatch => {
         axios.post("http://54.200.102.24:8080/api/stores/create_store", store)
             .then(response => {
-                console.log('ADD STORE RESPONSE: ', response.data)
+                // console.log('ADD STORE RESPONSE: ', response.data)
                 dispatch({ type: ADD_STORE, payload: response.data })
             })
             .catch(err => {

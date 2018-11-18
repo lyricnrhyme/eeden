@@ -8,34 +8,34 @@ router.use(bp.json());
 router.use(bp.urlencoded({ extended: true }));
 
 router.get('/', (req, res) => {
-    Dreams
-    .fetchAll({withRelated: ["store_id", "user_id"]})
+  Dreams
+    .fetchAll({ withRelated: ["store_id", "user_id"] })
     .then(dreamsList => {
-    res.json(dreamsList.serialize())
-    console.log('\nServer: List Of Dreams: \n', dreamsList)
+      res.json(dreamsList.serialize())
+      console.log('\nServer: List Of Dreams: \n', dreamsList)
     })
     .catch(err => {
-    console.log('err: ', err)
-    res.json('err', err)
+      console.log('err: ', err)
+      res.json('err', err)
     })
 })
 
 router.get('/:id', (req, res) => {
 
-    const { id } = req.params;
-  
-    Dreams
-      .where("id", id)
-      .fetchAll({withRelated: ["store_id", "user_id"]})
-      .then(dreamId => {
-        console.log("\nServer: Display By Dream ID\n", dreamId);
-        res.json(dreamId);
-      })
-      .catch(err => {
-        console.log('err: ', err);
-        res.json('err', err)
-      })
-  })
+  const { id } = req.params;
+
+  Dreams
+    .where("id", id)
+    .fetchAll({ withRelated: ["store_id", "user_id"] })
+    .then(dreamId => {
+      console.log("\nServer: Display By Dream ID\n", dreamId);
+      res.json(dreamId);
+    })
+    .catch(err => {
+      console.log('err: ', err);
+      res.json('err', err)
+    })
+})
 
 // Create New Dream
 router.post('/new_dream', (req, res) => {
@@ -55,7 +55,7 @@ router.post('/new_dream', (req, res) => {
     .save()
     .then(() => {
       return Dreams
-      .fetchAll({withRelated: ["user_id", "store_id"]})
+        .fetchAll({ withRelated: ["user_id", "store_id"] })
         .then(newdream => {
           res.json(newdream.serialize());
         })
@@ -68,7 +68,7 @@ router.post('/new_dream', (req, res) => {
       console.log("err: ", err);
       res.json("err", err);
     });
-  })
+})
 
 // Edit Dream
 router.put('/edit_dream/:id', (req, res) => {
@@ -86,12 +86,12 @@ router.put('/edit_dream/:id', (req, res) => {
 
   Dreams
     .where('id', id)
-    .fetchAll({withRelated: ["user_id", "store_id"]})
+    .fetchAll({ withRelated: ["user_id", "store_id"] })
     .then(dreamUpdate => {
       console.log("dreamUpdate: ", dreamUpdate);
       dreamUpdate.save(updatedream);
       res.json(dreamUpdate);
-      return null; 
+      return null;
       // returning null to resolve warning "Warning: a promise was created in a handler but was not returned from it" 
       // source: https://github.com/sequelize/sequelize/issues/4883,
       // source: https://stackoverflow.com/questions/34370957/bluebird-warning-a-promise-was-created-in-a-handler-but-was-not-returned-from-i
@@ -100,7 +100,7 @@ router.put('/edit_dream/:id', (req, res) => {
       console.log("err: ", err);
       res.json('err', err)
     })
-})  
+})
 
 // Delete Dream
 router.delete('/delete_dream', (req, res) => {
@@ -117,6 +117,6 @@ router.delete('/delete_dream', (req, res) => {
       console.log('err: ', err)
       res.json('err', err)
     })
-})  
+})
 
 module.exports = router;
