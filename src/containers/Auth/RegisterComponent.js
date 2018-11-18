@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { getAllUsers } from '../../actions/actions';
+import { getAllUsers, addUser } from '../../actions/actions';
 
 class Register extends Component {
   constructor(props) {
@@ -12,7 +12,6 @@ class Register extends Component {
       email: '',
       password: '',
       name: '',
-      registered: false
     }
   }
 
@@ -26,6 +25,7 @@ class Register extends Component {
     this.setState({
       [name]: value
     })
+    console.log('hi', this.props)
   }
 
   handleSubmit = event => {
@@ -34,8 +34,10 @@ class Register extends Component {
     if (newUser.length === 1) {
       console.log('email already exists')
     } else {
+      this.props.dispatch(addUser(this.state))
       this.setState({registered: true})
       console.log('registered!')
+      console.log('hello?', this.props.userProps);
     };
   }
 
@@ -43,7 +45,7 @@ class Register extends Component {
     if (this.state.registered) {
       return (
         <Redirect to={{
-          pathname: '/',
+          pathname: `/users`,
           state: {
             loggedIn: true
           }
