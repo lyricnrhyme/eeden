@@ -35,9 +35,6 @@ class DreamDetail extends Component {
     // console.log('PROPS IN RENDER DREAMDTEAIL', this.props)
     const { dreamProps } = this.props;
     const { featured_video, created_by } = dreamProps
-    // const dream = dreamProps[0];
-    // const { featured_video, created_by } = dreamProps
-
     console.log("Dream info", dreamProps)
     return (
       <div className="dreamdetail">

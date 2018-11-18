@@ -3,10 +3,17 @@ import "./styles.css"
 
 
 export const StoreInfo = (props) => {
-    console.log('STORE COMPONENT PROS: ', props);
+    // console.log('STORE COMPONENT PROS: ', props.storeProps);
     
 
-  return <div>{props.storeProps.title}</div>
+  return <div className="storeinfo">
+      <div className="storename">
+        <h1>{ props.storeProps.title }</h1>
+      </div>
+      <div className="storedescription">
+        { props.storeProps.description }
+      </div>
+    </div>
 }
 
 // StoreInfo.defaultProps = {

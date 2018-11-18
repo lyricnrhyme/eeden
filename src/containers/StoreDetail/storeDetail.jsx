@@ -1,16 +1,18 @@
 import React, { Component } from 'react';
 import './styles.css';
 
-import { StoreInfo } from '../../components/StoreInfoComponent'
+import { StoreInfo } from '../../components/StoreInfoComponent';
+import StoreInventory from './StoreInventoryComponent';
 
 //~~~ Redux ~~~//
 import { connect } from 'react-redux';
-import { getStore } from '../../actions/actions'
+import { getStore, getDreamByStore } from '../../actions/actions'
 
 const mapStateToProps = state => {
-  console.log("state", state)
+  // console.log("state", state)
   return {
-    storeProps: state.detailedProps
+    storeProps: state.detailedProps,
+    dreams: state.currentStoreDreams
   }
 }
 
@@ -27,21 +29,22 @@ class StoreDetail extends Component {
   componentDidMount() {
     let storeId = this.props.match.params.store_id;
     this.props.dispatch(getStore(storeId));
+    this.props.dispatch(getDreamByStore(storeId))
   }
 
 
-
-
-
   render() {
-    const { storeProps } = this.props;
-    console.log("storedetail- storeProps", storeProps)
+    // console.log("Data", this.props)
+    const { storeProps, dreams } = this.props;
     return (
-      <div className="StoreDetail">
+      <div className="storedetail">
         <div className="store-banner">
-          <StoreInfo storeProps={storeProps} />
+          <div className="vertcenter">
+            <StoreInfo storeProps={storeProps} />
+          </div>
         </div>
         <div className="store-inventory">
+          <StoreInventory dreams={dreams} />
         </div>
       </div>
     );
