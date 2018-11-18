@@ -96,7 +96,7 @@ export const getDream = (id) => {
 
 //~~~ REQUEST TO GET A DREAM BY STORE ID ~~~//
 export const getDreamByStore = (id) => {
-    console.log('ACTION GET BY ID FIRING', id)
+    // console.log('ACTION GET BY ID FIRING', id)
 
     return dispatch => {
         // axios.get('http://34.219.218.138:8080/api/dreams/' + id)
