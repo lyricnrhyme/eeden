@@ -56,7 +56,7 @@ export const addUser = (user) => {
     console.log('ACTION ADD HITTING')
 
     return dispatch => {
-        axios.post('http://54.200.102.24:8080/api/users/createnew', user)
+        axios.post('http://54.200.102.24:8080/users/createnew', user)
             .then(response => {
                 console.log('new user', user);
                 dispatch({ type: ADD_USER, payload: response.data })

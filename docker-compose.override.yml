@@ -9,6 +9,8 @@ services:
     container_name: eeden
     volumes:
       - ".:/app/:rw"
+      - "node-modules-volume:/app/node_modules"
+
     env_file: .env
     environment:
       NODE_ENV: development
@@ -39,5 +41,6 @@ services:
 volumes: 
   pg-data-volume:
   redis-data-volume:
+  node-modules-volume:
 networks:
   my-app-network:

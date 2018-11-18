@@ -38,6 +38,7 @@ class Register extends Component {
       this.setState({registered: true})
       console.log('registered!')
       console.log('hello?', this.props.userProps);
+      localStorage.setItem('loggedIn', true);
     };
   }
 
