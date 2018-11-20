@@ -29,17 +29,19 @@ class DreamDetail extends Component {
   componentDidMount() {
     let dreamId = this.props.match.params.dreams_id;
     this.props.dispatch(getDream(dreamId));
-    console.log("props",this.props)
+    // console.log("props", this.props)
   }
 
   render() {
-    console.log('PROPS IN RENDER DREAMDTEAIL', this.props)
+    // console.log('PROPS IN RENDER DREAMDTEAIL', this.props)
     const { dreamProps } = this.props;
-    const { featured_video, created_by } = dreamProps
-    console.log("Dream info", created_by)
+    // const { featured_video, created_by } = dreamProps
+
+    // console.log("Dream info", created_by)
     return (
       <div className="dreamdetail">
-        <FeaturedProductVideo video={featured_video} />
+        {/* <FeaturedProductVideo video={featured_video} /> */}
+        <FeaturedProductVideo video={dreamProps} />
         <DreamInfo info={dreamProps} />
         {/* DeScope for MVP <MoreFromStore info={created_by} /> */}
       </div>
