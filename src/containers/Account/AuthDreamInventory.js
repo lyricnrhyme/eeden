@@ -3,6 +3,8 @@ import UserInfoComponent from './UserInfoComponent';
 import StoreInventoryComponent from './StoreInventoryComponent';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { deleteDream } from '../../actions/actions';
 
 class AuthDreamInventory extends Component {
   constructor(props) {
@@ -10,8 +12,14 @@ class AuthDreamInventory extends Component {
     this.state = {
 
     }
+    this.deleteDream = deleteDream.bind(this);
   }
 
+  deleteDream = (id) => {
+    console.log('DELETE: ', id);
+    this.props.dispatch(this.deleteDream(id));
+    window.alert('are you sure?');
+  }
   
   render() {
     console.log(this.props, 'wya');
@@ -40,5 +48,7 @@ class AuthDreamInventory extends Component {
   }
   }
 }
+
+
 
 export default AuthDreamInventory;
