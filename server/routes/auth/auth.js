@@ -113,11 +113,6 @@ router.get('/',isAuthenticated, (req, res) => {
   console.log('THIS IS THE NAME OF USER', req.session.passport.users.name)
   console.log('THIS IS THE EMAIL', req.session.passport.users.email)
   
-  res.render('/api/users', {
-    email: req.session.passport.email,
-    name: req.session.passport.users.name
-
-  })
 })
 
 //authenticates user for every route past login
