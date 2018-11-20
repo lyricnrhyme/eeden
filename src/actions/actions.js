@@ -13,6 +13,8 @@ export const GET_ALL_STORES = 'GET_ALL_STORES';
 export const GET_STORE_BY_ID = 'GET_STORE_BY_ID';
 export const GET_STORE_BY_USER_ID = 'GET_STORE_BY_USER_ID';
 export const ADD_STORE = 'ADD_STORE';
+export const EDIT_DREAM = 'EDIT_DREAM';
+export const DELETE_DREAM = 'DELETE_DREAM';
 
 export const GET_ALL_PURCHASES = 'GET_ALL_PURCHASES';
 export const GET_PURCHASE_BY_ID = 'GET_PURCHASE_BY_ID';
@@ -158,6 +160,41 @@ export const addDream = (dream) => {
             })
             .catch(err => {
                 console.log('ERROR in ACTION ADD DREAM')
+            })
+    }
+}
+
+//~~~ REQUEST TO EDIT A DREAM ~~~//
+export const editDream = (id, data) => {
+    console.log('ACTION EDIT DREAM FIRED ;)')
+    console.log("object:", data);
+
+    return dispatch => {
+        axios.put(`http://54.200.102.24:8080/api/dreams/edit_dream/${id}`, data)
+            .then(response => {
+                console.log('ACTION EDIT DATA: ', response.data)
+                dispatch({ type: EDIT_DREAM, payload: response.data })
+            })
+            .catch(err => {
+                console.log('ERROR IN EDIT DREAM', err);
+            })
+    }
+}
+
+//~~~ REQUEST TO DELETE A DREAM ~~~//
+export const deleteDream = (id) => {
+    console.log('ACTION DELETE DREAM HIT');
+    console.log("DATA: ", id);
+
+    return dispatch => {
+        console.log("HITTING???");
+        axios.delete('http://54.200.102.24:8080/api/dreams/delete_dream', { data: { id } })
+            .then(response => {
+                console.log("response: ", response.data);
+                dispatch({ type: DELETE_DREAM, payload: id })
+            })
+            .catch(err => {
+                console.log('ERROR IN DELETE ', err)
             })
     }
 }
