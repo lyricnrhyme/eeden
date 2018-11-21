@@ -19,7 +19,7 @@ class StoresListing extends Component {
 
   // Lifecycle method
   componentDidMount() {
-    console.log('COMPONENT MOUNTED :)');
+    // console.log('COMPONENT MOUNTED :)');
     this.props.dispatch(getAllStores());
   }
 
@@ -32,7 +32,7 @@ class StoresListing extends Component {
 
   render() {
     const { storeProps } = this.props;
-    console.log('redux storeProps: ', { storeProps });
+    // console.log('redux storeProps: ', { storeProps });
 
     return (
       <div className="storeslisting" >

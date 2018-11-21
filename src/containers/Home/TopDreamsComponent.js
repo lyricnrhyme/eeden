@@ -24,7 +24,7 @@ class TopDreams extends Component {
   }
   render() {
     // console.log(this.props.dreamProps)
-    const { dreamProps } = this.props;
+    // const { dreamProps } = this.props;
     const topdreams = this.props.dreamProps.slice(0, 6)
     // console.log(topdreams)
 

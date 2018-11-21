@@ -18,7 +18,7 @@ class DreamsListing extends Component {
 
   // Lifecycle method
   componentDidMount() {
-    console.log('COMPONENT MOUNTED :)');
+    // console.log('COMPONENT MOUNTED :)');
     this.props.dispatch(getAllDreams());
 
   }
@@ -33,7 +33,7 @@ class DreamsListing extends Component {
 
   render() {
     const { dreamProps } = this.props;
-    console.log('redux dreamProps: ', { dreamProps });
+    // console.log('redux dreamProps: ', { dreamProps });
 
     return (
       <div className="dreamslisting" >

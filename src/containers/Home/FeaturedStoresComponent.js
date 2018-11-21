@@ -21,12 +21,11 @@ class FeaturedStores extends Component {
   }
 
   render() {
-    const featstores = this.props.storeProps.slice(0,3)
-    // console.log("FeatStores",featstores)
+    const featstores = this.props.storeProps.slice(0, 3)
     return (
       <div className="featuredstores">
         <h2>Featured Stores</h2>
-          <StoreList storeProps={featstores} /> 
+        <StoreList storeProps={featstores} />
       </div>
     );
   }

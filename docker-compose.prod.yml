@@ -1,12 +1,12 @@
 version: '3'
 services:
   eeden:
-    image: rcjmedia/eeden:${IMAGE_VERSION}
+    image: hkotak93/eeden:${IMAGE_VERSION}
     env_file: .env
     environment:
       NODE_ENV: production
     depends_on:
-      - db
+      - postgres-primary-db
       - redis-session-store
     command: ["node", "app.js"]
     container_name: eeden-prod
