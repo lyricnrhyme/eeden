@@ -99,10 +99,12 @@ router.post('/login',
     successRedirect: './',
     failureRedirect: './login',
     failureFlash: true }),
+
   function(req, res) {
-    console.log('User logged in');
     res.redirect('./');
+    return done(null, users);
   }
+  
 )
 
 router.post('/logout', (req, res) => {
