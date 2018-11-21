@@ -40,19 +40,51 @@ passport.deserializeUser( (users, done) => {
 
 passport.use(new LocalStrategy({usernameField : 'email'}, (email, password, done) => {
   console.log('\n02 - local is being called\n', email)
+  // User
+  //   .where({email})
+  //   .fetch()
+  //   .then( email, err => {
+  //     if(err) throw err;
+  //     if(!email){
+  //       return done(null, false, { message: 'Unknown User' });
+  //     }
+  //   })
+  // User
+  //   .comparePassword(password, users.password, function(err, isMatch){
+  //     if(err) throw err;
+  //     if(isMatch){
+  //       return done(null, users);
+  //     } else {
+  //       return done(null, false, { message: 'Invalid Password' });
+  //     }
+  //   })
   User
     .where({email})
     .fetch()
     .then( users => {
+      if(err) throw err;
+      if(!email){
+        return done(null, false, { message: 'Unknown User' });
+      }
       console.log('\nusers in local strategy\n', users)
       users = users.toJSON();
-      bcrypt.compare(password, users.password)
+      bcrypt.compare(password, users.password, function(err, isMatch){
+        if(err) throw err;
+        if(isMatch){
+          return done(null, users);
+        } else {
+          return done(null, false, { message: 'Invalid Password' });
+        }
+      })
         .then( res => {
           if (res) {
             done(null, users)
           } else {
-            done(null, false)
+            done(null, false, { message: 'Invalid Password' })
           }
+        })
+        .catch( err => {
+          res.json('error', err)
         })
     })
     .catch( err => {
@@ -73,12 +105,13 @@ router.post('/register', (req, res) => {
           email: req.body.email,
           password: hashedPassword
         })
-          .save()
+        .save()
     })
     .then( result => {
       if (result) {
         console.log('New User Created\n', result)
         res.send('New User Created')
+        res.redirect('/login')
       } else {
         res.send('Error Making User!!!')
       }
@@ -89,10 +122,14 @@ router.post('/register', (req, res) => {
     })
 })
 
-router.post('/login', passport.authenticate('local', {
-  successRedirect: './',
-  failureRedirect: './login',
-  failureFlash: true })
+router.post('/login', 
+  passport.authenticate('local', {
+    successRedirect: '/',
+    failureRedirect: '/login',
+    failureFlash: true }),
+  function(req, res) {
+    res.redirect('/');
+  }
 )
 
 router.post('/logout', (req, res) => {
@@ -103,15 +140,15 @@ router.post('/logout', (req, res) => {
   // res.send('loggedout')
 })
 
-router.get('/',isAuthenticated, (req, res) => {
+router.get('/', isAuthenticated, (req, res) => {
   console.log('User Is Authenticated!!!')
   console.log('THIS IS THE REQ.SESSION!!!!!!!', req.session)
-  // email: users.email,
-  // name: users.name
+  // let email = users.email
+  // let name = users.name
   
-  console.log('THIS IS ALL THE USERS', req.users)
-  console.log('THIS IS THE NAME OF USER', req.session.passport.users.name)
-  console.log('THIS IS THE EMAIL', req.session.passport.users.email)
+  // console.log('THIS IS ALL THE USERS', req.session.users.name)
+  // console.log('THIS IS THE NAME OF USER', req.session.passport.users.name)
+  // console.log('THIS IS THE EMAIL', req.session.passport.users.email)
   
 })
 
@@ -123,5 +160,24 @@ next();
     res.redirect('/');
   }
 };
+
+// //search user
+// function getUserByEmailAddress(email, callback) {
+//   let query = {email: email};
+//   User.findOne(query, callback)
+// };
+
+// //get user by ID
+// function getUserByID(id, callback) {
+//   User.findById(id, callback)
+// };
+
+// //compare password
+// function comparePassword(candidatePassword, hashedPassword, callback) {
+//   bcrypt.compare(candidatePassword, hashedPassword, function(err, isMatch){
+//     if(err) throw err;
+//     callback(null, isMatch);
+//   })
+// };
 
 module.exports = router
