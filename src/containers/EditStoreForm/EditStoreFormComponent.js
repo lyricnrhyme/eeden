@@ -1,36 +1,42 @@
 import React, { Component } from 'react';
-// import { Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 
 
 //~~~ Redux ~~~//
 import { connect } from 'react-redux';
-import { getDream, editDream } from '../../actions/actions'
+import { getStore, editStore } from '../../actions/actions'
 
 
-class EditDreamForm extends Component {
+
+// const mapStateToProps = state => {
+//   console.log("App State: ", state);
+//   console.log("STATE TO EDIT: ", state.detailedProps);
+//   return {
+//     storeProps: state.detailedProps
+//   }
+// }
+
+class EditStoreForm extends Component {
   constructor(props) {
     super(props)
 
     this.state = {
       title: null,
-      description: null,
-      price: null,
-      genre: null,
-      duration: null,
-      featured_video: null,
-      dream_images: null
+      description: null
     }
   }
 
   componentDidMount() {
-    let dreamId = this.props.match.params.dreams_id;
-    this.props.dispatch(getDream(dreamId));
+    let storeId = this.props.match.params.store_id;
+    this.props.dispatch(getStore(storeId));
   }
 
+
   handleSubmit = (event) => {
-    let dreamId = this.props.match.params.dream_id;
+    let storeId = this.props.match.params.store_id;
     event.preventDefault();
-    this.props.dispatch(editDream(dreamId, this.state))
+    this.props.dispatch(editStore(storeId, this.state))
+    this.setState({ edited: true })
   }
 
   handleChange = (event) => {
@@ -42,48 +48,38 @@ class EditDreamForm extends Component {
 
   render() {
 
-    return (
-      <div className="EditDreamForm">
-        <h1>Edit Dream</h1>
+    if (this.state.edited === true) {
+      return (
+        <Redirect to={"/stores"} />
+      )
+    } else {
+      return (
 
-        <form onSubmit={this.handleSubmit}>
+        <div className="EditStoreForm">
 
-          <label>Title:
-                  <input onChange={this.handleChange} name="title" type="text" />
-          </label>
-          <br />
-          <label>Description:
-                  <input onChange={this.handleChange} name="description" type="text" />
-          </label>
-          <br />
-          <label>Price:
-                  <input onChange={this.handleChange} name="price" type="number" />
-          </label>
-          <br />
-          <label>Genre:
-                  <input onChange={this.handleChange} name="genre" type="text" />
-          </label>
-          <br />
-          <label>Duration:
-                  <input onChange={this.handleChange} name="duration" type="number" />
-          </label>
-          <br />
-          <label>Featured Video:
-                  <input onChange={this.handleChange} name="featured_video" type="text" />
-          </label>
-          <br />
-          <label>Dream Preview Image:
-                  <input onChange={this.handleChange} name="dream_images" type="text" />
-          </label>
-          <br />
 
-          <input type="submit" value="Submit" />
-        </form>
-      </div>
-    );
+          <h1>Edit Store</h1>
+          <form onSubmit={this.handleSubmit}>
+
+            <label>Title:
+                <input onChange={this.handleChange} name="title" type="text" />
+            </label>
+            <br />
+            <label>Description:
+                <input onChange={this.handleChange} name="description" type="text" />
+            </label>
+            <br />
+            <input type="submit" value="Submit" />
+          </form>
+
+        </div>
+
+      );
+    }
+
+
   }
-
-
 }
 
-export default connect()(EditDreamForm);
+// export default connect(mapStateToProps)(EditStoreForm);
+export default connect()(EditStoreForm);

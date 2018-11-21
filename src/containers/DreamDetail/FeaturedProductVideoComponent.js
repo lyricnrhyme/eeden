@@ -7,8 +7,8 @@ class FeaturedProductVideo extends Component {
   render() {
     // console.log("video", this.props)
     // let video = this.props.video
-    const video = this.props.video
-    console.log("GET VIDEO", video);
+    // const video = this.props.video
+    // console.log("GET VIDEO", video);
 
     return (
       <div className="featuredproductvideo">
