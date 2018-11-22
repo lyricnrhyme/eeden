@@ -49,7 +49,7 @@ class Account extends Component {
           <h1>{userProps.name}</h1>
         </div>
         <div className="store-content">
-          <h2>{storeProps[0].title}</h2>
+          <h2>{storeProps.title}</h2>
         </div>
 
 
@@ -73,9 +73,16 @@ function mapStateToProps(state) {
   // console.log('state', state)
   return {
     userProps: state.currentUser,
-    storeProps: state.currentStore,
+    storeProps: state.currentStore[0],
     dreamProps: state.currentStoreDreams
   };
 }
 
 export default connect(mapStateToProps)(Account);
+
+Account.defaultProps = {
+  storeProps: {
+    id: null,
+    title: 'Test',
+  }
+}
