@@ -16,7 +16,7 @@ router.get('/', (req, res) => {
     })
     .catch(err => {
     console.log('err: ', err)
-    res.json('err', err)
+    res.json('err')
     })
 })
 
@@ -33,7 +33,7 @@ router.get('/:id', (req, res) => {
       })
       .catch(err => {
         console.log('err: ', err);
-        res.json('err', err)
+        res.json('err')
       })
   })
 
@@ -61,7 +61,7 @@ router.post('/new_dream', (req, res) => {
         })
         .catch(err => {
           console.log("err: ", err);
-          res.json("err", err);
+          res.json("err");
         })
     })
     .catch(err => {
@@ -98,7 +98,7 @@ router.put('/edit_dream/:id', (req, res) => {
     })
     .catch(err => {
       console.log("err: ", err);
-      res.json('err', err)
+      res.json('err')
     })
 })  
 
@@ -115,7 +115,7 @@ router.delete('/delete_dream', (req, res) => {
     })
     .catch(err => {
       console.log('err: ', err)
-      res.json('err', err)
+      res.json('err')
     })
 })  
 

@@ -54,11 +54,15 @@ passport.use(new LocalStrategy({usernameField : 'email'}, (email, password, done
             done(null, false)
           }
         })
+        .catch( err => {
+          console.log('err', err)
+        })
     })
     .catch( err => {
       done(null, false)
     })
 }))
+
 
 router.post('/register', (req, res) => {
   console.log('\nthis is the req.body\n', req.body)
@@ -73,12 +77,13 @@ router.post('/register', (req, res) => {
           email: req.body.email,
           password: hashedPassword
         })
-          .save()
+        .save()
     })
     .then( result => {
       if (result) {
         console.log('New User Created\n', result)
         res.send('New User Created')
+        res.redirect('/login')
       } else {
         res.send('Error Making User!!!')
       }
@@ -89,10 +94,17 @@ router.post('/register', (req, res) => {
     })
 })
 
-router.post('/login', passport.authenticate('local', {
-  successRedirect: './',
-  failureRedirect: './login',
-  failureFlash: true })
+router.post('/login', 
+  passport.authenticate('local', {
+    successRedirect: './',
+    failureRedirect: './login',
+    failureFlash: true }),
+
+  function(req, res) {
+    res.redirect('./');
+    return done(null, users);
+  }
+  
 )
 
 router.post('/logout', (req, res) => {
@@ -103,15 +115,15 @@ router.post('/logout', (req, res) => {
   // res.send('loggedout')
 })
 
-router.get('/',isAuthenticated, (req, res) => {
+router.get('/', isAuthenticated, (req, res) => {
   console.log('User Is Authenticated!!!')
   console.log('THIS IS THE REQ.SESSION!!!!!!!', req.session)
-  // email: users.email,
-  // name: users.name
+  // let email = users.email
+  // let name = users.name
   
-  console.log('THIS IS ALL THE USERS', req.users)
-  console.log('THIS IS THE NAME OF USER', req.session.passport.users.name)
-  console.log('THIS IS THE EMAIL', req.session.passport.users.email)
+  // console.log('THIS IS ALL THE USERS', req.session.users.name)
+  // console.log('THIS IS THE NAME OF USER', req.session.passport.users.name)
+  // console.log('THIS IS THE EMAIL', req.session.passport.users.email)
   
 })
 

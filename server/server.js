@@ -10,6 +10,7 @@ const routes = require('./routes/api/index');
 const auth = require('./routes/auth/auth');
 const methodOverride = require('method-override');
 
+
 app.use(cors());
 
 app.use(session({

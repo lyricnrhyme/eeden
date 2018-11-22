@@ -3,10 +3,13 @@ const router = express.Router();
 const bp = require('body-parser');
 const Users = require('../../../db/models/Users');
 const bcrypt = require('bcrypt')
+// const authenticate = require('../../auth/auth')
 
 
 router.use(bp.json());
 router.use(bp.urlencoded({ extended: true }));
+
+// router.use(authenticate);
 
 router.get('/', (req, res) => {
     Users
@@ -59,7 +62,7 @@ router.post('/createnew', (req, res) => {
         })
         .catch(err => {
           console.log("err: ", err);
-          res.json("err", err);
+          res.json("err");
         });
     })
     .catch(err => {
@@ -107,7 +110,7 @@ router.put('/delete_user', (req, res) => {
       res.json(userDetails.serialize())
     })
     .catch(err => {
-      console.log('err: ', err)
+      console.log('err: ')
     })
 })
 

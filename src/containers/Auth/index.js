@@ -25,6 +25,7 @@ class Login extends Component {
     this.setState({
       [name]: value
     })
+    console.log(this.props)
   }
 
   handleSubmit = event => {

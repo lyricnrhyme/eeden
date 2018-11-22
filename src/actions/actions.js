@@ -97,7 +97,7 @@ export const getDream = (id) => {
                 dispatch({ type: GET_DREAM_BY_ID, payload: response.data[0] })
             })
             .catch(err => {
-                console.log('ERROR IN GETTING INDIVIDUAL DREAM')
+                console.log('ERROR IN GETTING INDIVIDUAL DREAM', err)
             })
     }
 }
@@ -174,7 +174,7 @@ export const addDream = (dream) => {
                 dispatch({ ADD_DREAM, payload: response.data })
             })
             .catch(err => {
-                console.log('ERROR in ACTION ADD DREAM')
+                console.log('ERROR in ACTION ADD DREAM', err)
             })
     }
 }
@@ -205,7 +205,7 @@ export const getAllStores = () => {
         axios.get('http://www.ohanadaily.com:8080/api/stores')
             .then(response => {
                 dispatch({ type: GET_ALL_STORES, payload: response.data })
-                // console.log('actions.js dispatch payload: ', response.data)
+                console.log('actions.js dispatch payload: ', response.data)
             })
             .catch(err => {
                 console.log('ERROR IN ACTION GET ALL STORES');
