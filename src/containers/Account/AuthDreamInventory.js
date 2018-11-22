@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import UserInfoComponent from './UserInfoComponent';
-import StoreInventoryComponent from './StoreInventoryComponent';
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+// import UserInfoComponent from './UserInfoComponent';
+// import StoreInventoryComponent from './StoreInventoryComponent';
+// import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Link } from 'react-router-dom';
 
 class AuthDreamInventory extends Component {
