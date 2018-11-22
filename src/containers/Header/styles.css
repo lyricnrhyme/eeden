@@ -8,6 +8,10 @@
     vertical-align: middle;
 }
 
+.logomobile {
+    display: none;
+}
+
 .header h1 {
     display: inline-block;
     height: 100%;
@@ -33,16 +37,25 @@
     margin: 0px;
 }
 
-@media (max-width: 463px) {
+@media (max-width: 623px) {
+    .logodesktop {
+        display: none;
+    }
+    .logomobile {
+        display: inline-block;
+        height: 100%;
+        padding: 0px 5px 0px 5px;
+    }
     .header h1 {
         font-size: 1.7em;
         padding: 15px 5px 0px 5px;
     }
     .header h3 {
         padding: 23px 5px 0px 5px;
-        font-size: 1em;
+        font-size: .8em;
     }
     .header button {
+        font-size: .8em;
         padding: 0px 5px 0px 5px;
     }
 }
