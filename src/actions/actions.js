@@ -97,7 +97,7 @@ export const getDream = (id) => {
                 dispatch({ type: GET_DREAM_BY_ID, payload: response.data[0] })
             })
             .catch(err => {
-                console.log('ERROR IN GETTING INDIVIDUAL DREAM')
+                console.log('ERROR IN GETTING INDIVIDUAL DREAM', err)
             })
     }
 }
@@ -174,7 +174,7 @@ export const addDream = (dream) => {
                 dispatch({ ADD_DREAM, payload: response.data })
             })
             .catch(err => {
-                console.log('ERROR in ACTION ADD DREAM')
+                console.log('ERROR in ACTION ADD DREAM', err)
             })
     }
 }
