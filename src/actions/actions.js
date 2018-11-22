@@ -205,7 +205,7 @@ export const getAllStores = () => {
         axios.get('http://ohanadaily.com:8080/api/stores')
             .then(response => {
                 dispatch({ type: GET_ALL_STORES, payload: response.data })
-                // console.log('actions.js dispatch payload: ', response.data)
+                console.log('actions.js dispatch payload: ', response.data)
             })
             .catch(err => {
                 console.log('ERROR IN ACTION GET ALL STORES');
