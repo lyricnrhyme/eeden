@@ -61,7 +61,7 @@ export const addUser = (user) => {
     console.log('ACTION ADD HITTING')
 
     return dispatch => {
-        axios.post('http://ohanadaily.com:8080/users/createnew', user)
+        axios.post('http://ohanadaily.com:8080/register', user)
             .then(response => {
                 console.log('new user', user);
                 dispatch({ type: ADD_USER, payload: response.data })
