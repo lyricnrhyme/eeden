@@ -15,17 +15,17 @@ class AuthDreamInventory extends Component {
     this.deleteDream = deleteDream.bind(this);
   }
 
-  deleteDream = (id) => {
-    console.log('DELETE: ', id);
+  deleteThisDream = (id) => {
+    console.log('hello????')
     this.props.dispatch(this.deleteDream(id));
-    window.alert('are you sure?');
+    window.alert('Dream Deleted');
   }
   
   render() {
-    console.log(this.props, 'wya');
+    console.log('props', this);
     if (this.props.dreamProps !== undefined) {
     return this.props.dreamProps.map(dreams =>
-      <div className='AuthDreamInventory'>
+      <div key={dreams.id} className='AuthDreamInventory'>
         <Link key={dreams.id} to={"/dreams/" + dreams.id}>
           <div className="dream-list">
             <div className="img-wrapper">
@@ -37,7 +37,7 @@ class AuthDreamInventory extends Component {
             </div>
           </div>
         </Link>
-        <button onClick={() => this.props.deleteDream(dreams.id)}>Delete</button>
+        <button onClick={() => this.deleteThisDream(dreams.id)}>Delete</button>
         <Link to={'/edit_dream/' + dreams.id}><button>Edit</button></Link>
       </div>
     )
@@ -49,6 +49,11 @@ class AuthDreamInventory extends Component {
   }
 }
 
+function mapStateToProps(state) {
+  console.log('wtf', state)
+  return {
+    deleteDream: deleteDream
+  }
+}
 
-
-export default AuthDreamInventory;
+export default connect(mapStateToProps)(AuthDreamInventory);

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { getUser, getStoreByUser, getDreamsByUser } from '../../actions/actions';
+import { getUser, getStoreByUser, getDreamsByUser, getAllDreams } from '../../actions/actions';
 import { connect } from 'react-redux';
 import { Link } from "react-router-dom";
 import './styles.css';
@@ -18,10 +18,10 @@ class Account extends Component {
 
   componentDidMount() {
     // console.log('CM fired', this)
-    let user = this.props.match.params.user_id;
+    let user = this.props.match.params.user_id; 
     this.props.dispatch(getUser(user))
     this.props.dispatch(getStoreByUser(user))
-    this.props.dispatch(getDreamsByUser(user))
+    this.props.dispatch(getAllDreams())
   }
 
   static getDerivedStateFromProps(nextProps, prevState){
@@ -44,17 +44,17 @@ class Account extends Component {
     console.log("User: ", userProps);
     console.log("Store: ", storeProps)
     return (
-      <div className="Account">
-        <div className="user-content">
-          <h1>{userProps.name}</h1>
-        </div>
-        <div className="store-content">
-          <h2>{storeProps[0].title}</h2>
-        </div>
+      // <div className="Account">
+      //   <div className="user-content">
+      //     <h1>{userProps.name}</h1>
+      //   </div>
+      //   <div className="store-content">
+      //     <h2>{storeProps[0].title}</h2>
+      //   </div>
 
 
 
-        {/* <div className='userStore'>
+        <div className='userStore'>
           <div className='user'>
             <Link to={`/users/${localStorage.getItem('user_id')}/userInfo`}>User Details {localStorage.getItem('user_id')}</Link>
           </div>
@@ -62,9 +62,8 @@ class Account extends Component {
             <Link to={`/users/${localStorage.getItem('user_id')}/storeInfo`}>Store Details
             </Link>
           </div>
+          <OrderHistory />
         </div>
-        <OrderHistory /> */}
-      </div>
     );
   }
 }
@@ -73,8 +72,8 @@ function mapStateToProps(state) {
   // console.log('state', state)
   return {
     userProps: state.currentUser,
-    storeProps: state.currentStore,
-    dreamProps: state.currentStoreDreams
+    dreamProps: state.currentStoreDreams,
+    storeProps: state.currentStore
   };
 }
 

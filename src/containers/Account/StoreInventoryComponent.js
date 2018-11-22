@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { getStoreByUser, getUser, getDreamsByUser } from '../../actions/actions';
+import { getStoreByUser, getUser, getDreamsByUser, getAllDreams } from '../../actions/actions';
 import { connect } from 'react-redux';
 import { Link } from "react-router-dom";
 
@@ -20,7 +20,7 @@ class StoreInventory extends Component {
     let user = this.props.match.params.user_id;
     this.props.dispatch(getUser(user))
     this.props.dispatch(getStoreByUser(user))
-    this.props.dispatch(getDreamsByUser(user))
+    this.props.dispatch(getAllDreams())
   }
 
   static getDerivedStateFromProps(nextProps, prevState){
@@ -32,7 +32,7 @@ class StoreInventory extends Component {
       };
    }
    else return null;
- }
+  }
 
 
   render() {
@@ -54,7 +54,7 @@ class StoreInventory extends Component {
               </Link>
             </div>
           </div>
-          <AuthDreamInventory dreamProps={this.state.dreamProps}/>
+          <AuthDreamInventory dreamProps={dreamProps}/>
           <Link to={'/createdream'}><button>Add Dream</button></Link>
         </div>
       );
@@ -84,7 +84,7 @@ function mapStateToProps(state) {
   return {
     userProps: state.currentUser,
     storeProps: state.currentStore,
-    dreamProps: state.currentStoreDreams
+    dreamProps: state.allprops
   };
 }
 

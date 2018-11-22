@@ -61,7 +61,7 @@ export const addUser = (user) => {
     console.log('ACTION ADD HITTING')
 
     return dispatch => {
-        axios.post('http://ohanadaily.com:8080/users/createnew', user)
+        axios.post('http://ohanadaily.com:8080/register', user)
             .then(response => {
                 console.log('new user', user);
                 dispatch({ type: ADD_USER, payload: response.data })
@@ -119,7 +119,7 @@ export const getDreamByStore = (id) => {
                 dispatch({ type: GET_DREAM_BY_STORE_ID, payload: dreams })
             })
             .catch(err => {
-                console.log('ERROR IN GETTING INDIVIDUAL DREAM')
+                console.log('ERROR IN GETTING INDIVIDUAL DREAM BY STORE')
             })
     }
 }
@@ -130,7 +130,6 @@ export const getDreamsByUser = (id) => {
 
     return dispatch => {
         axios.get(`http://ohanadaily.com:8080/api/dreams/`)
-
             .then(response => {
                 const dreams = response.data.filter(dream => {
                     // console.log('insheeption', dream)
@@ -140,7 +139,7 @@ export const getDreamsByUser = (id) => {
                 dispatch({ type: GET_DREAM_BY_USER_ID, payload: dreams })
             })
             .catch(err => {
-                console.log('ERROR IN GETTING INDIVIDUAL DREAM')
+                console.log('ERROR IN GETTING INDIVIDUAL DREAM BY USER', err);
             })
     }
 }
