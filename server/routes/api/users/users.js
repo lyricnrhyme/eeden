@@ -3,15 +3,15 @@ const router = express.Router();
 const bp = require('body-parser');
 const Users = require('../../../db/models/Users');
 const bcrypt = require('bcrypt')
-const authenticate = require('../../auth/auth')
+// const authenticate = require('../../auth/auth')
 
 
 router.use(bp.json());
 router.use(bp.urlencoded({ extended: true }));
 
-router.use(authenticate);
+// router.use(authenticate);
 
-router.get('/', authenticate, (req, res) => {
+router.get('/', (req, res) => {
     Users
     .fetchAll()
     .then(userList => {
