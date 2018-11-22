@@ -17,7 +17,7 @@ router.get('/', (req, res) => {
     })
     .catch(err => {
     console.log('err: ', err)
-    res.json('err', err)
+    res.json('err')
     })
 })
 
@@ -35,7 +35,7 @@ router.get('/:id', (req, res) => {
       })
       .catch(err => {
         console.log('err: ', err);
-        res.json('err', err)
+        res.json('err')
       })
   })
 
@@ -57,12 +57,12 @@ router.post('/create_store', (req, res) => {
         })
         .catch(err => {
           console.log("err: ", err);
-          res.json("err", err);
+          res.json("err");
         })
     })
     .catch(err => {
       console.log("err: ", err);
-      res.json("RES.JSON ERROR", err);
+      res.json("RES.JSON ERROR");
     });
   })
 
@@ -88,7 +88,7 @@ router.put('/edit_store/:id', (req, res) => {
     })
     .catch(err => {
       console.log("err: ", err);
-      res.json('err', err)
+      res.json('err')
     })
 })  
 
@@ -105,7 +105,7 @@ router.delete('/delete_store', (req, res) => {
     })
     .catch(err => {
       console.log('err: ', err)
-      res.json('err', err)
+      res.json('err')
     })
 })
 

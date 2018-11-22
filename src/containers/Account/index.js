@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { getUser, getStoreByUser, getDreamsByUser } from '../../actions/actions';
 import { connect } from 'react-redux';
 import { Link } from "react-router-dom";
+import './styles.css';
 
 import OrderHistory from './OrderHistoryComponent';
 
@@ -36,7 +37,7 @@ class Account extends Component {
 
 
   render() {
-    console.log("Props:", this.props)
+    // console.log("Props:", this.props)
     
     const { dreamProps, userProps, storeProps } = this.props;
     console.log("Dreams: ", dreamProps);
@@ -44,7 +45,16 @@ class Account extends Component {
     console.log("Store: ", storeProps)
     return (
       <div className="Account">
-        <div className='userStore'>
+        <div className="user-content">
+          <h1>{userProps.name}</h1>
+        </div>
+        <div className="store-content">
+          <h2>{storeProps[0].title}</h2>
+        </div>
+
+
+
+        {/* <div className='userStore'>
           <div className='user'>
             <Link to={`/users/${localStorage.getItem('user_id')}/userInfo`}>User Details {localStorage.getItem('user_id')}</Link>
           </div>
@@ -53,7 +63,7 @@ class Account extends Component {
             </Link>
           </div>
         </div>
-        <OrderHistory />
+        <OrderHistory /> */}
       </div>
     );
   }

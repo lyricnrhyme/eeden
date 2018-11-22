@@ -54,12 +54,12 @@ router.post('/new_purchase', (req, res) => {
         })
         .catch(err => {
           console.log("err: ", err);
-          res.json("err", err);
+          res.json("err");
         })
     })
     .catch(err => {
       console.log("err: ", err);
-      res.json("RES.JSON ERROR", err);
+      res.json("RES.JSON ERROR");
     });
   })
 
