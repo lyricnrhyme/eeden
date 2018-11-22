@@ -96,14 +96,14 @@ router.post('/register', (req, res) => {
 
 router.post('/login', 
   passport.authenticate('local', {
-    successRedirect: './',
+    successRedirect: '/',
     failureRedirect: './login',
-    failureFlash: true }),
+    failureFlash: true })
 
-  function(req, res) {
-    res.redirect('./');
-    return done(null, users);
-  }
+  // function(req, res) {
+  //   res.redirect('./');
+  //   return done(null, users);
+  // }
   
 )
 
