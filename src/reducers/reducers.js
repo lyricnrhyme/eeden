@@ -9,6 +9,7 @@ import { GET_ALL_PURCHASES, GET_PURCHASE_BY_ID, ADD_PURCHASE } from '../actions/
 
 const reducers = (state = {
     allprops: [],
+    allStores: [],
     detailedProps: {},
     currentStoreDreams: [],
     currentStore: [],
@@ -57,7 +58,7 @@ const reducers = (state = {
 
         //~~~ Store Cases ~~~//
         case GET_ALL_STORES:
-            return { ...state, allprops: action.payload }
+            return { ...state, allStores: action.payload }
 
         case GET_STORE_BY_ID:
             return { ...state, detailedProps: action.payload }
