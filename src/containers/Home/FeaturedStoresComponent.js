@@ -8,7 +8,6 @@ import { connect } from 'react-redux';
 import { getAllStores } from '../../actions/actions.js'
 
 const mapStateToProps = (state) => {
-  console.log("State", state)
   return {
     storeProps: state.allStores
   }

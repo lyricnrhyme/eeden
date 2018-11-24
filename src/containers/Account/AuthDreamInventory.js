@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 // import StoreInventoryComponent from './StoreInventoryComponent';
 // import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
+// import { connect } from 'react-redux';
 import { deleteDream } from '../../actions/actions';
 
 class AuthDreamInventory extends Component {

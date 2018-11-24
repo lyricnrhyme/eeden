@@ -3,7 +3,7 @@ import "./styles.css"
 
 
 export const StoreInfo = (props) => {
-  console.log('STORE COMPONENT PROS: ', props.storeProps);
+  // console.log('STORE COMPONENT PROS: ', props.storeProps);
 
 
   return <div className="storeinfo">

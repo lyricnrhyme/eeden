@@ -23,13 +23,6 @@ class DreamsListing extends Component {
 
   }
 
-  // getDreamById = (id) => {
-  //   // console.log("Dream Data OnClick: ", id)
-  //   console.log('DREAM LISTING BY ID PROPS: ', this.props);
-  //   this.props.dispatch(getDream(id))
-  // }
-
-
 
   render() {
     const { dreamProps } = this.props;

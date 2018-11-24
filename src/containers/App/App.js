@@ -3,7 +3,7 @@ import './App.css';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 // containers
-import Account from '../Account/index';
+import Account from '../Account/account.jsx';
 // import Auth from '../Auth';
 import DreamDetail from '../DreamDetail/index.jsx';
 import DreamsListing from '../DreamsListing/index';
@@ -14,7 +14,7 @@ import CreateDreamForm from '../CreateDreamForm/CreateDreamComponent.jsx';
 import CreateStoreForm from '../CreateStoreForm/CreateStoreComponent.jsx';
 import EditDreamForm from '../EditDreamForm/EditDreamFormComponent';
 import EditStoreForm from '../EditStoreForm/EditStoreFormComponent';
-import Login from '../Auth';
+import Login from '../Auth/login.jsx';
 import Register from '../Auth/RegisterComponent';
 
 // components

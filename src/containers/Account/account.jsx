@@ -1,10 +1,22 @@
 import React, { Component } from 'react';
 import { getUser, getStoreByUser, getDreamsByUser } from '../../actions/actions';
 import { connect } from 'react-redux';
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import './styles.css';
 
-import OrderHistory from './OrderHistoryComponent';
+// import OrderHistory from './OrderHistoryComponent';
+
+
+function mapStateToProps(state) {
+  console.log('state', state)
+  return {
+    userProps: state.currentUser,
+    storeProps: state.currentStore[0],
+    dreamProps: state.currentStoreDreams
+  };
+}
+
+
 
 class Account extends Component {
   constructor(props) {
@@ -16,33 +28,38 @@ class Account extends Component {
     }
   }
 
+  componentWillMount() {
+    console.log('Bam bam')
+  }
+
   componentDidMount() {
-    // console.log('CM fired', this)
+    console.log('CM fired', this)
     let user = this.props.match.params.user_id;
     this.props.dispatch(getUser(user))
     this.props.dispatch(getStoreByUser(user))
     this.props.dispatch(getDreamsByUser(user))
   }
 
-  static getDerivedStateFromProps(nextProps, prevState){
-    if(nextProps.dreamProps !== prevState.dreamProps){
-      return { 
-        dreamProps: nextProps.dreamProps,
-        userProps: nextProps.userProps, 
-        storeProps: nextProps.storeProps 
-      };
-   }
-   else return null;
- }
+  // static getDerivedStateFromProps(nextProps, prevState) {
+  //   if (nextProps.dreamProps !== prevState.dreamProps) {
+  //     return {
+  //       dreamProps: nextProps.dreamProps,
+  //       userProps: nextProps.userProps,
+  //       storeProps: nextProps.storeProps
+  //     };
+  //   }
+  //   else return null;
+  // }
 
 
   render() {
     // console.log("Props:", this.props)
-    
-    const { dreamProps, userProps, storeProps } = this.props;
-    console.log("Dreams: ", dreamProps);
-    console.log("User: ", userProps);
-    console.log("Store: ", storeProps)
+    const { userProps, storeProps } = this.props;
+
+    // const { dreamProps, userProps, storeProps } = this.props;
+    // console.log("Dreams: ", dreamProps);
+    // console.log("User: ", userProps);
+    // console.log("Store: ", storeProps)
     return (
       <div className="Account">
         <div className="user-content">
@@ -69,14 +86,6 @@ class Account extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  // console.log('state', state)
-  return {
-    userProps: state.currentUser,
-    storeProps: state.currentStore[0],
-    dreamProps: state.currentStoreDreams
-  };
-}
 
 export default connect(mapStateToProps)(Account);
 
