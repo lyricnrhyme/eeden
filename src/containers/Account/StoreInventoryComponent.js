@@ -20,7 +20,7 @@ class StoreInventory extends Component {
     let user = this.props.match.params.user_id;
     this.props.dispatch(getUser(user))
     this.props.dispatch(getStoreByUser(user))
-    this.props.dispatch(getAllDreams())
+    this.props.dispatch(getDreamsByUser(user))
   }
 
   static getDerivedStateFromProps(nextProps, prevState){
@@ -55,7 +55,7 @@ class StoreInventory extends Component {
             </div>
           </div>
           <AuthDreamInventory dreamProps={dreamProps}/>
-          <Link to={'/createdream'}><button>Add Dream</button></Link>
+          <Link to={'/createdream'}><button>Add Experience</button></Link>
         </div>
       );
     } else {
@@ -84,7 +84,7 @@ function mapStateToProps(state) {
   return {
     userProps: state.currentUser,
     storeProps: state.currentStore,
-    dreamProps: state.allprops
+    dreamProps: state.currentUserDreams
   };
 }
 

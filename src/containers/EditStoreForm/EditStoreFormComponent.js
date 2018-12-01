@@ -72,7 +72,7 @@ class EditDreamForm extends Component {
                   <input onChange={this.handleChange} name="featured_video" type="text" />
           </label>
           <br />
-          <label>Dream Preview Image:
+          <label>Experience Preview Image:
                   <input onChange={this.handleChange} name="dream_images" type="text" />
           </label>
           <br />

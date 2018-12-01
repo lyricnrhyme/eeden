@@ -31,7 +31,7 @@ class TopDreams extends Component {
 
     return (
       <div className="topdreams">
-        <h2>Recommended Dreams</h2>
+        <h2>Recommended Experiences</h2>
         <DreamList dreamProps={topdreams} />
       </div>
     );

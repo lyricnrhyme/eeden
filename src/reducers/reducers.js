@@ -18,13 +18,13 @@ const reducers = (state = {
 
     switch (action.type) {
 
+
         //~~~ User Cases ~~~//
         case GET_ALL_USERS:
-            return action.task
+            return action.task;
 
         case GET_USER_BY_ID:
-
-            return { ...state, currentUser: action.payload }
+            return { ...state, currentUser: action.payload };
 
         case ADD_USER:
             return [...state, action.payload]
@@ -40,7 +40,7 @@ const reducers = (state = {
             return { ...state, currentStoreDreams: action.payload }
 
         case GET_DREAM_BY_USER_ID:
-            return { ...state, currentStoreDreams: action.payload }
+            return { ...state, currentUserDreams: action.payload }
 
         case ADD_DREAM:
             state.allprops = [...state.allprops, ...action.payload]

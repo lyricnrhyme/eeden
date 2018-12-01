@@ -36,7 +36,6 @@ class Login extends Component {
       localStorage.setItem('loggedIn', true);
       localStorage.setItem('user_id', user[0].id)
       localStorage.setItem('has_store', user[0].has_store)
-      console.log('hitting?')
     } else {
       console.log('email and password do not match');
     };

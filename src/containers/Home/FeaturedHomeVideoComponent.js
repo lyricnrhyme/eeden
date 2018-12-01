@@ -7,9 +7,9 @@ class FeaturedHomeVideo extends Component {
       <div className="featuredvideo">
         <div id="video-container">
           <div className="video-content">
-            <h1>Live any dream</h1>
+            <h1>Live any experience</h1>
             <form method="GET" action="/dreams">
-              <button type="submit" className="drk">Start dreaming</button>
+              <button type="submit" className="drk">Start experiencing</button>
             </form>
 
           </div>
